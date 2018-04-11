@@ -1,0 +1,39 @@
+import tflern
+import sklearn.neural_networks
+
+@app.route('/disease_prediction2',methods=['POST','GET'])
+def disease_prediction2():
+        age=float(request.form["age"])
+        sex=float(request.form["sex"])
+        bloodpresure=float(request.form["bloodpresure"])
+        cholesterol=float(request.form["cholesterol"])
+        blood_sugure=float(request.form["blood_sugure"])
+        maximum_heart_reate=float(request.form["heart_reate"])
+        disease=float(request.form["disease"])
+        print(age)
+        with open('static/training/data.json') as json_data:
+            d = json.load(json_data)
+        X=[]
+        y=[]      
+        for i in d:
+            X.append([i["maximum heart reate"],i["age"],i["sex"],i["blood sugure"],i["bloodpresure"],i["cholesterol"]])
+            y.append([i["disease"]])
+       clf = MLPClassifier(solver='lbfgs',alpha=1e-5,hidden_layer_sizes=(12), random_state=1)
+        clf.fit(X, y)
+        get_prediction_proba=clf.predict_proba([[maximum_heart_reate,age,sex,blood_sugure,bloodpresure,cholesterol ]])
+        get_prediction=clf.predict([[maximum_heart_reate,age,sex,blood_sugure,bloodpresure,cholesterol ]])
+        save=get_prediction_proba[0][0]
+        print(get_prediction_proba)
+        for every in range(0,4):
+            if get_prediction_proba[0][every]>save:
+                save=get_prediction_proba[0][every]
+            
+
+        send_this=[save,get_prediction[0]]
+        return json.dumps(send_this)
+
+
+
+
+
+
