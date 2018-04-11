@@ -1,0 +1,779 @@
+
+ <meta charset="utf-8"/>
+ <meta name="robots" content="noindex, nofollow"/> <meta name="viewport" content="width=device-width, initial-scale=1"/>
+ <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> 
+  	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../static/jquery_upload/JSAjaxFileUploader-master/JQuery.JSAjaxFileUploader.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+    <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link media="all" type="text/css" rel="stylesheet" href="https://bootsnipp.com/css/fullscreen.css"/>
+   <link href="../static/jquery_upload/JSAjaxFileUploader-master/JQuery.JSAjaxFileUploader.css" rel="stylesheet" type="text/css" />
+ 
+
+<style>
+body {
+    font-family: "Open Sans",sans-serif !important;
+    font-size: 13px !important;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 22px;
+    white-space: normal;
+}
+
+#header-site {
+    background: #262727 none repeat scroll 0 0;
+    border-bottom: 2px solid #cf4137;
+    float: left;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.logo-site {
+    float: left;
+    height: 50px;
+    margin: 5px 0 0px 10px;
+    width: 140px;
+}
+.logo-site h1 {
+    margin: 0;
+}
+.logo-site h1 a {
+    float: left;
+    height: 40px;
+    width: 131px;
+    text-indent:-999px;
+    background-image:url('https://upload.wikimedia.org/wikipedia/en/7/79/Veeco_company_logo.png');
+    background-repeat:no-repeat;
+    background-position:0px; 
+    background-size:100px;
+}
+
+/*Notification Bell dropdown*/
+.top-nav {
+    padding: 0 5px;
+}
+.top-nav > li {
+    display: inline-block;
+    float: left;
+}
+.top-nav > li > a {
+    color: #fff;
+    font-size: 13px;
+    line-height: 20px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+.top-nav > li span.badge {
+    background: #ca3f02 none repeat scroll 0 0;
+    border: 3px solid #262727;
+    font-family: "Open Sans",sans-serif !important;
+    font-size: 11px;
+    font-weight: 300;
+    padding: 2px 5px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+.dropdown-notification .dropdown-menu{width:275px;   max-width: 275px;
+    min-width: 160px;}
+.dropdown-notification > a {
+    font-size: 18px !important;
+    line-height: 29px !important;
+}
+.top-nav .dropdown-menu .dropdown-menu-list {
+    list-style: outside none none;
+    padding-left: 0;
+    padding-right: 0 !important;
+}
+.top-nav > li.dropdown-notification .dropdown-menu > li.external {
+    border-radius: 4px 4px 0 0;
+    display: block;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+    padding: 15px;
+}
+.top-nav > li.dropdown-notification .dropdown-menu > li.external > h3 {
+    display: inline-block;
+    float: left;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+.top-nav > li.dropdown-notification .dropdown-menu > li.external > a {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 0 none;
+    color: #888;
+    clear: inherit;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 300;
+    margin-top: -1px;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+}
+.top-nav > li.dropdown-notification .dropdown-menu > li.external {
+    background: #eaedf2 none repeat scroll 0 0;
+}
+.top-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list {
+    list-style: outside none none;
+}
+.top-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li > a {
+    clear: both;
+    display: block;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 20px;
+    padding: 16px 15px 18px;
+    text-shadow: none;
+    white-space: normal;
+	color:#337ab7 !important;
+    border-bottom: 1px solid #eff2f6 !important;
+
+}
+.top-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .time {
+    float: right;
+    font-size: 11px;
+    font-weight: 400;
+    max-width: 75px;
+    opacity: 0.7;
+    padding: 1px 5px;
+    text-align: right;
+    background: #f1f1f1 none repeat scroll 0 0;
+}
+.top-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details {
+    font-size:13px;
+}
+.top-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.top-nav > li > a:hover, .top-nav > li > a:focus, .top-nav > .open > a, .top-nav > .open > a:hover, .top-nav > .open > a:focus {
+    background-color: #171717;
+    color: #999999;
+}
+.top-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li > a:hover {
+    background: #f8f9fa none repeat scroll 0 0;
+}
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    background-color: transparent;
+    color: #ca3f02;
+}
+
+/*Toggle Navigation design*/
+.navbar-default .navbar-toggle{ border:none;}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background: none;
+}
+
+@media(max-width:768px){
+.navbar-collapse{ clear:both;}
+    
+}
+#header-site{
+background-color:#166992;
+border-bottom: 2px solid #04A3ED;
+}
+.li_design{
+
+
+}
+li.li_design:hover {
+    background-color: #286090;
+    /* color: black; */
+}
+img.logo_png {
+    width: 43px;
+    margin-left: 32px;
+}
+.dropdown-notification .dropdown-menu {
+    width: 421px;
+    max-width: 392px;
+    min-width: 160px;
+    height: 356px;
+	    overflow-y: scroll;
+}
+.top-nav > li > a:hover, .top-nav > li > a:focus, .top-nav > .open > a, .top-nav > .open > a:hover, .top-nav > .open > a:focus{
+background-color:#166992 !important;
+
+}
+ul.ul_style_type {
+    width: 67%;
+	    margin-left: 52px;
+}
+</style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous"/>
+<div class="container-fluid">
+	<div class="row">
+		<div class="navbar navbar-default navbar-fixed-top">
+			<header id="header-site">
+			
+				<div class="logo-site">
+					<img class="logo_png" src="../static/logo.png"/>
+				</div>
+				
+				
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+				</button>
+				
+				
+				
+				<ul class="nav navbar-right pull-right top-nav">
+				
+					<li class="dropdown dropdown-notification"> <a class="dropdown-toggle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true"> <i class="material-icons">&#xe8b8;</i> <span class="badge badge-default"> 3 </span> </a>
+						<ul class="dropdown-menu">
+							<li class="external">
+								<h3> <span class="bold">12 pending</span> Settings</h3>
+								<a href="page_user_profile_1.html">view all</a> 
+							</li>
+							<li>
+										<ul class="ul_style_type">
+						
+					<li class="header_content">Font</li>
+						<li>Size     <div class="input-group">
+									  <span class="input-group-btn">
+										<button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
+									  </span>
+									  <input type="text" class="form-control" name="qty" id="qty" value="23">
+									  <span class="input-group-btn">
+										<button class="btn btn-default" type="button" id="btn-minus"><span class="glyphicon glyphicon-plus"></span></button>
+									  </span>
+									</div></li>
+									<script>
+						
+
+
+					$("#qty").click(function () {
+						$("*").css({
+							"font-size": $(this).val()
+						});
+					});
+							</script>
+	
+								<li>Color <br/> <div class="form-group row">
+							  <label for="example-color-input" class="col-xs-2 col-form-label"></label>
+							  <div class="col-xs-10 color_in">
+								<input class="form-control" type="color" value="#563d7c" id="example-color-input"/>
+								
+							<script>
+								
+
+
+							$("#example-color-input").click(function () {
+								$("*").css({
+									"color": $(this).val()
+								});
+							});
+							</script>
+						  </div>
+						</div></li>
+							<li>Font <br><select id="get_font_famyli">
+						  <option value="fantasy">Fantasy</option>
+						  <option value="cursive">Cursive</option>
+						  <option value="monospace">Monospace</option>
+						  <option value="serif">Serif</option>
+						</select></li>
+						<script>
+							
+
+
+						$("#get_font_famyli").click(function () {
+							$("*").css({
+								"font-family": $(this).val()
+							});
+						});
+						</script>
+							<hr>
+										<form method="POST" id="background_id">	
+										
+										<li class="header_content">Background</li>
+						<li> Back color<br> <div class="form-group row">
+						  <label for="example-color-input" class="col-xs-2 col-form-label"></label> 
+						  <div class="col-xs-10 color_in">
+							<input class="form-control" type="color" value="#563d7c" id="example-back-input"/>
+						  </div>
+						</div>
+							<script type="text/javascript" src="../static/jquery_upload/JSAjaxFileUploader-master/JQuery.JSAjaxFileUploader.js"></script>
+    <link href="../static/jquery_upload/JSAjaxFileUploader-master/JQuery.JSAjaxFileUploader.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../static/jquery_upload/JSAjaxFileUploader-master/JQuery.JSAjaxFileUploader.js"></script>
+						<script>
+							
+
+
+						$("#example-back-input").click(function () {
+							$("body").css({
+								"background-color": $(this).val()
+							})
+						})
+						</script>
+						</li>
+							<li>Back file<br>  <form method="POST" enctype="multipart/form-data"><input type="file" name="file" class="" id="upload_back"/><input type="button" value="Upload" id="uploadButton" /></form>
+							<div id="target-div1"></div>
+							<script>
+						$('#target-div1').JSAjaxFileUploader({
+								uploadUrl:'/upload_your_back'
+								});
+							</script>
+						</li>
+						<button class="btn btn-default  " id="#submit"></button>
+						
+						</form>
+						<script>
+						$('#upload_back').hide();
+								$('#uploadButton').bind('click', function () {
+									  $('#upload_back').click();
+								});
+
+								$('#upload_back').change(function () {
+									var file = this.files[0];
+									var reader = new FileReader();
+									reader.onloadend = function () {
+									   $('body').css('background-image', 'url("' + reader.result + '")');
+									   $('body').css('background-repeat', 'no-repeat');
+									   $('body').css('background-attachment', 'fixed');
+									   $('body').css('background-size', '100% 100%');
+									}
+									if (file) {
+										reader.readAsDataURL(file);
+									} else {
+									}
+								});
+								</script>
+						<li>Header<br> <div class="form-group row">
+						  <label for="example-color-input" class="col-xs-2 col-form-label"></label> 
+						  <div class="col-xs-10 color_in">
+							<input class="form-control" type="color" value="#563d7c" id="example-color_hed-input"/>
+						  </div>
+						</div></li>
+						<script>
+							
+
+
+						$("#example-color_hed-input").click(function () {
+							$(".menu").css({
+								"background-color": $(this).val()
+							});
+						});
+						</script>
+											<hr>	
+											<li class="header_content">Post</li>
+							<li>Color<br> <div class="form-group row">
+						  <label for="example-color-input" class="col-xs-2 col-form-label"></label>
+						  <div class="col-xs-10 color_in">
+							<input class="form-control" type="color" value="#563d7c" id="example-color-input">
+						  </div>
+						</div></li>
+							<li>Back <br><input type="file" class="" id="upload_back_2"><input type="button" value="Upload" id="uploadButton_2" /></li>	
+												<script>
+						$("#example-color-input").click(function () {
+							$(".panel").css({
+								"background-color": $(this).val()
+							});
+						});
+						$('#upload_back_2').hide();
+								$('#uploadButton_2').bind('click', function () {
+									  $('#upload_back_2').click();
+								});
+
+								$('#upload_back_2').change(function () {
+									var file = this.files[0];
+									var reader = new FileReader();
+									reader.onloadend = function () {
+									   $('.panel').css('background-image', 'url("' + reader.result + '")');	 
+									   $('.panel').css(' background-size', 'cover');
+									   
+									   
+									}
+									if (file) {
+										reader.readAsDataURL(file);
+									} else {
+									}
+								});
+								</script>
+						<li>Opacity <br><input type="range" min="0" max="20"	step="0.01" id="opacity-slider"><output for="opacity-slider" id="slider-value"/>1</output></li>
+						<script>
+						$('#opacity-slider').bind("change mousemove", function() {
+						  $('#slider-value').html($(this).val());
+						  $('.post ').css({
+							'filter': "blur("+$(this).val()+"px)"
+							 
+						  });
+						  
+						   
+						});
+						</script>
+
+						<hr>
+						
+						<li>Translate<br/><div id="google_translate_element"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element')
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script></li>
+						
+						
+						
+						<style>
+						.btn_new_save{
+						
+							position: relative;
+							bottom: 16px;
+							width: 97%;
+
+						}
+						
+						.new_unread{
+						display:none;
+						}
+						.top-nav > li.dropdown-notification .dropdown-menu > li.external {
+						background: #eaedf2 none repeat scroll 0 0;
+						position: fixed;
+						width: 390px;
+						background-position: fixed;
+							}
+					ul.dropdown-menu-list.list_notification {
+					margin-top: 42px;
+						}
+						
+						
+						.new_message_for_noti{
+					margin-left: 69px;
+
+					}
+						
+						.noti_title {
+						margin-top: -43px;
+						margin-left: 67px;
+						margin-bottom: 12;
+					}
+					.questions_to_show {
+					font-size: 16px;
+						}
+					h3.header_noti {
+						margin-bottom: -18px;
+					}
+					h3 {
+						font-size: 24px;
+					}
+					img.img_notifi {
+						width: 58px;
+						margin-right: 11;
+					}
+					.message {
+						margin-top: -12px;
+					}
+						</style>
+						<button type="button" class="btn btn-default btn_new_save">Save</button>
+						</ul>
+							</li>
+						</ul>
+						
+					</li>
+				
+				
+				
+					<li class="dropdown dropdown-notification"> <a class="dropdown-toggle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true"> <i class="fa fa-bell-o"></i> <span class="badge badge-default new_unread">3</span> </a>
+						<ul class="dropdown-menu">
+							<li class="external">
+								<h3> <span class="bold">Notifications</span></h3>
+								<a href="page_user_profile_1.html">view all</a> 
+							</li>
+							<li>
+								<ul class="dropdown-menu-list list_notification">
+								
+								{%for p in tests%}
+								
+								<li class='li_style_type' data-toggle="modal" data-target="#squarespaceModal12333"><h3 class='header_noti'><img src='data:image/png;base64,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' class='img_notifi'><div class='noti_title'>Test</div></h3><br><div class='message new_message_for_noti'>You have to do it or you will lose points!</div><hr></li>
+							
+								{%endfor%}
+								
+								
+								{% for i in select_notifi2%}
+									<li class='li_style_type'><h3 class='header_noti'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz3V48SbtJARb-0sbfAAvUNmeU88x0olpJiRK7zAX4la0kJ-FW' class='img_notifi'><div class='noti_title'>Points</div></h3><br><div class='message new_message_for_noti'>You won {{i[3]}} poins from reading! </div><hr></li>
+								<!--	<li> <a href="javascript:;"> <span class="time">just now</span> <span class="details"> <span class="label label-sm label-icon label-success"> <i class="fa fa-plus"></i> </span> {{i[5]}} </span> </a> </li>
+									<li> <a href="javascript:;"> <span class="time">3 mins</span> <span class="details"> <span class="label label-sm label-icon label-danger"> <i class="fa fa-bolt"></i> </span> Server #12 overloaded. </span> </a> </li>-->
+										{%endfor%}
+								
+							
+								</ul>
+							</li>
+						</ul>
+						
+					</li>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				<!--	<li class="dropdown"> 
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+						{%for k in profile_pic1%}
+							<img alt="" class="img-circle" src="static/{{k[0]}}" width="30"> 
+							<span class="hidden-xs">Admin User</span> 
+							{%endfor%}
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="{{url_for('profile',id=session['id'],connect=session['connect'])}}"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+							
+							<li class="divider"></li>
+							<li><a href="{{url_for('register')}}"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+						</ul>
+					</li>-->
+				</ul>
+			
+
+				
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-left">
+					   <li class="li_design"><a href="{{url_for('index',medic=session['medic'],id=session['id'],connect=session['connect'])}}">Home</a></li>
+					{% if session['medic']==1%}
+        <li class="li_design"><a href="{{url_for('profile',id=session['id'],connect=session['connect'])}}">Profil</a></li>
+        <li class="li_design"><a href="{{url_for('learn_anatomy',id=session['id'],connect=session['connect'])}}">Anatomy Vote</a></li>
+		{%endif%}
+		{% if session['medic']==0%}
+	    <li class="li_design"><a href="{{url_for('learn_anatomy',id=session['id'],connect=session['connect'])}}">Anatomy</a></li>
+        <li class="li_design"><a href="{{url_for('user_profile',medic=0,id=session['id'],connect=session['connect'])}}">Profil</a></li>
+		{%endif%}
+		
+		 
+		    <li class="li_design"><a href="{{url_for('bratara',id=session['id'],connect='connect')}}">Bratara</a></li>
+		  <li class="li_design"><a href="{{url_for('register')}}">Logout</a></li>
+		  <li class=" li_design search_class"><div class="span12"><!--?medic={{session['medic']}}&id={{id_general_user}}&connect=connect&search=searching-->
+            <form id="custom-search-form" method="POST" class="form-search form-horizontal pull-right" action="">
+                <div class="input-append span12">
+                    <input type="text" class="search-query mac-style" id="search_id2" onkeyup="" data-target="#myModal" data-toggle="modal" ng-model="firstName" placeholder="Search">
+					
+					
+
+
+
+					
+					<div class="finder-search"><p class="firstName"> {{ firstName }}</p></div>
+					
+                    <button type="submit" class="btn"><i class="icon-search"></i></button>
+                </div>
+            </form>
+        </div>
+		
+
+		</li>
+					
+						
+					</ul>
+				</div>
+			
+				
+			</header>
+		</div>
+	</div>
+</div>
+
+	<div id='squarespaceModal12333'  class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+									  <div class='modal-dialog modal-lg-12'>
+										<div class='modal-content'>
+										  <div class='modal-header'>
+											<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
+											<h3 id='myModalLabel'>Test</h3><div class=' sTime'></div>
+										  </div>
+										  <div class='modal-body'>
+										  <script>
+										  var object_ques=[]
+										  var number_generate=Math.floor(Math.random() * 4);
+										  
+										  </script>
+												{% for t in find_question_to_show %}
+												<script>
+												  var number_generate=Math.floor(Math.random() * 4);
+												</script>
+												<form action="" id="form_gender{{t[4]}}">
+												<div class="questions_to_show">{{t[5]}}</div>
+												<div class="numbe_gen_show_{{t[4]}}"></div><br/>
+												<script>
+												console.log(number_generate)
+												if(number_generate==0){
+												
+												
+												var gen="<input class='clikc_{{t[4]}}' id='clikc24_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[6]}}'> {{t[6]}}</br>"+
+												"<input class='clikc_{{t[4]}}' id='clikc21_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[8]}}'> {{t[8]}}</br>"+
+												"<input class='clikc_{{t[4]}}' id='clikc22_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[9]}}'> {{t[9]}}</br>"+
+												"<input class='clikc_{{t[4]}}' id='clikc23_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[10]}}'> {{t[10]}}</br>"
+												$(".numbe_gen_show_{{t[4]}}").replaceWith(gen);
+												
+												}else if(number_generate==1){
+												
+												var gen="<input class='clikc_{{t[4]}}' id='clikc21_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[8]}}'> {{t[8]}}</br>"+
+												"<input class='clikc_{{t[4]}}' id='clikc24_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[6]}}'> {{t[6]}}</br>"+
+												"<input class='clikc_{{t[4]}}' id='clikc22_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[9]}}'> {{t[9]}}</br>"+
+												"<input class='clikc_{{t[4]}}' id='clikc23_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[10]}}'> {{t[10]}}</br>"
+											   $(".numbe_gen_show_{{t[4]}}").replaceWith(gen);
+												}else if(number_generate==2){
+												
+												var gen=	"<input class='clikc_{{t[4]}}' id='clikc22_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[9]}}'> {{t[9]}}</br>"+
+													"<input class='clikc_{{t[4]}}' id='clikc21_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[8]}}'> {{t[8]}}</br>"+
+													"<input class='clikc_{{t[4]}}' id='clikc24_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[6]}}'> {{t[6]}}</br>"+
+													"<input class='clikc_{{t[4]}}' id='clikc23_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[10]}}'> {{t[10]}}</br>"
+											
+												$(".numbe_gen_show_{{t[4]}}").replaceWith(gen);
+												}if(number_generate==3){
+												
+												var gen="<input class='clikc_{{t[4]}}' id='clikc23_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[10]}}'> {{t[10]}}</br>"+
+												"<input class='clikc_{{t[4]}}' id='clikc21_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[8]}}'> {{t[8]}}</br>"+
+												"<input class='clikc_{{t[4]}}' id='clikc22_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[9]}}'> {{t[9]}}</br>"+	
+												"<input class='clikc_{{t[4]}}' id='clikc24_{{t[4]}}' type='radio' name='gender{{t[4]}}' value='{{t[6]}}'> {{t[6]}}</br>"
+												
+											
+												$(".numbe_gen_show_{{t[4]}}").replaceWith(gen);
+												}
+												</script>
+												
+												
+												<!--<input class="clikc_{{t[4]}}" id="clikc21_{{t[4]}}" type="radio" name="gender{{t[4]}}" value="{{t[8]}}"> {{t[8]}}<br>
+												<input class="clikc_{{t[4]}}" id="clikc22_{{t[4]}}" type="radio" name="gender{{t[4]}}" value="{{t[9]}}"> {{t[9]}}<br>
+												<input class="clikc_{{t[4]}}" id="clikc23_{{t[4]}}" type="radio" name="gender{{t[4]}}" value="{{t[10]}}"> {{t[10]}}<br/>
+												<input class="clikc_{{t[4]}}" id="clikc24_{{t[4]}}" type="radio" name="gender{{t[4]}}" value="{{t[6]}}"> {{t[6]}}-->
+												</form>
+												<script>
+												
+
+												$('#form_gender{{t[4]}} input').on('change', function() {													
+													var get_data=$('input[name=gender{{t[4]}}]:checked', '#form_gender{{t[4]}}').val();
+													console.log(get_data)
+													if(get_data=="{{t[6]}}"){
+													
+													object_ques.push("c");
+													}else{
+													
+													object_ques.push("w");
+													}
+													document.getElementById("clikc21_{{t[4]}}").disabled = true;
+													document.getElementById("clikc22_{{t[4]}}").disabled = true;
+													document.getElementById("clikc23_{{t[4]}}").disabled = true;
+													document.getElementById("clikc24_{{t[4]}}").disabled = true;
+													})
+												
+												</script>
+												{%endfor%}
+												
+
+										  </div>
+										 <div class='modal-footer'>
+											<div class='you_read '></div><br/>
+											<button class='btn btn-primary ' onclick="send_responses()" aria-hidden='true'>Submit</button>
+											<script>
+											var nr_max=2//14
+											var nr_raspuns=0;
+											var procent=0;
+											function send_responses(){
+												/*var l=0;
+												if(object_ques.length==nr_max){
+												for(i=0;i<=object_ques.length;i++){
+														if(object_ques[i]=='c'){
+														   l++;													  														   
+														}
+												}
+												
+												}
+												nr_raspuns=l;
+												procent=(nr_raspuns*100)/nr_max;
+												console.log(procent);
+												if(procent>=75){
+												
+												*/
+												$.ajax({
+												   url:"/evaluate_score_test?data="+JSON.parse(object_ques),
+												   method:"POST",
+												   data:{object_ques:object_ques},
+												   cache:false,
+												   success:function(data)
+												   {
+												   console.log(data)
+												   }
+												
+												})   
+
+												
+												}
+												</script>
+										    <button class='btn btn-primary' data-dismiss='modal' aria-hidden='true'>Cancel</button>
+										  </div>
+										</div>
+									  </div>
+									</div>
+<style>
+.navbar-default .navbar-nav>li>a {
+    color: white !important;
+}
+.dropdown-notification .dropdown-menu {
+    width: 443px;
+    max-width: 466px;
+    min-width: 195px;
+    height: 535px;
+    overflow-y: scroll;
+}
+.top-nav > li.dropdown-notification .dropdown-menu > li.external {
+    background: #5c94f2 none repeat scroll 0 0;
+    position: fixed;
+    width: 441px;
+    background-position: fixed;
+    height: -1px;
+       top: 53px;
+   z-index: 123444;
+}
+.top-nav > li span.badge {
+   
+    border: 3px solid #e8e8e8;
+  
+}
+i.material-icons {
+    color: black;
+	font-size: 31px;
+	opacity: .6;
+}
+i.fa.fa-bell-o {
+ color: black;
+ font-size: 28px;
+ opacity: .6;
+}
+ul.dropdown-menu-list.list_notification {
+     margin-top: 0px; 
+}
+.navbar-right .dropdown-menu {
+    right: 0;
+    left: auto;
+    overflow-x: hidden;
+}
+b{
+    font-family: 'Open Sans Condensed', sans-serif, sans-serif !important;
+	font-weight: 700;
+}
+.pull-right {
+    float: right!important;
+    margin-right: 63px !important;
+}
+ul.dropdown-menu-list.list_notification {
+    margin-top: 29px;
+}
+</style>
+{% block body%}
+
+{%endblock%}

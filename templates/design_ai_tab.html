@@ -1,0 +1,50 @@
+<div id="navbar" class="collapse navbar-collapse">
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active zonad1 zona_general" onclick="zone_click(1)"><a>Folders</a>
+            </li>
+            <li class="active zonad2 zona_general" onclick="zone_click(2)"><a>Files</a>
+            </li>
+            <li class="active zonad3 zona_general" onclick="zone_click(3)"><a>A.I programmers</a>
+            </li>
+          </ul>
+        </div>
+		
+	<style>
+.table {
+    width: 134%;
+    max-width: 100%;
+     margin-bottom: 0px; 
+}
+</style>	
+	
+					 
+                      
+						 
+                          <table  class="table table-inbox table-hover">    <tbody>
+							
+							{%for i in select%}
+                              <tr  class=" click_class_to_see unread" onclick="function_to_edit_{{i[0]}}({{i[0]}})">
+                                  <td class="inbox-small-cells">
+                                      <input type="checkbox" class="mail-checkbox">
+                                  </td>
+                                  <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
+                                  <td class="view-message  dont-show">{{i[3]}}</td>
+                                  <td class="view-message ">{{i[5]}}</td>
+                                  <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td>
+								  <td class="view-message  inbox-small-cells"><i class="fa fa-trash" aria-hidden="true"></i></td>
+								  <td class="view-message  inbox-small-cells"><i class="fa fa-reply" id="show_modal_info" aria-hidden="true"></i></td>
+                                  <td class="view-message  text-right">{{i[4]}}</td>
+                              </tr>
+							 
+						{%endfor%}
+                          </tbody></table>
+                    {%for j in select%}
+					<script>
+					function function_to_edit_{{j[0]}}(t){
+					$("#for_replaceing_text").replaceWith("<iframe src='/code_editor?id_editor_file="+t+"' width='100%' height='100%'></iframe> ");
+					
+					
+					}
+					</script>
+					{%endfor%}

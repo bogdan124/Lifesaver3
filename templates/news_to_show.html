@@ -1,0 +1,195 @@
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<style>
+
+
+.News_show {
+    background: white !important;
+    width: 260px !important;
+    height: 276px !important;
+    position: fixed !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,.5) !important;
+    left: 13px !important; 
+	top:79px !important;
+	border: 1px solid #dddddd !important;
+}
+.news_title {
+    position: relative;
+    /* left: 13px; */
+    /* top: 8px; */
+    background: cornflowerblue !important;
+    color: white !important;
+}
+img.news_img {
+    width: 60px !important;
+    margin-left: 6px !important;
+    margin-top: 8px !important;
+    border-radius: 50% !important;
+    border-color: #907be0 !important;
+    border-width: 3px !important;
+    border-style: solid !important;
+}
+.news_text_all {
+    margin-left: 72px !important;
+    margin-top: -56px !important;
+}
+.news_body {
+    color: darkslateblue !important;
+    font-stretch: expanded !important;
+    font-weight: bold !important;
+}
+.new_times {
+    margin-top: -11px !important;
+    font-stretch: extra-condensed !important;
+    opacity: 0.5 !important;
+}
+li.li_news {
+    margin-top: 14px !important;
+	    cursor: pointer;
+}
+
+.ul_news{
+list-style-type:none !important;
+}
+.button_down_news {
+    position: absolute;
+    background-color: cornflowerblue;
+    width: 100%;
+    top: 96%;
+}
+button_down_news {
+    position: absolute;
+    background-color: cornflowerblue;
+    width: 102%;
+    top: 100%;
+    margin-left: -2px;
+}
+ul.ul_news {
+        height: 249px;
+    /* height: 100%; */
+    overflow-y: scroll;
+    /* height: 100%; */
+}
+</style>
+
+<script>
+$(document).ready(function(){
+
+
+var template=
+			
+
+"<li class='li_news' data-toggle='modal' data-target='#news_MODAL_ID'><img src='../static/IMAGE_SHOW' class='news_img' alt='user profile image'>"+
+"<div class='news_text_all'>"+
+"<div class='news_body'>BODY_CONTENT</div>"+
+"<br/><div class='new_times'> TIME </div>"+
+"</div>"+
+"</li>"
+
+var template_2_special=
+"<div class='modal fade' id='news_MODAL_ID' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>"+
+ " <div class='modal-dialog' role='document'>"+
+    "<div class='modal-content'>"+
+      "<div class='modal-header'>"+
+        "<h5 class='modal-title' id='exampleModalLabel'>NEWS_NAME_TO_SHOW</h5>"+
+        "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>"+
+          "<span aria-hidden='true'>&times;</span>"+
+        "</button>"+
+      "</div>"+
+        ""+
+      "<div class='modal-body'>"+
+	  "GET_TO_SHOW_DATA"+
+      "</div>"+
+      "<div class='modal-footer'>"+
+       " <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>"+
+       
+      "</div>"+
+    "</div>"+
+  "</div>"+
+"</div>"
+
+
+var data_to_send1={
+	  "start_news":0,
+	  "finish":3
+	}
+
+   $.ajax({
+   url: "/select_news?start_news=0&finish=3",
+   method:"GET",
+   cache:false,
+   success: function(result){
+       console.log(result[0][4])
+	   //result=JSON.parse(result)
+	    
+	   for(i=0;i<=result.length-1;i++){
+	   var str=result[i][3];
+		var res = str.substring(4, 16);
+		var template_2=template.replace('MODAL_ID',result[i][0]).replace('MODAL_ID_2',result[i][0]).replace('IMAGE_SHOW',result[i][5]).replace('BODY_CONTENT',result[i][2]).replace('TIME',res);
+		var template_3=template_2_special.replace("GET_TO_SHOW_DATA",result[i][6]).replace('MODAL_ID',result[i][0]).replace('MODAL_ID_2',result[i][0]).replace('IMAGE_SHOW',result[i][5]).replace('NEWS_NAME_TO_SHOW',result[i][2]).replace('BODY_CONTENT',result[i][2]).replace('TIME',res);
+		
+		
+		
+		$(".ul_news").append(template_2);
+		$(".modal_to_show").append(template_3);
+		}
+		
+    }
+	});
+	var start_news=0;
+	var finish=3;
+$(".button_down_news").click(function() {
+	start_news+=3;
+	finish+=3
+	console.log(start_news)
+	console.log()
+    var url = "http://localhost:5000/select_news?start_news="+start_news+"&finish="+finish; 
+    var data_to_send={
+	  "start_news":start_news,
+	  "finish":finish
+	}
+	
+    $.ajax({
+           type: "GET",
+           url: url,
+		   cache:false,
+           data: data_to_send,
+           success: function(data_news)
+           {
+		  // data_news=JSON.parse(data_news);
+		   
+		   
+		   
+		   
+		   	   for(i=0;i<=data_news.length-1;i++){
+			   
+	   var  str=data_news[i][3];
+		var res = str.substring(4, 16);
+		var template_2=template.replace('MODAL_ID',data_news[i][0]).replace('MODAL_ID_2',data_news[i][0]).replace('IMAGE_SHOW',data_news[i][5]).replace('BODY_CONTENT',data_news[i][2]).replace('TIME',res);
+		var template_3=template_2_special.replace("GET_TO_SHOW_DATA",data_news[i][6]).replace('MODAL_ID',data_news[i][0]).replace('MODAL_ID_2',data_news[i][0]).replace('IMAGE_SHOW',data_news[i][5]).replace('NEWS_NAME_TO_SHOW',data_news[i][2]).replace('BODY_CONTENT',data_news[i][2]).replace('TIME',res);
+		
+		
+		
+		$(".ul_news").append(template_2);
+		$(".modal_to_show").append(template_3);
+		}
+			}
+         })
+
+    return false;
+})
+	
+
+	});
+</script>
+<div class="load_news">
+<div class='News_show'>
+<div class='news_title'>News</div>
+<ul class='ul_news'>
+
+
+</ul>
+<button class="button_down_news"><center><span class="glyphicon glyphicon-chevron-down"></span></center> </button>
+</div>
+</div>
+<div  class="modal_to_show">
+</div>

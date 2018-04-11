@@ -1,0 +1,44 @@
+     <div id="navbar" class="collapse navbar-collapse">
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active zonad1 zona_general" onclick="zone_click(1)"><a>ZoneAdmin</a>
+            </li>
+            <li class="active zonad2 zona_general" onclick="zone_click(2)"><a >Zone</a>
+            </li>
+            <li class="active zonad3 zona_general" onclick="zone_click(3)"><a >Users</a>
+            </li>
+          </ul>
+        </div>
+      <div class="show"></div><br/>
+	  <div class="show_new"> 		
+							</div>
+			  
+						
+						<style>
+						.zona_general{
+						cursor:pointer;
+						}
+						.show {
+							height: 94px;
+							}
+							div#navbar {
+								    margin-bottom: -266px;
+							}
+							.iframe_map {
+								z-index: 12;
+								height: 739px;
+							}
+						</style>
+						<script>
+						$(".show_new").replaceWith("<iframe class='iframe_map' src='/maps' width='100%' height='510%'></iframe>");
+						function zone_click(i){
+						if(i==1){
+						$(".show_new").replaceWith("<iframe class='iframe_map' src='/maps' width='100%' height='510%'></iframe>");
+						}else if(i==2){
+						$(".show_new").replaceWith("<embed type='image/svg+xml' src='{{supra | safe}}' style='max-width:1000px'/>");
+						}else if(i==3){
+						$(".show_new").replaceWith("<iframe class='iframe_map' src='/maps' width='100%' height='510%'></iframe>");
+						}
+						return null;
+						}
+						</script>

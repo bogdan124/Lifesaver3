@@ -1,0 +1,352 @@
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+ <form method="POST">
+  <div class="input-group" class="models_show ">
+    	   <div class="speech">
+	  <input type="text" class="search-query mac-style search_special" id="search_id" onkeyup="getState3(this.value)" name="q" ng-model="firstName" placeholder="Search" autocomplete="off"  >
+	    <img onclick="startDictation()" class="icon_vocal" src="//i.imgur.com/cHidSVu.gif" />
+		
+		</div>
+    <div class="input-group-btn">
+      <button class="btn btn-default search_but" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+<style>
+.col-xs-6.col-sm-3.col-md-2 {
+    margin-right: 146px;
+}
+</style>
+  <style>
+ form.models_show {
+    margin-top: 84px;
+}
+.all_link {
+    /* background: red; */
+    margin-bottom: -15px;
+}
+.all_link:hover{
+background-color: #0D456F;
+
+}
+ </style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+
+<script src="http://www.turnjs.com/lib/turn.min.js"/>
+<script type="text/javascript">
+$("#solutii").hide();
+document.getElementById("solutii").innerHTML = "";
+function getState3(value){
+
+	var input=document.getElementById("search_id").value;
+	if (input.length==0){
+			document.getElementById("solutii").innerHTML = "" ;
+
+	}else{
+		$.post("/search_index_anatomy?medic={{session['medic']}}&id={{session['id']}}&connect=connect",{searching:value},function(data2){
+		var obj = data2;
+		var objlenght=Object.keys(obj.result).lenght;
+		//console.log(obj);
+		$("#solutii").show();
+		$("#solutii").empty();
+		for (i=0;i<=1000000;i++){
+		 
+		$("#solutii").append( "<div class='all_link'><a class='for-links' href='#'>"+obj.result[i][1]+"</a></div><br/>"  );
+	    
+		 }
+	});
+	
+	}
+}
+
+//setInterval(getState3,1000);
+</script>
+<script>
+  function startDictation() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = document.getElementById("ddlViewBy");
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('search_id').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+       // document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+  
+</script>
+	  <div id="solutii"></div>
+
+ 
+   <br />
+   <div id="load_data_2"></div>
+   <div id="load_data_message"></div>
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+  
+
+<script>
+//show-comments
+$(document).ready(function(){
+ 
+ var limit = 6;
+ var start = 0;
+ var action = 'inactive';
+ function load_book_data(limit, start)
+ {
+  $.ajax({
+   url:"/select_books_for_load1",
+   method:"GET",
+   data:{limit:limit, start:start},
+   cache:false,
+   dataType: 'json',
+   success:function(data)
+   {
+   console.log(data)
+   //var obj2=data
+   	var obj2 = data
+console.log(obj2)
+ 
+  
+    var template= "<div class='continut_DATA0'>"+
+
+"<a href='#'></a>"+
+"</div>"+
+"<div class='col-xs-6 col-sm-3 col-md-2' style='padding-left: 0px;'>"+
+"<div class='thumbnail category-row-item text-left'>"+
+"<div class='free-shipping'>"+
+"<span class='icon-truck'>"+
+"</span>"+
+
+"</div> "+
+"<a href='/product/detail/Ready-Player-One-9780307887443'>"+
+"<img id='hitimg-9780307887443' src='https://images.betterworldbooks.com/030/Ready-Player-One-Cline-Ernest-9780307887443.jpg' alt='Ready Player One'>"+
+"</a>"+
+ "<div class='caption'>"+
+ "<h4 title='Ready Player One'>"+
+ "<center>DATA1</center>"+
+ "</h4>"+
+ "<p>"+
+ "<span class='author'>DATA11</span>&nbsp;</p>"+
+
+ "<p>"+
+ "<a  role='button' class='btn btn-success btn-lg bg-white color-secondary-2-0 bd-color-secondary-2-0' data-toggle='modal' data-target='#myModal_DATA00'>See Details</a>"+
+ "<div id='myModal_DATA00000' class='modal new_modal_class fade' role='dialog'>"+
+  "<div class='modal-dialog'>"+
+
+  
+    "<div class='modal-content modal-lg'>"+
+      "<div class='modal-header'>"+
+        "<button type='button' class='close' data-dismiss='modal'>&times;</button>"+
+        "<h4 class='modal-title'>DATA111</h4>"+
+     "</div>"+
+     "<div class='modal-body'>"+
+       
+		"<div class='show_book_to_read'>"+
+	"<object type='text/html' data='http://localhost:5000/books_to_show?id_to_show=DATA000' style='width:100%; height:80%'>"+
+
+"</object>"+
+		"</div>"+
+      "</div>"+
+      "<div class='modal-footer'>"+
+        "<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>"+
+      "</div>"+
+    "</div>"+
+
+  "</div>"+
+"</div>"+
+ "</p></div>"+
+ "</div>"+
+ "</div>"
+ 
+
+
+			 
+
+for(i=0;i<=obj2.length-1;i++){
+	console.log(obj2)
+  var str = template.replace('DATA0',obj2[i][0] ).replace('DATA00',obj2[i][0]).replace('DATA00000',obj2[i][0]).replace('DATA000',obj2[i][0] ).replace('DATA0000',obj2[i][0] ).replace('DATA1',obj2[i][1]).replace('DATA11',obj2[i][1]).replace('DATA111',obj2[i][1])
+  
+    
+  $('#load_data_2').append(str);
+  
+}
+
+
+   
+   
+    if(data == '' || data==0 || data=='[]' || obj2==0)
+    {
+     $('#load_data_message').html("<center><div class='no_data_found'>No Data Found </div></center>");
+     action = 'active';
+    }
+    else
+    {
+     $('#load_data_message').html("<div class='loadingC'><div class='loadingCcerc'</div></div>");
+     action = "inactive";
+    }
+   }
+  });
+ }
+
+ 
+ if(action == 'inactive')
+ {
+  action = 'active';
+  load_book_data(limit, start);
+ }
+
+ $(window).scroll(function(){
+  if($(window).scrollTop() + $(window).height()+400 > $("#load_data_2").height() && action == 'inactive')
+  {
+   action = 'active';
+   start = start + limit;
+   
+   setTimeout(function(){
+    load_book_data(limit, start);
+	
+   }, 800);
+   
+  }
+ })
+ 
+})
+
+</script>
+
+
+
+ 
+ 
+ <style>
+.load_data_message{
+
+display:none;
+
+}
+.loadingC {
+display:none;
+	height:100%;
+	width:100%;
+}
+.loadingCcerc {
+	border-radius:50%;
+	width:50px;
+	height:50px;
+	border: 7px solid lightblue;
+	border-top: 7px solid #00547e;
+	
+	top:40%;
+	left:50%;
+	position:relative;
+	animation: loadingC 4s linear infinite;
+}
+@keyframes loadingC{
+	0%{-webkit-transform: rotateX(0deg); 
+    transform: rotateX(0deg); 
+	}
+	100%{-webkit-transform: rotatez(360deg); 
+    transform: rotatez(360deg); 
+	}
+}
+.no_data_found2{
+
+display:none;
+}
+.responsive-object iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.responsive-object {
+  position: relative;
+  padding-bottom: 67.5%;
+  height: 0;
+  margin: 10px 0;
+  overflow: hidden;
+}
+img.img-circle.avatar {
+    width: 66px;
+    height: 57px;
+	}
+
+
+.content_primary {
+    margin-top: 41px;
+   /* box-shadow: 0 1px 2px rgba(0,0,0,.5);*/
+   /* background-color: white;*/
+    padding: 10px;
+}
+.show_user_icon_post a {
+    color: black;
+}
+.title.h5 {
+    margin-left: 79px;
+    margin-top: -44px;
+}
+div#solutii {
+    z-index: 11;
+    position: absolute;
+    top: 135px;
+    left: 31px;
+    background: white;
+    width: 62%;
+    box-shadow: 0 4px 6px 2px rgba(0, 0, 0, .10);
+    border: 1px solid #ccc;
+    border-color: rgba(0, 0, 0, .15);
+    border-radius: 2px;
+}
+button.btn.btn-default.search_but {
+    position: relative;
+    top: 25px;
+    left: 54px;
+}
+i.glyphicon {
+    /* left: 70px; */
+    margin-top: 1;
+}
+</style>
+
+
+
+ 
+ 
+ 
+<style>
+.thumbnail.category-row-item.text-left {
+    width: 308px;
+}
+.ifrmae_get {
+    width: 100%;
+    height: 72%;
+}
+object {
+    margin-left: 11;
+}
+</style>
+
+ 
+ 
+ 

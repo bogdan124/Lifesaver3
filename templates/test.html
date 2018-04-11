@@ -1,0 +1,49 @@
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<div id="load_data">
+</div>
+<script>
+var obj = [
+  ["wrere","bogdan12",31,21,"profile_pic/poza3.jpg",78,21,31,"profile_pic/download.jpg"],
+  ["hey men","bogdan12",31,21,"profile_pic/poza3.jpg",76,21,31,"profile_pic/download.jpg"],
+  ["rqwerqwer","bogdan12",31,21,"profile_pic/poza3.jpg",75,21,31,"profile_pic/download.jpg"],
+  ["roughouwehfwe","bogdan12",31,21,"profile_pic/poza3.jpg",74,21,31,"profile_pic/download.jpg"],
+  ["sadafsdfsadg","werewrwer",23,27,"profile_pic/twitter.png",73,27,23,"profile_pic/2.jpg"],
+  ["hey \r\n","bogdan333",21,21,"profile_pic/poza3.jpg",71,21,21,"profile_pic/poza3.jpg"],
+  ["hey3","werewrwer",23,27,"profile_pic/twitter.png",67,27,23,"profile_pic/2.jpg"]
+]
+
+var template="<form>"+
+    "<div class='panel panel-white post panel-shadow user-post'>"+
+    "<div class='post-heading'>"+
+    "<div class='pull-left image'>"+
+    "<img src='static/DATA8' class='img-circle avatar' alt='user profile image'>"+
+    "</div>"+
+    "<div class='pull-left meta'> "+
+    "<div class='title h5'>"+
+    "<a href='#'><b>DATA1</b></a> made a post."+
+    "</div>"+
+    "<h6 class='text-muted time'>1 minute ago</h6>"+
+    "</div>"+
+    "</div> <div class='post-description'> "+
+    "<p>DATA0</p>"+
+    "<div class='stats'>"+
+    "<a href='#' class='btn btn-default stat-item'> "+
+    "<i class='fa fa-thumbs-up icon'></i>2</a> "+
+    "<a href='#' class='btn btn-default stat-item' id='show-comments'>"+
+    "<i class='fa fa-share icon'></i>12</a>"+
+    "</div>"+
+    "</div><div class='post-footer'>"+
+    "<div class='input-group'> "+
+    "<input class='form-control' placeholder='Add a comment' type='text'>"+
+    "</div>     "+      
+    "</div>"+
+    "</div>"+
+    "</form>"
+
+for(i=0;i<=obj.length;i++){
+  var str = template.replace('DATA0', obj[i][0]).replace('DATA1', obj[i][1]).replace('DATA8', obj[i][8])
+  $('#load_data').append(str)
+}
+</script>

@@ -1,0 +1,285 @@
+<script>
+/*
+
+
+
+   var template=
+   "<div class='col-xs-12 col-sm-6 col-lg-8'>"+
+    	    "<div class='panel panel-default'>"+
+    		   " <div class='panel-body'>"+
+    			"	<div class='col-md-12'>"+
+    				"	<div class='show_user_icon_post'>"+
+					"	<p>"+
+    					"	 <img src='static/profile_pic/download.jpg' class='img-circle avatar' alt='user profile image'>"+
+						"	<div class='title h5'><a href='#'><b>bogdan12</b></a> made a post.</div>"+
+						"	{%if every_model[5]!=1%}<a href='/augument_reality?model={{DATA0 | safe}}'>"+
+						"	<img src='static/icon3d.png' class='imagemodel' /></a>"+
+						"	{%endif%}</p>"+
+							
+							
+							
+    					"</div>"+
+						"<br/>"+
+    					"<div class='icerik-bilgi'>"+
+    					"	<h2>Human Body</h2>"+
+    						"<p>"+
+							"{%if every_model[5]==1%}"+
+							"<div class='responsive-object'>"+
+							{{every_model[2] | safe}}
+							"</div>"+
+							"{%endif%}"+
+							
+							"{%if every_model[5]==0%}"+
+							"<div class='responsive-object'>"+
+							"<iframe src='{{every_model[2] | safe}}'></iframe>"+
+							"</div>"+
+							"{%endif%}"+
+							"</p>"+
+
+    						"<a href='#'>"+
+    						" <button type='button' class='btn btn-primary' data-target='#myModal' data-toggle='modal'>"+
+    						"	<span class='btn btn-google'>Read More <i class='fa fa-chevron-right'></i></span>"+
+    						" </button>"+
+    						" </a>"+
+    					"</div>"+
+    				"</div>"+
+    			"</div>"+
+    		"</div>"+
+        "</div>"+
+ "<div id='myModal'  class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+
+  "<div class='modal-dialog modal-lg'>"+
+  "  <div class='modal-content'>"+
+      "<div class='modal-header'>"+
+      " <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>"+
+       " <h3 id='myModalLabel'><center>Read</center></h3>"+
+      "</div>"+
+      "<div class='modal-body'>"+
+      " <div class='row'>"+
+         "info infoinfoinfoinfoinfoinfoinfoinfo"+
+		
+             "   </div>"+
+
+      "</div>"+
+
+     "</div>"+
+    "</div>"+
+  "</div>"+
+  " <style>"+
+	  ".iframe_{{every_model[0] | safe}}{"+
+	 " display:none;"+
+	 " }"+
+	  "</style>"+
+	  "<style>"+
+	".iframe1 {"+
+	"display:none;"+
+    "width: 100%;"+
+    "height: 50%;"+
+"}"+
+"</style>"+
+
+"<div id='myModal2_{{every_model[0] | safe}}'  class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+
+  "<div class='modal-dialog modal-lg'>"+
+   " <div class='modal-content'>"+
+      "<div class='modal-header'>"+
+       " <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>"+
+        "<h3 id='myModalLabel'><center>Augument Reality</center></h3>"+
+      "</div>"+
+      "<div class='modal-body'>"+
+      
+	  "<div class='ar_{{every_model[0] | safe}}'>"+
+	  "<a href='/augument_reality?model={{every_model[0] | safe}}'>ar</a>"+
+	 
+	  "</div>"+
+	  
+	  
+	 
+	  
+      "</div>"+
+
+      "</div>"+
+    "</div>"+
+  "</div>"
+  */
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% for every_model in select_anatomy%}
+  <!--<iframe src="{{every_model[2]}}" class="iframe_show"></iframe>-->
+  
+  
+  <div class="content"> 
+  
+  
+    <div class="left-panel">
+        <div class="col-xs-12 col-sm-6 col-lg-8">
+          <div class="panel panel-default">
+            <div class="panel-body">
+            <div class="col-md-12">
+              <div class="show_user_icon_post">
+            <p>
+                 <img src="static/profile_pic/download.jpg" class="img-circle avatar" alt="user profile image">
+              <div class="title h5"><a href="#"><b>bogdan12</b></a> made a post.</div>
+              {%if every_model[5]!=1%}<a href="/augument_reality?model={{every_model[0] | safe}}">
+              <img src="static/icon3d.png" class="imagemodel" /></a>
+              {%endif%}</p>
+              
+              
+              <!--data-target="#myModal2_{{every_model[0] | safe}}" data-toggle="modal" -->
+              </div>
+            <br/>
+              <div class="icerik-bilgi">
+                <h2>Human Body</h2>
+                <p>
+              {%if every_model[5]==1%}
+              <div class="responsive-object">
+              {{every_model[2] | safe}}
+              </div>
+              {%endif%}
+              
+              {%if every_model[5]==0%}
+              <div class="responsive-object">
+              <iframe src="{{every_model[2] | safe}}"></iframe>
+              </div>
+              {%endif%}
+              </p>
+
+                <a href="#">
+                 <button type="button" class="btn btn-primary" data-target="#myModal" data-toggle="modal">
+                  <span class="btn btn-google">Read More <i class="fa fa-chevron-right"></i></span>
+                 </button>
+                 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+  </div>
+  
+  <script>
+  var ratio = ((obj.height/obj.width)*100).toPrecision(4) + '%';
+  $('a').embedly({
+    display: function(obj){
+    
+    if (obj.type === 'video' || obj.type === 'rich'){
+     
+      var ratio = ((obj.height/obj.width)*100).toPrecision(4) + '%'
+
+      
+      var div = $('<div class="responsive-object">').css({
+        paddingBottom: ratio
+      });
+
+     
+      div.html(obj.html);
+
+      
+      $(this).replaceWith(div);
+    }
+  }
+});
+</script>
+  <div id="myModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel"><center>Read</center></h3>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+         info infoinfoinfoinfoinfoinfoinfoinfo
+     infoinfoinfoinfoinfoinfoinfoinfoinfo
+             info infoinfoinfoinfoinfoinfoinfoinfo
+     infoinfoinfoinfoinfoinfoinfoinfoinfo
+     
+     infoinfoinfoinfoinfoinfoinfoinfoinfoinfo
+     
+     infoinfoinfoinfoinfoinfoinfoinfovvinfo        info infoinfoinfoinfoinfoinfoinfoinfo
+     infoinfoinfoinfoinfoinfoinfoinfoinfo
+     
+     infoinfoinfoinfoinfoinfoinfoinfoinfoinfo
+     
+     infoinfoinfoinfoinfoinfoinfoinfovvinfo
+     infoinfoinfoinfoinfoinfoinfoinfoinfoinfo
+     
+     infoinfoinfoinfoinfoinfoinfoinfovvinfo
+                </div>
+
+      </div>
+
+      </div>
+    </div>
+  </div>
+   <style>
+    .iframe_{{every_model[0] | safe}}{
+    display:none;
+    }
+    </style>
+    <style>
+  .iframe1 {
+  display:none;
+    width: 100%;
+    height: 50%;
+}
+</style>
+
+<div id="myModal2_{{every_model[0] | safe}}"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel"><center>Augument Reality</center></h3>
+      </div>
+      <div class="modal-body">
+      
+    <div class="ar_{{every_model[0] | safe}}">
+    <a href="/augument_reality?model={{every_model[0] | safe}}">ar</a>
+   
+    </div>
+    
+    
+   
+    <script>
+
+    
+    //  <iframe class="iframe1 iframe_{{every_model[0] | safe}}" src="/augument_reality?model={{every_model[0] | safe}}" ></iframe>
+    
+    
+    
+   // $(".ar_{{every_model[0] | safe}}").load("/augument_reality?model={{every_model[0] | safe}}");
+    </script>
+      </div>
+
+      </div>
+    </div>
+  </div>
+  
+  {%endfor%}

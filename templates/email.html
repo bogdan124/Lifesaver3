@@ -1,0 +1,722 @@
+
+{%for each in fetching%}
+<title>{{each[1]}}</title>
+
+{%endfor%}
+<style>
+body{font-family: 'Open Sans', sans-serif;}
+	@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+	.mail-box {
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+.mail-box aside {
+    display: table-cell;
+    float: none;
+    height: 100%;
+    padding: 0;
+    vertical-align: top;
+}
+.mail-box .sm-side {
+    background: none repeat scroll 0 0 #e5e8ef;
+    border-radius: 4px 0 0 4px;
+    width: 25%;
+}
+.mail-box .lg-side {
+    background: none repeat scroll 0 0 #fff;
+    border-radius: 0 4px 4px 0;
+    width: 75%;
+	height: 1050px;
+}
+.mail-box .sm-side .user-head {
+    background: none repeat scroll 0 0 #286090;
+    border-radius: 4px 0 0;
+    color: #fff;
+    min-height: 80px;
+    padding: 10px;
+}
+.user-head .inbox-avatar {
+    float: left;
+    width: 65px;
+}
+.user-head .inbox-avatar img {
+    border-radius: 4px;
+}
+.user-head .user-name {
+    display: inline-block;
+    margin: 0 0 0 10px;
+}
+.user-head .user-name h5 {
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 0;
+    margin-top: 15px;
+}
+.user-head .user-name h5 a {
+    color: #fff;
+}
+.user-head .user-name span a {
+    color: #87e2e7;
+    font-size: 12px;
+}
+a.mail-dropdown {
+    background: none repeat scroll 0 0 #80d3d9;
+    border-radius: 2px;
+    color: #01a7b3;
+    font-size: 10px;
+    margin-top: 20px;
+    padding: 3px 5px;
+}
+.inbox-body {
+    padding: 20px;
+}
+.btn-compose {
+    background: none repeat scroll 0 0 #ff6c60;
+    color: #fff;
+    padding: 12px 0;
+    text-align: center;
+    width: 100%;
+}
+.btn-compose:hover {
+    background: none repeat scroll 0 0 #f5675c;
+    color: #fff;
+}
+ul.inbox-nav {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.inbox-divider {
+    border-bottom: 1px solid #d5d8df;
+}
+ul.inbox-nav li {
+    display: inline-block;
+    line-height: 45px;
+    width: 100%;
+}
+ul.inbox-nav li a {
+    color: #6a6a6a;
+    display: inline-block;
+    line-height: 45px;
+    padding: 0 20px;
+    width: 100%;
+}
+ul.inbox-nav li a:hover, ul.inbox-nav li.active a, ul.inbox-nav li a:focus {
+    background: none repeat scroll 0 0 #d5d7de;
+    color: #6a6a6a;
+}
+ul.inbox-nav li a i {
+    color: #6a6a6a;
+    font-size: 16px;
+    padding-right: 10px;
+}
+ul.inbox-nav li a span.label {
+    margin-top: 13px;
+}
+ul.labels-info li h4 {
+    color: #5c5c5e;
+    font-size: 13px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    text-transform: uppercase;
+}
+ul.labels-info li {
+    margin: 0;
+}
+ul.labels-info li a {
+    border-radius: 0;
+    color: #6a6a6a;
+}
+ul.labels-info li a:hover, ul.labels-info li a:focus {
+    background: none repeat scroll 0 0 #d5d7de;
+    color: #6a6a6a;
+}
+ul.labels-info li a i {
+    padding-right: 10px;
+}
+.nav.nav-pills.nav-stacked.labels-info p {
+    color: #9d9f9e;
+    font-size: 11px;
+    margin-bottom: 0;
+    padding: 0 22px;
+}
+.inbox-head {
+    background: none repeat scroll 0 0 #286090;
+    border-radius: 0 4px 0 0;
+    color: #fff;
+    min-height: 80px;
+    padding: 20px;
+}
+.inbox-head h3 {
+    display: inline-block;
+    font-weight: 300;
+    margin: 0;
+    padding-top: 6px;
+}
+.inbox-head .sr-input {
+    border: medium none;
+    border-radius: 4px 0 0 4px;
+    box-shadow: none;
+    color: #8a8a8a;
+    float: left;
+    height: 40px;
+    padding: 0 10px;
+}
+.inbox-head .sr-btn {
+    background: none repeat scroll 0 0 #00a6b2;
+    border: medium none;
+    border-radius: 0 4px 4px 0;
+    color: #fff;
+    height: 40px;
+    padding: 0 20px;
+}
+.table-inbox {
+    border: 1px solid #d3d3d3;
+    margin-bottom: 0;
+}
+.table-inbox tr td {
+    padding: 12px !important;
+}
+.table-inbox tr td:hover {
+    cursor: pointer;
+}
+.table-inbox tr td .fa-star.inbox-started, .table-inbox tr td .fa-star:hover {
+    color: #f78a09;
+}
+.table-inbox tr td .fa-star {
+    color: #d5d5d5;
+}
+.table-inbox tr.unread td {
+    background: none repeat scroll 0 0 #f7f7f7;
+    font-weight: 600;
+}
+ul.inbox-pagination {
+    float: right;
+}
+ul.inbox-pagination li {
+    float: left;
+}
+.mail-option {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.mail-option .chk-all, .mail-option .btn-group {
+    margin-right: 5px;
+}
+.mail-option .chk-all, .mail-option .btn-group a.btn {
+    background: none repeat scroll 0 0 #fcfcfc;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px !important;
+    color: #afafaf;
+    display: inline-block;
+    padding: 5px 10px;
+}
+.inbox-pagination a.np-btn {
+    background: none repeat scroll 0 0 #fcfcfc;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px !important;
+    color: #afafaf;
+    display: inline-block;
+    padding: 5px 15px;
+}
+.mail-option .chk-all input[type="checkbox"] {
+    margin-top: 0;
+}
+.mail-option .btn-group a.all {
+    border: medium none;
+    padding: 0;
+}
+.inbox-pagination a.np-btn {
+    margin-left: 5px;
+}
+.inbox-pagination li span {
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: 7px;
+}
+.fileinput-button {
+    background: none repeat scroll 0 0 #eeeeee;
+    border: 1px solid #e6e6e6;
+}
+.inbox-body .modal .modal-body input, .inbox-body .modal .modal-body textarea {
+    border: 1px solid #e6e6e6;
+    box-shadow: none;
+}
+.btn-send, .btn-send:hover {
+    background: none repeat scroll 0 0 #00a8b3;
+    color: #fff;
+}
+.btn-send:hover {
+    background: none repeat scroll 0 0 #009da7;
+}
+.modal-header h4.modal-title {
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 300;
+}
+.modal-body label {
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 400;
+}
+.heading-inbox h4 {
+    border-bottom: 1px solid #ddd;
+    color: #444;
+    font-size: 18px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+.sender-info {
+    margin-bottom: 20px;
+}
+.sender-info img {
+    height: 30px;
+    width: 30px;
+}
+.sender-dropdown {
+    background: none repeat scroll 0 0 #eaeaea;
+    color: #777;
+    font-size: 10px;
+    padding: 0 3px;
+}
+.view-mail a {
+    color: #ff6c60;
+}
+.attachment-mail {
+    margin-top: 30px;
+}
+.attachment-mail ul {
+    display: inline-block;
+    margin-bottom: 30px;
+    width: 100%;
+}
+.attachment-mail ul li {
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width: 150px;
+}
+.attachment-mail ul li img {
+    width: 100%;
+}
+.attachment-mail ul li span {
+    float: right;
+}
+.attachment-mail .file-name {
+    float: left;
+}
+.attachment-mail .links {
+    display: inline-block;
+    width: 100%;
+}
+
+.fileinput-button {
+    float: left;
+    margin-right: 4px;
+    overflow: hidden;
+    position: relative;
+}
+.fileinput-button input {
+    cursor: pointer;
+    direction: ltr;
+    font-size: 23px;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(-300px, 0px) scale(4);
+}
+.fileupload-buttonbar .btn, .fileupload-buttonbar .toggle {
+    margin-bottom: 5px;
+}
+.files .progress {
+    width: 200px;
+}
+.fileupload-processing .fileupload-loading {
+    display: block;
+}
+* html .fileinput-button {
+    line-height: 24px;
+    margin: 1px -3px 0 0;
+}
+* + html .fileinput-button {
+    margin: 1px 0 0;
+    padding: 2px 15px;
+}
+@media (max-width: 767px) {
+.files .btn span {
+    display: none;
+}
+.files .preview * {
+    width: 40px;
+}
+.files .name * {
+    display: inline-block;
+    width: 80px;
+    word-wrap: break-word;
+}
+.files .progress {
+    width: 20px;
+}
+.files .delete {
+    width: 60px;
+}
+}
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+#comments_1{
+cursor:pointer;
+}
+</style>
+
+
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+ 
+ 
+ 
+
+ 
+ 
+ <div class="mail-box">
+                  <aside class="sm-side">
+                      <div class="user-head">
+                          <a class="inbox-avatar" href="javascript:;">
+						  {%for name in fetching%}
+                              <img src="static/{{name[5]}}"  class="nav-settings__member-photo" height="60" width="60" >
+							  {%endfor%}
+                          </a>
+<div id="squarespaceModal2"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Profile image</h3>
+      </div>
+      <div class="modal-body">
+ 
+<form action="/upload?id={{session[id]}}&connect=connect" method="POST" enctype="multipart/form-data" multiple="multiple">
+
+ <br/>
+<img id="blah" src="#" alt="your image" />
+      </div>
+      <div class="modal-footer">
+	   <label class="btn-bs-file btn  btn-primary">  
+ Browse <input type="file" name="file" id="imgInp" >
+ 
+	</label>
+	     <input class="btn btn-primary" type="submit">
+</form>
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    function readURL2(input2) {
+        if (input2.files && input2.files[0]) {
+            var reader2 = new FileReader();
+            
+            reader2.onload = function (e) {
+                $('#blah1').attr('src', e.target.result);
+            }
+            
+            reader2.readAsDataURL(input2.files[0]);
+        }
+    }
+    
+    $("#imgInp1").change(function(){
+        readURL2(this);
+    });
+</script>
+                          <div class="user-name">
+						  {%for name in fetching%}
+                              <h5><a href="#">{{name[1]}}</a></h5>
+                              <span><a href="#">{{name[4]}}</a></span>
+                          </div>
+                          <a class="mail-dropdown pull-right" href="javascript:;">
+                              <i class="fa fa-chevron-down"></i>
+                          </a>
+						  {%endfor%}
+                      </div>
+                      <div class="inbox-body">
+                          <a href="#myModal" data-toggle="modal"  title="Compose"    class="btn btn-compose">
+                              Compose
+                          </a>
+                          <!-- Modal -->
+                          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                          <h4 class="modal-title">Compose</h4>
+                                      </div>
+                                      <div class="modal-body">
+									  
+									  
+                                          <form  method="POST" role="form"  id="compose" class="form-horizontal">
+                                              <div class="form-group">
+                                                  <label class="col-lg-2 control-label">To</label>
+                                                  <div class="col-lg-10">
+                                                      <input type="mail" placeholder="Email Destination" id="inputEmail1" name="target" class="form-control">
+                                                  </div>
+                                              </div>
+                                              <div class="form-group">
+                                                  <label class="col-lg-2 control-label">Title</label>
+                                                  <div class="col-lg-10">
+                                                      <input type="text" placeholder="" id="title" name="title" class="form-control">
+                                                  </div>
+                                              </div>
+                                              <div class="form-group">
+                                                  <label class="col-lg-2 control-label">Description</label>
+                                                  <div class="col-lg-10">
+                                                      <input type="text" placeholder="Description" name="description" id="inputPassword1" class="form-control">
+                                                  </div>
+                                              </div>
+                                              <div class="form-group">
+                                                  <label class="col-lg-2 control-label">Message</label>
+                                                  <div class="col-lg-10">
+                                                      <textarea rows="10" cols="30" placeholder="Message" class="form-control" id="" name="message"></textarea>
+                                                  </div>
+                                              </div>
+
+                                              <div class="form-group">
+                                                  <div class="col-lg-offset-2 col-lg-10">
+                                                      <span class="btn green fileinput-button">
+                                                        <i class="fa fa-plus fa fa-white"></i>
+                                                        <span>Attachment</span>
+                                                        <input type="file" name="files[]" multiple>
+                                                      </span>
+                                                      <button class="btn btn-send" id="compose_submit" type="submit">Send</button><br>
+													  <div class="color_send">Send</div><br/>
+													    <div class="color_error">Error</div>
+                                                  </div>
+                                              </div>
+                                          </form>
+										  
+										  <style>
+										  .color_send{
+										  color:green;
+										  font-size: 21px;
+										  }
+										   .color_error{
+										  color:red;
+										  font-size: 21px;
+										  }
+										  </style>
+										  <script>
+$("#compose_submit").click(function() {
+
+    var url = "http://localhost:5000/admin_compose?id=session['id']"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#compose").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+		  
+               $(".color_send").show();
+			      $(".color_error").hide();
+           },
+		   error:function(data){
+		   $(".color_error").show();
+		    $(".color_send").hide();
+		   
+		   }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+});
+  $(".color_error").hide();
+    $(".color_send").hide();
+$(document).ready(function(){
+
+  var exampleTextarea2=document.getElementById("myText").getAttribute("maxlength");
+  console.log(exampleTextarea2);
+  if(exampleTextarea2){
+  $("#errors_display_description").append("Maxim of characters reach");
+  }
+
+});
+
+</script>
+
+										  
+										  
+                                      </div>
+                                  </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                          </div><!-- /.modal -->
+                      </div>
+                      <ul class="inbox-nav inbox-divider">
+                          <li class="reports" id="comments_1 " onclick="comment_function(1)">
+                              <a ><i class="fa fa-flag"></i> Reports <span class="label label-danger pull-right">2</span></a>
+
+                          </li>
+                          <li class="Comments" id="comments_1" onclick="comment_function(2)" >
+                              <a><i class="fa fa-comment"></i> Comments</a>
+                          </li>
+                          <li  class="profiles" id="comments_1" onclick="comment_function(3)">
+                              <a ><i class="fa fa-users"></i> Profiles</a>
+                          </li>
+                          <li class="medics" id="comments_1" onclick="comment_function(4)">
+                              <a ><i class="fa fa-medkit"></i> Medics <span class="label label-info pull-right">30</span></a>
+                          </li>
+                          <li class="admins" id="comments_1" onclick="comment_function(5)">
+                              <a ><i class="fa fa-lock"></i> Admins</a>
+                          </li>
+						  <li class="maps" id="comments_1" onclick="comment_function(6)">
+                              <a ><i class=" 	glyphicon glyphicon-map-marker"></i> Maps</a>
+                          </li>
+						  	  <li class="A_I" id="comments_1" onclick="comment_function(8)">
+                              <a ><i class="	glyphicon glyphicon-education"></i> A.I projects</a>
+                          </li>
+						  <li class="logout" id="comments_1" onclick="comment_function(7)">
+                              <a ><i class=" 	glyphicon glyphicon-log-out"></i> Logout</a>
+                          </li>  						  
+					  </ul>
+					  
+					  
+					  <script>
+					  // href="{{url_for('admin',id=session['id'],connect='connect',page='comments')}}"
+					  
+					  function comment_function(i){
+							$(".Comments").removeClass("active");
+							$(".reports").removeClass("active");
+							$(".profiles").removeClass("active");
+							$(".medics").removeClass("active");
+							$(".admins").removeClass("active");
+							$(".maps").removeClass("active");
+							$(".ai").removeClass("active");
+							if(i==1){			
+								$(".table").load("/admin_info_content?page=reports")
+								$(".reports").addClass("active");
+								
+							}else if(i==2){
+								$(".table").load("/admin_info_content?page=comments")
+								$(".Comments").addClass("active");					
+							}else if(i==3){
+								$(".table").load("/admin_info_content?page=profiles")
+								$(".profiles").addClass("active");
+							}else if(i==4){
+								$(".table").load("/admin_info_content?page=medics")
+								$(".medics").addClass("active");
+							}else if(i==5){
+								$(".table").load("/admin_info_content?page=admins")
+								$(".admins").addClass("active");
+							}else if(i==6){
+								$(".table").load("/admin_info_content?page=maps")
+								$(".table").load("/show_admin_map")
+								$(".maps").addClass("active");
+							}else if(i==7){
+								window.location="http://localhost:5000/logout"
+							}else if(i==8){
+								$(".table").load("/admin_info_content?page=a_i")
+								$(".table").load("/design_ai_tabs")
+								$(".ai").addClass("active");
+							}
+					  
+					  return null;
+					  }
+					  </script>
+					  
+					 
+
+                  </aside>
+                  <aside class="lg-side">
+                      <div class="inbox-head">
+                       <!--   <h3>Inbox</h3>   -->
+                          <form action="#" class="pull-right position">
+                              <div class="input-append">
+                                  <input type="text" class="sr-input" placeholder="Search Mail">
+                                  <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                              </div>
+                          </form>
+                      </div>
+                      <div class="inbox-body">
+					 
+                         <div class="mail-option">
+                             <div class="chk-all">
+                                 <input type="checkbox" class="mail-checkbox mail-group-checkbox">
+                                 <div class="btn-group">
+                                     <a data-toggle="dropdown" href="#" class="btn mini all" aria-expanded="false">
+                                         All
+                                         <i class="fa fa-angle-down "></i>
+                                     </a>
+                                     <ul class="dropdown-menu">
+                                         <li><a href="#"> None</a></li>
+                                         <li><a href="#"> Read</a></li>
+                                         <li><a href="#"> Unread</a></li>
+                                     </ul>
+                                 </div>
+                             </div>
+
+                             <div class="btn-group">
+                                 <a data-original-title="Refresh" data-placement="top" data-toggle="dropdown" href="#" class="btn mini tooltips">
+                                     <i class=" fa fa-refresh"></i>
+                                 </a>
+                             </div>
+                             <div class="btn-group hidden-phone">
+                                 <a data-toggle="dropdown" href="#" class="btn mini blue" aria-expanded="false">
+                                     More
+                                     <i class="fa fa-angle-down "></i>
+                                 </a>
+                                 <ul class="dropdown-menu">
+                                     <li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
+                                     <li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
+                                     <li class="divider"></li>
+                                     <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
+                                 </ul>
+                             </div>
+                           <!--  <div class="btn-group">
+                                 <a data-toggle="dropdown" href="#" class="btn mini blue">
+                                     Move to
+                                     <i class="fa fa-angle-down "></i>
+                                 </a>
+                                 <ul class="dropdown-menu">
+                                     <li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
+                                     <li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
+                                     <li class="divider"></li>
+                                     <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
+                                 </ul>
+                             </div>
+
+                             <ul class="unstyled inbox-pagination">
+                                 <li><span>1-50 of 234</span></li>
+                                 <li>
+                                     <a class="np-btn" href="#"><i class="fa fa-angle-left  pagination-left"></i></a>
+                                 </li>
+                                 <li>
+                                     <a class="np-btn" href="#"><i class="fa fa-angle-right pagination-right"></i></a>
+                                 </li>
+                             </ul>-->
+                         </div>
+						
+                          <table id="for_replaceing_text" class="table table-inbox table-hover">
+                        
+                          </table>
+                      </div>
+                  </aside>
+              </div>
+</div>
+
+<script>
+$(".table").load("/admin_info_content?page=reports")
+$(".reports").addClass("active");
+</script>

@@ -1,0 +1,3306 @@
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+ 
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
+-->
+{%block body%}
+ 
+<div class="load_header_content"></div>
+<script>
+$(".load_header_content").load("/new_header_for_profiles");
+
+</script>
+{%for z in profilepic%}
+<!-- <link rel="icon" type="image/jpg" href="static/{{z[5]}}"/> -->
+<title>{{z[2]}}</title>
+{%endfor%}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+ 
+{%for l in design_colors%}
+
+<style>
+*{
+//font-family:{{l[5]}};
+
+}
+
+</style>
+{%endfor%}
+
+  <style>
+  .navbar-default {
+     background-color: #e9eaed !important;
+    
+}
+.wrapper {
+    background-color: #e9eaed;
+}
+.material-icons {
+    font-family: 'Material Icons' !important;
+	
+	}
+	.fa{
+	font-family: FontAwesome !important;
+	}
+	.glyphicon {
+    font-family: 'Glyphicons Halflings' !important;
+	}
+  * {
+    font-family: "Open Sans",sans-serif !important;
+}
+  body{
+ overflow-x: hidden;
+overflow-y:hidden;
+}
+#overlay {
+  height: 100%;
+  width: 100%;
+ z-index:14;
+  background-color:#37509f;
+  position:fixed;
+  top:0px;
+   
+}
+#overlay span {
+  display: block;
+  height: 20px;
+  width: 20px;
+  background: #ddd;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  
+}
+
+#overlay span:nth-child(1) {
+  left: 47%;
+  -webkit-animation: bounce 1s ease-in-out infinite;
+          animation: bounce 1s ease-in-out infinite;
+}
+#overlay span:nth-child(2) {
+  -webkit-animation: bounce 1s ease-in-out 0.33s infinite;
+          animation: bounce 1s ease-in-out 0.33s infinite;
+    left:50%;
+}
+#overlay span:nth-child(3) {
+  left: 53%;
+  -webkit-animation: bounce 1s ease-in-out 0.66s infinite;
+          animation: bounce 1s ease-in-out 0.66s infinite;
+}
+
+@-webkit-keyframes bounce {
+  0%, 75%, 100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  25% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+}
+
+@keyframes bounce {
+  0%, 75%, 100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  25% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+}
+
+</style>
+
+
+
+
+  <style>
+  .hr-form{
+  
+    margin-top: 20px;
+    margin-bottom: 0px;
+    border: 0;
+    border-top: 1px solid #eee;
+  }
+  .form-post-final{
+  height:21px;
+  }
+  .form-post{
+  height: 22;
+  }
+  .settings{
+  
+  z-index:2;
+  }
+  .menu{
+  z-index:100;
+  }
+  .profile-photo {
+    position: relative;
+    top: -147;
+	cursor:pointer;
+	border: white solid;
+}
+.back-photo{
+cursor:pointer;
+} 
+p{
+color:red;}
+.df{
+display:none;
+}
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.btn{
+margin-top:10px;}
+.menu
+{
+background-color: #00547E;
+border-bottom: 4px solid #04A3ED;
+width:100%;
+height: auto;
+padding: 0 10px;
+position: fixed;
+margin: 0px;
+    top: 0;
+    z-index: 4;
+    opacity: 1;
+}
+
+.menu  .navbar-nav > .active > a
+{
+background-color : #04A3ED;
+color: white;
+font-weight: bold;
+}
+
+.menu  .navbar-nav >  li >  a
+{
+font-size: 13px;
+color: white;
+padding: 10px 35px;
+
+}
+.menu  .navbar-nav >  li >  a:hover
+{
+background-color: #04A3ED;
+}
+
+.navbar-header > a
+{
+font-family: 'Ubuntu Condensed', sans-serif;
+padding: 0px;
+margin: 0px;
+text-decoration: none;
+color: white;
+font-size: 25px;
+padding: 5px 30px;
+}
+.navbar-header > a:hover
+{
+text-decoration: none;
+color: #04A3ED;
+}
+.cont{
+
+top:123px;}
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+a {
+text-decoration:none;
+color:white;
+}
+
+.ul1 > .li1{
+display:inline;
+
+padding:10px;
+}
+a:hover,.li1:hover{
+	background-color:#0D456F;
+    color:#337ab7;
+    text-decoration:none; 
+}
+
+.ul1{
+	position:relative;
+	float:right;
+	margin-top:35px;
+}
+.navbar-header {
+	width:100%;
+}
+.li1:hover a {
+	color:#337ab7;
+	
+}
+.li1:hover {
+	cursor: pointer;
+}
+a {
+ text-decoration: none;
+}
+</style>
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,400,700);
+
+body{
+    background:#e9eaed;
+	}
+    
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Open Sans Condensed', sans-serif, sans-serif;
+}
+	
+.container{
+	}
+
+.wrapper{
+	}
+
+#header{
+	border:1px solid #ddd;
+	margin-bottom:20px;
+	}
+	
+.navbar.navbar-default {
+    height: 11px;
+}
+
+	
+.navbar{
+	border-radius:0;
+	margin-bottom:0;
+	border:none;
+        font-family: 'Open Sans Condensed', sans-serif, sans-serif;
+
+	}
+    
+.navbar > li >a{
+    
+    }
+	
+
+	
+.navbar-header{
+	}
+	
+.navbar-brand{
+width:160px;
+height:160px;
+float:left;
+padding:0;
+margin-top:-130px;
+overflow:hidden;
+border:3px solid #eee;
+margin-left:15px;
+background:#333;
+text-align:center;
+line-height:160px;
+color:#fff !important;
+font-size:2em;
+    
+  		position: relative;
+    top: -109px;
+
+	}
+
+
+
+	.upload:hover {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+    width: 14%;
+    height: 80;
+    opacity: 0.8;
+    z-index: -223;
+}
+
+
+
+
+.site-name{
+	color:#fff;
+	font-size:2.4em;
+	float:left;
+	margin-top:-65px !important;
+	margin-left: 217;
+        font-family: 'Open Sans Condensed', sans-serif, sans-serif;
+
+	}	
+.site-description{
+	color:#fff;
+	font-size:1.3em;
+	float:left;
+	margin-top:-30px !important;
+	margin-left:15px;
+	}
+	
+.main-menu{
+	position:absolute;
+	left:190px;
+	}
+	
+.slider, .carousel{
+	max-height:360px;
+	overflow:hidden;
+	}
+	
+.carousel-control .fa-angle-left,
+.carousel-control .fa-angle-right {
+position: absolute;
+top: 50%;
+font-size:2em;
+z-index: 5;
+display: inline-block;
+}
+
+.carousel-control{
+	background-color:transparent;
+	background-image:none !important;
+	}
+	
+.carousel-control:hover,
+.carousel-control:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color:transparent !important;
+  background-image:none !important;
+  outline: 0;
+}
+
+
+	
+
+	
+	
+@media (max-width: 768px) {
+.navbar-brand{
+    max-width: 100px;
+	max-height:100px;
+	float:left;
+	margin-top:-65px;
+	margin-left:15px;
+	
+  
+  }
+  
+
+  
+
+
+.navbar{
+	border-radius:0;
+	margin-bottom:0;
+	border:none;
+	}
+	
+.main-menu{
+	left:0;
+	position:relative;
+	}
+
+
+}
+
+@media (max-width: 490px) {
+	.site-name{
+	color:#fff;
+	font-size:1.5em;
+	float:left;
+	line-height:20px;
+	margin-top:-100px !important;
+	margin-left: 217;
+	}	
+.site-description{
+	color:#fff;
+	font-size:1.3em;
+	float:left;
+	margin-top:-80px !important;
+	margin-left:125px;
+	}
+	}
+
+	
+	
+	
+	
+	
+    .scrooller{
+      background-color: white;
+      box-shadow: 0 1px 2px rgba(0,0,0,.5);
+      padding: 5px
+    }
+	
+    #header {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.btn-bs-file{
+    position:relative;
+}
+.btn-bs-file input[type="file"]{
+    position: absolute;
+    top: -9999999;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    width:0;
+    height:0;
+    outline: none;
+    cursor: inherit;
+}
+
+.but-style{
+border:solid white 0px;
+width:100%;
+}
+.but-style:hover{
+background-color: #e6e6e6;
+width:100%;
+
+}
+</style>
+<style>
+.chat_down_2_3{
+
+width:291px;
+height:50px;
+position:fixed;
+bottom:0px;
+right:0px;
+
+
+}
+.chat_down_2_3 {
+    border-radius: 100%;
+}
+a.btn.btn-info.btn-lg.people{
+    width: 100%;
+    height: 100%;
+}
+</style>
+<style>
+    #custom-search-form {
+        margin:0;
+        margin-top: 5px;
+        padding: 0;
+    }
+ 
+    #custom-search-form .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-transition: width  0.2s ease-in-out;
+    -moz-transition:width  0.2s ease-in-out;
+    -o-transition: width  0.2s ease-in-out;
+    transition: width  0.2s ease-in-out;
+    }
+ 
+    #custom-search-form button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }   
+    .search-query:focus{
+        width: 260px;
+    }   
+.span12 {
+   
+position: relative;
+
+
+}
+.menu
+{
+background-color: #00547E;
+border-bottom: 4px solid #04A3ED;
+width:100%;
+height: 78px;
+padding: 0 10px;
+position: fixed;
+margin: 0px;
+z-index: 1;
+opacity: 0.9;
+}
+input#search_id {
+    width: 567px;
+    margin-left: 0px;
+    margin-top: -1px;
+}
+.menu  .navbar-nav > .active > a
+{
+background-color : #04A3ED;
+color: white;
+font-weight: bold;
+}
+
+.menu  .navbar-nav >  li >  a
+{
+font-size: 13px;
+color: white;
+padding: 10px 35px;
+
+}
+.menu  .navbar-nav >  li >  a:hover
+{
+background-color: #04A3ED;
+}
+
+.navbar-header > a
+{
+font-family: 'Ubuntu Condensed', sans-serif;
+padding: 0px;
+margin: 0px;
+text-decoration: none;
+color: white;
+font-size: 25px;
+padding: 5px 30px;
+}
+
+.navbar-header > a:hover
+{
+text-decoration: none;
+color: #04A3ED;
+}
+.finder-search{
+width:100%
+background-color:white;
+
+}
+.search_class{
+margin-left:123px;
+}
+
+.firstName{
+
+background-color:white;
+
+color:black;
+}
+#solutii{
+background-color:white;
+width:100%;
+color:black;
+}
+.for-links:hover,.for-links{
+color:black;
+
+}
+
+</style>
+
+  <style>
+	
+.panel-shadow {
+    box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+}
+.panel-white {
+  border: 1px solid #dddddd;
+}
+.panel-white  .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.panel-white  .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+.post .post-heading .meta .title a {
+  color: black;
+}
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+.post .post-heading .meta .time {
+  margin-top: 8px;
+  color: #999;
+}
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+.post .post-description {
+  padding: 15px;
+}
+.post .post-description p {
+  font-size: 14px;
+}
+.post .post-description .stats {
+  margin-top: 20px;
+}
+.post .post-description .stats .stat-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+.post .post-description .stats .stat-item .icon {
+  margin-right: 8px;
+}
+.post .post-footer {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+  overflow-y: scroll;
+    max-height: 500px;
+}
+.post .post-footer .input-group-addon a {
+  color: #454545;
+}
+.input-group .form-control {
+	width:30%;
+	
+}
+.post .post-footer .comments-list {
+  padding: 0;
+  margin-top: 20px;
+  list-style-type: none;
+}
+.post .post-footer .comments-list .comment {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+.post .post-footer .comments-list .comment .avatar {
+  width: 35px;
+  height: 35px;
+}
+.post .post-footer .comments-list .comment .comment-heading {
+  display: block;
+  width: 100%;
+}
+.post .post-footer .comments-list .comment .comment-heading .user {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  margin-top: 0;
+  margin-right: 10px;
+}
+.post .post-footer .comments-list .comment .comment-heading .time {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 0;
+  display: inline;
+}
+.post .post-footer .comments-list .comment .comment-body {
+  margin-left: 50px;
+}
+.post .post-footer .comments-list .comment > .comments-list {
+  margin-left: 50px;
+}
+i.glyphicon {
+    position: relative;
+    top: 33px;
+    font-size: 22px;
+    /* left: 116%; */
+    left: -122;
+    /* margin-left: -261px; */
+}
+.icon_bell:hover,.icon_friends_abonates:hover {
+    /* background-color: red; */
+    color: white;
+}
+.noti_number {
+    z-index: +1233;
+    position: absolute;
+    top: -17px;
+    left: 13px;
+    background-color: red;
+    border-radius: 100%;
+    padding: 2px;
+    margin-top: 4px;
+    font-size: 17px;
+	color: black;
+}
+.noti_number:hover {
+    color: black;
+    background-color: red;
+}
+.window_notification {
+	background-color: white;
+    width: 318px;
+    height: 364px;
+    padding: 12;
+    position: absolute;
+    z-index: 1234;
+    left: 87px;
+    top: 42px;
+    display: none;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    border: 1px solid rgba(100, 100, 100, .4);
+    border-radius: 0 0 2px 2px;
+	overflow: hidden;
+}
+.ul_style_type{
+    list-style-type: none;
+	
+}
+h3.header_noti {
+    margin-bottom: -18px;
+	
+}
+.beeperNub {
+    background-image: url(/rsrc.php/v3/yF/r/SQOv3rZIvq1.png);
+    background-repeat: no-repeat;
+    background-size: 28px 284px;
+    background-position: 0 -262px;
+    height: 11px;
+    position: absolute;
+    top: -11px;
+    width: 20px;
+}
+.heder_div_noti {
+    font-family: inherit;
+    background-clip: padding-box;
+    background-color: #fff;
+    border-bottom: solid 1px #dddfe2;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    /* padding: 8px 12px 6px; */
+    border-bottom: 1px solid #aaa;
+    position: relative;
+    width: 316px;
+    margin-left: -12px;
+	padding-left: 8px;
+    padding-bottom: 2px;
+}
+img.img_notifi {
+    width: 58px;
+	margin-right: 11;
+}
+.message {
+    
+    margin-top: -12px;
+}
+.noti_title {
+    margin-top: -43px;
+    margin-left: 67px;
+    margin-bottom: 12;
+}
+
+.noti_content {
+    width: 102%;
+}
+
+
+.notif_sf {
+    /* overflow: scroll; */
+    overflow-x: hidden;
+    position: relative;
+    overflow-y: scroll;
+    height: 100%;
+    /* z-index: 1121313; */
+}
+
+
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+    display: block;
+    height: 10px;
+}
+
+::-webkit-scrollbar-button:vertical:increment {
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #eee;
+    -webkit-border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background-color: #ccc;
+    -webkit-border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 50px;
+    background-color: #ccc;
+    -webkit-border-radius: 3px;
+}
+.settings_new {
+    position: absolute;
+    left: 50px;
+    top: 1;
+}
+li.header_content {
+    font-size: 18px;
+    margin-bottom: 12;
+    margin-top: 12;
+}
+input.settings_files {
+    /* width: 10%; */
+    margin: left;
+    /* float: right; */
+    margin-left: 64px;
+    margin-top: -18px;
+}
+input#qty {
+    top: 10px;
+    height: 28px;
+    width: unset;
+}
+.col-xs-10.color_in {
+    float: left;
+    margin-left: 1;
+}
+</style>
+  <style>
+
+.midd{
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.first-midd,.second-midd{
+  background-color: #eee;
+}
+.pic1{
+  padding: 5px;
+  width: 101%;
+height: 222px;
+}
+.pret{
+  position: relative;
+  right: -58%;
+}
+.info{
+  position: relative;
+
+}
+.but{
+  margin-bottom:10px;
+}
+.pull-righ{
+  position: relative;
+}
+    h4{
+      font-weight: 600;
+  }
+  p{
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .price{
+    font-size: 30px;
+      margin: 0 auto;
+      color: #333;
+  }
+  .right{
+    float:right;
+    
+  }
+  .thumbnail{
+
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+    -webkit-transition: all 0.5s; 
+    transition: all 0.5s;
+  }
+  .thumbnail:hover{
+    
+    
+  }
+  .line{
+    margin-bottom: 5px;
+  }
+  @media screen and (max-width: 770px) {
+    .right{
+      float:left;
+      width: 100%;
+    }
+  }
+  .col-md-3.col-sm-6 {
+    height: 128;
+    margin-top: 288;
+}
+.modal-picture1{
+  vertical-align: middle;
+position: relative;
+left: 36;
+}
+.p-products{
+
+    height: 48;
+
+}
+</style>
+
+  
+  <style>
+p{
+color:red;}
+.df{
+display:none;
+}
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.btn{
+margin-top:10px;}
+.menu
+{
+background-color: #00547E;
+border-bottom: 4px solid #04A3ED;
+width:100%;
+height: auto;
+padding: 0 10px;
+position: fixed;
+margin: 0px;
+    top: 0;
+    z-index: 4;
+    opacity: 1;
+}
+
+.menu  .navbar-nav > .active > a
+{
+background-color : #04A3ED;
+color: white;
+font-weight: bold;
+}
+
+.menu  .navbar-nav >  li >  a
+{
+font-size: 13px;
+color: white;
+padding: 10px 35px;
+
+}
+.menu  .navbar-nav >  li >  a:hover
+{
+background-color: #04A3ED;
+}
+
+.navbar-header > a
+{
+font-family: 'Ubuntu Condensed', sans-serif;
+padding: 0px;
+margin: 0px;
+text-decoration: none;
+color: white;
+font-size: 25px;
+padding: 5px 30px;
+}
+.navbar-header > a:hover
+{
+text-decoration: none;
+color: #04A3ED;
+}
+.cont{
+
+top:123px;}
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+a {
+text-decoration:none;
+color:white;
+}
+
+.ul1 > .li1{
+display:inline;
+
+padding:10px;
+}
+a:hover,.li1:hover{
+//	background-color:#0D456F;
+  //  color:#337ab7;
+    text-decoration:none; 
+}
+
+.ul1{
+	position:relative;
+	float:right;
+	
+}
+.navbar-header {
+	width:100%;
+}
+.li1:hover a {
+	color:#337ab7;
+	
+}
+.li1:hover {
+	cursor: pointer;
+}
+a {
+ text-decoration: none;
+}
+.old_header{
+display:none;
+
+}
+.page-header {
+    display: none;
+	}
+	.navbar.navbar-default.navbar-fixed-top {
+    z-index: 1;
+}
+.News_show {
+    z-index: 64;
+	}
+</style>
+
+<style>
+
+    .scrooller{
+      background-color: white;
+      box-shadow: 0 1px 2px rgba(0,0,0,.5);
+      padding: 5px
+    }
+	
+	
+	i.fa.fa-camera.show_camera_person {
+display:none;
+}
+</style>
+
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+
+<style>
+//calendar
+
+
+</style>
+<div id="overlay"><span></span><span></span><span></span></div>
+
+<div class="load_news">
+
+</div>
+<body>
+
+
+<div class="page-header">
+<div class="menu">
+
+    <div class="container-fluid">
+		<div class="navbar-header">
+					<a href="/">Lifesaver</a>
+			
+		<i class="glyphicon glyphicon-bell icon_bell" aria-hidden="true"><div class="noti_number">1</div></i>
+				<i class="	glyphicon glyphicon-user icon_friends_abonates" aria-hidden="true"><div class="noti_number">1</div></i>
+			<i class="glyphicon glyphicon-cog icon_friends_abonates icon_settings" aria-hidden="true"></i>
+			
+			
+			
+			
+			
+			
+			
+		
+			<script>
+	
+	
+  
+
+			$(".icon_bell").click(function(){
+				$(".window_notify").toggle();
+			})
+			$(".icon_settings").click(function(){
+				$(".window_notification.window_settings").toggle();
+			//	$(".window_settings").toggle();
+			})
+			
+			
+</script>
+
+
+		    <ul class="ul1">
+        <li class="li1"><a href="{{url_for('profile',id=session['id'],connect=session['connect'])}}">Profil</a></li>
+		    <li class="li1"><a href="{{url_for('magazin')}}">Abonari</a></li>
+		    <li class="li1"><a href="{{url_for('login')}}">Bratara</a></li>
+		  <li class="li1"><a href="{{url_for('register')}}">Logout</a></li>
+		 </ul>
+
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+
+<div class="wrapper">
+        <div class="container">
+        	<div class="row">
+                <div class="col-md-12">
+                <header id="header">
+
+  <div class="slider">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+  {%for z in profilepic%}
+  {% if z[6]==''%}
+    <div class="item active">
+      <img data-toggle="modal" class="back-photo" data-target="#squarespaceModal3" src="http://placehold.it/1200x400/F34336/F34336&text=WORDPRESS THEME DEVELOPER">
+    </div>
+	{%endif%}
+	 {% if z[6]!=''%}
+    <div class="item active">
+      <img  data-toggle="modal" class="back-photo" data-target="#squarespaceModal3"  width="1200px" src="static/{{z[6]}}">
+    </div>
+	{%endif%}
+    
+	{%endfor%}
+		 <i class="	glyphicon glyphicon-camera show_camera_person_back" data-target="#squarespaceModal3"> </i>
+						  
+						  <script>
+						  	$(".back-photo,.show_camera_person_back").hover(function(){	
+								$(".show_camera_person_back").css({"display": "inherit","cursor":"pointer","position": "absolute","left" : "494px","font-size" : " 150px","top" : "150px",   " color": "black", "opacity" : "0.7"});
+								//$(".back-photo").css({"background" : "black"});	
+							}, function(){
+								$(".show_camera_person_back").hide();
+							})
+			$(".show_camera_person_back").hide();
+						  </script>
+  </div>
+  <div id="squarespaceModal3"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Background image</h3>
+      </div>
+      <div class="modal-body">
+ 
+<form action="/back_upload?id={{session[id]}}&connect=connect" method="POST" enctype="multipart/form-data" multiple="multiple">
+   <br/>
+   {%for p in profilepic%}
+<img id="blah1" src="static/{{p[6]}}" alt="your image" />
+{%endfor%}
+ <style>
+#blah1 {
+    width: 567px;
+}
+</style>
+
+      </div>
+      <div class="modal-footer">
+	  <label class="btn-bs-file btn  btn-primary" >  
+  Browse <input type="file" name="file" id="imgInp1">
+   </label>
+	      <input class="btn btn-primary" type="submit">
+</form>
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+		
+		
+    function readURL2(input2) {
+        if (input2.files && input2.files[0]) {
+            var reader2 = new FileReader();
+            
+            reader2.onload = function (e) {
+                $('#blah1').attr('src', e.target.result);
+            }
+            
+            reader2.readAsDataURL(input2.files[0]);
+        }
+    }
+    
+    $("#imgInp1").change(function(){
+        readURL2(this);
+    })
+</script>
+  <!-- Controls -->
+ 
+</div>
+                	</div><!--slider-->
+                	<nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+
+                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                          {% for i in row%}
+						  {%if i[5]==''%}
+                          <a class="navbar-brand back-photo"  data-toggle="modal" data-target="#squarespaceModal2" ></a>
+						  {%endif%}
+						    {%if i[5]!=''%}
+                          <img src="static/{{i[5]}}"  class="profile-photo"  width="198px" height="198px" data-toggle="modal" data-target="#squarespaceModal2" >
+						  
+						  {%endif%}
+						  
+						  <i class="fa fa-camera show_camera_person" data-target="#squarespaceModal2"> </i>
+						  
+						  <script>
+						  	$(".profile-photo,.show_camera_person").hover(function(){	
+								$(".show_camera_person").css({"display": "inherit","cursor":"pointer","position": "absolute","left" : "19px","font-size" : " 150px","top" : "-115px",   " color": "black", "opacity" : "0.7"});
+									
+							}, function(){
+								$(".show_camera_person").hide();
+							})
+			$(".show_camera_person").hide();
+						  </script>
+<div id="squarespaceModal2"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Profile image</h3>
+      </div>
+      <div class="modal-body">
+ 
+<form action="/upload?id={{session[id]}}&connect=connect" method="POST" enctype="multipart/form-data" multiple="multiple">
+
+ <br/>
+ {%for p in profilepic%}
+ 
+<img id="blah" src="static/{{p[5]}}" alt="your image" />
+{%endfor%}
+      </div>
+      <div class="modal-footer">
+	   <label class="btn-bs-file btn  btn-primary">  
+ Browse <input type="file" name="file" id="imgInp" >
+ 
+	</label>
+	     <input class="btn btn-primary" type="submit">
+</form>
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+#blah {
+  
+}
+a.dropdown-item {
+    color: black;
+}
+.modalserie{
+margin-top: 161px;
+    margin-bottom: -18px;
+
+}
+button#submit_books {
+    width: 100%;
+}
+a#dropdownMenuLink {
+    background: #337ab7;
+}
+a.dropdown-item {
+    margin-left: 11;
+}
+a.dropdown-item:hover, .li1:hover {
+    /* background-color: #0D456F; */
+    /* color: #337ab7; */
+    text-decoration: none;
+    background-color: #7e96d8;
+}
+.news_list_design {
+    
+    margin-top: 1;
+    text-indent: 21px;
+}
+.news_list_design:hover{
+background-color: #7e96d8;
+
+}
+a#dropdownMenuLink_1 {
+    background: #337ab7;
+}
+.full_screen_butt {
+    margin-bottom: 10px;
+    font-size: 23px;
+}
+</style>
+
+<script>
+//var img=document.getElementById(imgInp);
+//readURL(img);
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#imgInp").change(function(){
+        readURL(this);
+    })
+</script>
+
+ <span class="site-name"><b>{{i[1]}}</b> </span>
+                          {%endfor%}
+<!-- <span class="site-description" style="display:'none';">worpress theme developer</span> -->
+                          <div class="upload"></div>
+                         
+                         
+                        </div>
+                    
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="mainNav" >
+                          <ul class="nav main-menu navbar-nav">
+                            <!--<li class="li_1"><button data-toggle="modal" data-target="#pacients" class="btn btn-primary center-block">Pacients</button></li>-->
+                            <li class="li_1"><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block">Post</button></li>
+							<li class="li_1"><button data-toggle="modal" data-target="#squarespaceModal_book" class="btn btn-primary center-block">Books</button></li>
+                            <li class="li_1"><button data-toggle="modal" data-target="#books" class="btn btn-primary center-block">Books Upload</button></li>
+                            <li class="li_1"><button  id="" data-toggle="modal" data-target="#squarespaceModal_model" class="btn btn-primary center-block">Upload Models</button></li>
+                           <li class="li_1"><button  id="" data-toggle="modal" data-target="#squarespaceModal_model_embed" class="btn btn-primary center-block">Embed Models</button></li>
+			
+
+
+
+
+						   <li class="li_1"><div class="dropdown show"><a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item width_news_menu" data-toggle='modal' data-target='#news_MODAL_ID'><div class="news_list_design">Create News</div></a><br/>
+    <!--<a class="dropdown-item width_news_menu" href="#"><div class="news_list_design">Votes</div></a><br/>
+    <a class="dropdown-item width_news_menu" href="#"><div class="news_list_design">Get volunteers</div></a>-->
+  </div>
+</div>
+						   </li>
+						   
+						   
+						   
+						   
+						      <li class="li_1"><div class="dropdown show"><a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink_1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Developer</a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_1">
+   <a class="dropdown-item width_news_menu" data-toggle='modal' data-target='#news_MODAL_ID_FILE'><div class="news_list_design">Create file</div></a><br/>
+    <a class="dropdown-item width_news_menu" data-toggle='modal' data-target='#news_MODAL_ID_CODE'><div class="news_list_design">Code</div></a><br/>
+    <!--<a class="dropdown-item width_news_menu" href="#"><div class="news_list_design">Votes</div></a><br/>
+    <a class="dropdown-item width_news_menu" href="#"><div class="news_list_design">Get volunteers</div></a>-->
+  </div>
+</div>
+						   </li>
+						</ul>
+						
+						<div class='modal fade' id='news_MODAL_ID_FILE' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>Create file</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'></span>
+        </button>
+      </div>
+        
+      <div class='modal-body'>
+	  <form id="form_C_file" method="POST">
+	  
+	  
+	  <input type="text" id="text_file" placeholder="Name file"></br>
+	  
+	  <button id="send_submit_data" class="btn btn-default">Submit</button>
+	  </form>
+	  
+	  
+      </div>
+      <div class='modal-footer'>
+       <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+        <button type='button' class='btn btn-primary'>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>	   
+					   
+				   	<script>
+	//execfile('file.py')	
+$("#send_submit_data").click(function() {
+   var txt_file=$("#text_file").val();
+    var url = "/get_file_name"; 
+    var data_to_send={
+	  "py_file_name":txt_file
+	}
+	
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: data_to_send, 
+           success: function(data)
+           {
+		   console.log(data);
+           }
+         })
+
+    return false;
+})
+</script>
+				
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+                   
+			<div class='modal fade' id='news_MODAL_ID_CODE' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>Code</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'></span>
+        </button>
+      </div>
+        
+      <div class='modal-body'>
+	  
+	  <div class="full_screen_butt"> <button  id="full_screen_butt_primal" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-fullscreen"></span></button></div>
+	  <iframe id="code_editor_W" src="http://localhost:5000/code_editor?id_editor_file=1" width="100%" height="100%"></iframe>
+	  
+	  <script>
+	  $("#full_screen_butt_primal").click(function(){
+    
+	$("#code_editor_W").css({"width": "138%", "height": "102%", "margin-left": "-18%","margin-top": "-77px","margin-bottom":"-60%"});
+	$("button#full_screen_butt_primal").css({"display": "none"}) 
+    
+
+		});
+	  </script>
+      </div>
+      <div class='modal-footer'>
+       <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+        <button type='button' class='btn btn-primary'>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>	   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+<div class='modal fade' id='news_MODAL_ID' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>Create News</h5>
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+          <span aria-hidden='true'></span>
+        </button>
+      </div>
+        
+      <div class='modal-body'>
+	  <form method="POST">
+	  <input type="text" id="news_title" name="news_title"/>
+	  <textarea id="emit_data_news" name="emit_data_news"></textarea>
+	  <input type="submit" id="send_news_data"/>
+	  </form>
+      </div>
+      <div class='modal-footer'>
+       <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+        <button type='button' class='btn btn-primary'>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+				   
+				   
+				   
+				   	<script>
+		
+$("#send_news_data").click(function() {
+   var embed_news=$("#emit_data_news").val();
+  var news_title=$("#news_title").val();
+    var url = "http://localhost:5000/upload_news_data"; 
+    var data_to_send={
+	  "emit_data_news":embed_news,
+	  "news_title":news_title
+	}
+	
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: data_to_send, 
+           success: function(data)
+           {
+		   setTimeout(function(){ 
+		   
+				$(".load_news").load("/news_to_show");
+
+		   }, 1000);
+		    //$(".show_div11").load(data);
+             console.log(data)
+           }
+         })
+
+    return false;
+})
+</script>
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+				   
+<div class="modal fade" id="squarespaceModal_model_embed" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<h3 class="modal-title" id="lineModalLabel">Embed Models</h3>
+			
+		</div>
+		
+		<div class="modal-body">
+		 
+		 <form method="POST">
+		 
+		  <input type="text" name="name_embed" class="embed"/>
+		  <textarea class="embed_input"/></textarea>
+		
+		 
+		 
+			
+		 
+		 
+
+		 
+		</div>
+	
+		<div class="modal-footer modalserie" >
+		
+					<div class="show_div11"></div>
+					 <input class="btn btn-primary "name="submit_models1_embed" type="submit">
+    		       <button class="btn btn-primary but_models" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    		    </div>
+				</form>
+		</div>
+		<script>
+		
+$("#submit_models1_embed").click(function() {
+   var embed_models=$(".embed_input").val();
+   var name_embed=$(".embed").val();
+    var url = "http://localhost:5000/upload_embed"; 
+    var data_to_send={
+	  "embed_models":embed_models,
+	  "name_embed":name_embed
+	}
+	
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: data_to_send, 
+           success: function(data)
+           {
+		    //$(".show_div11").load(data);
+             console.log(data)
+           }
+         })
+
+    return false;
+})
+</script>
+	</div>
+  </div>
+<style>
+textarea.embed_input {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+	height: 134px;
+	    margin-bottom: -234px;
+}
+.modalserie {
+    margin-top: 161px;
+     margin-bottom: 0px; 
+}
+.fr-box.fr-basic.fr-top {
+    margin-top: 19px;
+}
+</style>
+
+<div class="modal fade" id="squarespaceModal_model" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<h3 class="modal-title" id="lineModalLabel">Upload Models</h3>
+			
+		</div>
+		
+		<div class="modal-body">
+		  <input type="uname" name="uname_model"/>
+		 
+		 <form method="POST" action="/upload_models?id={{session[id]}}&connect=connect" class="form_1 form_special"  enctype="multipart/form-data">
+		
+		 <input type="file" name="file" class=""/>
+		 <input type="file" name="file2" class=""/>
+		 <input class="btn btn-primary" type="submit">
+		 
+		 
+			
+		 </form>
+		 
+
+		<!-- <form method="POST" action="/upload_models?id={{session[id]}}&connect=connect" class="form_2 form_special" enctype="multipart/form-data">
+		 <input type="file" name="file" class=""/>
+		 <button type="button"  name="submit_models1" >Upload Mtl</button>
+		 
+			
+		 </form>-->
+		 
+		</div>
+	
+		<div class="modal-footer modalserie" >
+		
+		
+					
+    		       <button class="btn btn-primary but_models" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    		    </div>
+		</div>
+		
+	</div>
+  </div>
+
+
+
+<style>
+.but_models {
+    margin-bottom: 13px;
+}
+form.form_2.form_special {
+    margin-left: 61%;
+    top: 20px;
+    position: absolute;
+}
+
+.select-pane {
+    align-items: center;
+    z-index: -23;
+    margin-top: -20px;
+	font-size: 31px;
+    margin-left: 36%;
+}
+</style>
+
+
+
+
+
+<div class="modal fade" id="squarespaceModal_book" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<h3 class="modal-title" id="lineModalLabel">Books</h3>
+			<center>
+					 <div class="col-sm-9">
+					 {%for z in carti_2%}
+		     <div class="select-pane" id="serie-{{z[0]}}">{{z[1]}}</div>
+			 {%endfor%}
+		 </div>
+		 
+		 </center>
+		</div>
+		
+		<div class="modal-body">
+		<p><b>Please your text lenght must have 2600 characters!</b></p>
+				<div class="col-sm-3 nav-container">
+		    <div class="form-group">
+			<form method="POST" id="form_send_page">
+			
+		        <select class="form-control nav" id="select_books" name="book_to_show">
+		            <option value="" selected disabled>please select a book</option>
+					{%for z in carti_2%}
+		            <option value="{{z[0]}}">{{z[1]}}</option>		        
+					{%endfor%}
+		        </select>
+				
+		    </div>
+		 </div>
+
+		 <br/>
+		  <br/>
+		   <br/>
+           <textarea rows="5" class="form-control" id="emit_data_books"   name="description1_books" ></textarea>
+    		    
+			<br/>	
+			<button class="btn btn-primary" id="submit_books" aria-hidden="true">Submit</button>
+			<div class="append_message"></div>
+</form>
+
+<script>
+$("#submit_books").click(function() {
+   var select_books=$("#select_books").val();
+    var url = "http://localhost:5000/books_page_upload?id={{session['id']}}&connect=connect"; 
+    var data_to_send={
+	  "select_books":select_books,
+	  "text":emit_data_books
+	
+	}
+	
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#form_send_page").serialize(), 
+           success: function(data)
+           {
+		  
+            $(".append_message").append(data);
+           }
+         })
+
+    return false;
+})
+$(document).ready(function(){
+
+  //var exampleTextarea2=document.getElementById("myText").getAttribute("maxlength")
+ // console.log(exampleTextarea2);
+  //if(exampleTextarea2){
+  //$("#errors_display_description").append("Maxim of characters reach");
+  //}
+
+})
+
+</script>
+
+		</div>
+	
+		<div class="modal-footer modalserie" >
+		
+			 <div class="form-group">
+	    <!-- <button type="submit" name='action' id="sendbutton21_" value="post1" class="btn btn-primary">
+    		            Submit
+    		        </button>-->
+					</form>
+					
+					
+    		       <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    		    </div>
+		</div>
+		
+	</div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script>
+$(document).on('change','select.nav',function(){
+    var $this = this;
+    var target = $this.value;
+    $('div.select-pane').hide();
+    $('div[id="'+target+'"]').show();
+})
+
+$(document).on('click','.series-select',function(){
+  var $this = this;
+  var txt = $this.text+'<span class="caret"></span>';
+  $($this).closest('li.dropdown').find('a.dropdown-toggle').html(txt);
+
+})
+</script>
+
+
+
+
+				   
+           <style>
+		   .select-pane {
+    display:none;
+}
+		   ul.nav.main-menu.navbar-nav {
+    margin-left: 12;
+}
+.li_1{
+
+margin-left:4px;
+}
+</style>		   
+
+<script>
+$(document).ready(function(){
+$("#calendar").click(function(){
+   window.location.replace("/file?id={{session['id']}}&connect=connect");
+   })
+})
+
+</script>  
+<div class="modal fade" id="books" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<h3 class="modal-title" id="lineModalLabel">Books Upload</h3>
+		</div>
+		
+		<div class="modal-body">
+			
+            <!-- content goes here -->
+    <form method="POST" id="post123" action="" enctype="multipart/form-data">
+    	<div class="form-group">
+  <label class="control-label" for="inputLarge">Book name</label>
+  <input class="form-control input-lg" name="book_name" id="inputLarge" type="text">
+</div>
+    <div class="form-group">
+  <label class="control-label">Price</label>
+  <div class="input-group">
+    <span class="input-group-addon">$</span>
+    <input class="form-control" name="book_price" type="number">
+   
+  </div>
+   <div class="form-group required">
+    <label for="exampleTextarea1" class='control-label'>Description</label>
+    <textarea class="form-control" id="exampleTextarea2" name="book_description" maxlength="100" rows="7"></textarea>
+  </div>
+  <div id="errors_display_description"></div>
+   <div class="form-group required">
+    <label for="exampleTextarea3" class='control-label'>Content</label>
+    <textarea class="form-control" name="book_content"  id="exampleTextarea4" maxlength="200" rows="7"></textarea>
+  </div>
+  <div id="errors_display_content"></div>
+   <label class="btn-bs-file btn  btn-primary">  
+ Browse <input type="file" name="file" id="imgInp44" >
+ 
+	</label><br/>
+	<img id="blah44" src="#" alt="your image" width="235px"/>
+</div>		   
+    		    
+				<style>
+				.required{
+				
+				
+				}
+				textarea#exampleTextarea2 {
+				max-width: 100%;
+				max-height: 200px;
+				min-width: 100%;
+				}
+				textarea#exampleTextarea4 {
+				max-height: 100%;
+				max-width: 100%;
+			    min-width: 100%;
+				}
+				#blah44{
+				
+				margin-top:12;
+				}
+				</style>
+
+		</div>
+		<script>
+		
+		elemsrc=document.getElementById("blah44");
+		elemsrc.style.display="none";
+    function readURL1(input) {
+	
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah44').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+		
+    }
+    
+    $("#imgInp44").change(function(){
+        readURL1(this);
+		elemsrc.style.display="inherit";
+    })
+	
+</script>
+		<div class="modal-footer">
+		
+			 <div class="form-group">
+	     <button type="submit" name='action' id="sendbutton21" value="post1" class="btn btn-primary">
+    		            Submit
+    		        </button>
+					</form>
+					
+					
+    		       <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    		    </div>
+		</div>
+		
+	</div>
+  </div>
+</div>
+
+
+<script>
+$("#sendbutton21").click(function() {
+
+    var url = "http://localhost:5000/magazin_insert"; 
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#post123").serialize(), 
+           success: function(data)
+           {
+		  
+               alert(data); 
+           }
+         })
+
+    return false; 
+})
+$(document).ready(function(){
+
+  //var exampleTextarea2=document.getElementById("myText").getAttribute("maxlength");
+  //console.log(exampleTextarea2);
+ // if(exampleTextarea2){
+ /// $("#errors_display_description").append("Maxim of characters reach");
+  //}
+
+})
+
+</script>
+
+
+<style>
+
+.input-lg {
+    height: 32px;
+	}
+</style>
+<div id="#log"></div>
+
+<!-- line modal -->
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<h3 class="modal-title" id="lineModalLabel">Create post</h3>
+		</div>
+		
+		<div class="modal-body">
+			
+            <!-- content goes here -->
+    	
+    	
+    		    <style>
+	</style>
+    		 
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  var elem = document.getElementById("myBar");  
+
+
+var press=0;
+  
+$(document).ready(function(){
+$("#myProgress").hide(); 
+    var socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
+    socket.on('my response', function(msg) {
+
+
+if (press==1){
+   $("#mybar").show();
+  var width = 0;
+ 
+  var id = setInterval(frame, 90);
+  function frame() {
+
+    if (width >= 100) {
+      clearInterval(id);
+	
+	          $('#messages2').prepend("<form><div class='panel panel-white post panel-shadow user-post'><div class='post-heading'><div class='pull-left image'><img src='static/"+msg.data[2]+"' class='img-circle avatar' alt='user profile image'></div><div class='pull-left meta'> <div class='title h5'><a href='#'><b>"+msg.data[1]+"</b></a> made a post.</div><h6 class='text-muted time'>1 minute ago</h6><div class='new'>New </div></div></div> <div class='post-description'> <p>"+msg.data[0]+"</p><div class='stats'><a href='#' class='btn btn-default stat-item'> <i class='fa fa-thumbs-up icon'></i>2</a> <a href='#' class='btn btn-default stat-item'><i class='fa fa-share icon'></i>12</a></div></div><div class='post-footer'><div class='input-group'> <input class='form-control' placeholder='Add a comment' type='text'></div>				</div></div></form>");
+     width=0;
+	 press=0;
+	 $("#myProgress").hide(); 
+    } else {
+	
+      width++; 
+	  var elem = document.getElementById("myBar");  
+	 $("#mybar").show(); 
+      elem.style.width = width + '%'; 
+    }
+  }
+}
+ })
+
+    $('form#post12').submit(function(event) {
+	press=1;
+			    var url = "http://localhost:5000/postsubmit"; 
+		var getthis=$('#emit_data').val();
+		//if(getthis>98){
+			$.ajax({
+				   type: "POST",
+				   url: url,
+				   data: $("#post12").serialize(), 
+				   success: function(data)
+				   {
+                       console.log(data);		
+					  alert(data); 
+				   }
+				 })
+				 	          
+				// }
+        socket.emit('my event', {data: $('#emit_data').val()});
+        return false;
+    })
+   // $('form#second-comment-submit').submit(function(event) {
+  //      socket.emit('my broadcast event', {data: $('#broadcast_data').val()});
+  //      return false;
+   // });
+   ///posting?id={{session[id]}}&connect=connect
+   
+   
+   
+ 
+   
+     $("#sendbutton").click(function(){
+    $("#myProgress").show(); 
+   })
+   
+   
+})
+
+</script>  
+
+<style>
+.points_picture{
+
+}
+button#sendbutton1 {
+    position: relative;
+    float: left;
+    float: right;
+    margin-left: 12;
+}
+#myProgress{
+display:none;
+
+}
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #00547e;
+}
+.new {
+    
+    margin-top: -71px;
+	float: right;
+    transform: rotate(90deg);
+    background-color: #5b9ec7;
+    height: 21px;
+    padding-right: 3px;
+    border-right: solid black 1px;
+}
+.new::after {
+    border-right: solid red 1px;
+}
+</style>
+
+    		    
+    		    <div class="form-group">
+				<form method="POST" id="post12" action="">
+    		        <label for="description">Description</label>
+    		        <textarea rows="5" class="form-control" id="emit_data"   name="description1" ></textarea>
+    		   
+			
+				  
+		  
+				  
+						<script>
+/*
+$(document).ready(function(){
+var socket=io.connect('http://127.0.0.1:5000');
+
+  socket.on('my response', function(msg) {
+        $('#log').append('<p>Received: ' + msg.data + '</p>');
+    });
+
+ $('form#post12').submit(function(event) {
+        socket.emit('my event', {data: $('#emit_data').val()});
+        return false;
+    });
+
+});
+*/
+</script>
+					<script>
+				 $(document).ready(function(){
+					$("#emoji1").click(function(){
+
+					$('#description1').val($('#description1').val() + '😀');
+						
+						
+						return false;
+					})
+					
+					
+					
+					})
+					 
+				</script>
+					
+    		    </div>
+			
+<style>
+.req-fields{
+display:none;
+
+}
+</style>
+			<script>
+$(document).ready(function(){
+
+
+
+ $('form#post12').submit(function(event) {
+ var text=$('#emit_data').val();
+ var n = text.length; 
+       if(n<=0){
+	   $('.req-fields').css("display", "initial");
+	   return false;
+	   }
+        
+    })
+
+})
+			</script>
+    		    
+    		    <div class="form-group req-fields">
+    		        <p><span class="require">*</span> - required fields</p>
+    		    </div>
+				<!--<div class="types_for_read">
+					<ul class="show_type_read">
+					
+					<li class="type_to_read_li">Brain</li>
+					<li class="type_to_read_li">Heart</li>
+					<li class="type_to_read_li">Eye</li>
+					
+										<li class="type_to_read_li">Brain</li>
+					<li class="type_to_read_li">Heart</li>
+					<li class="type_to_read_li">Eye</li>
+					
+										<li class="type_to_read_li">Brain</li>
+					<li class="type_to_read_li">Heart</li>
+					<li class="type_to_read_li">Eye</li>
+					
+					
+										<li class="type_to_read_li">Brain</li>
+					<li class="type_to_read_li">Heart</li>
+					<li class="type_to_read_li">Eye</li>
+					
+					
+										<li class="type_to_read_li">Brain</li>
+					<li class="type_to_read_li">Heart</li>
+					<li class="type_to_read_li">Eye</li>
+					</ul>
+					
+				
+				</div>-->
+		</div>
+		 <button type="submit" name='action' id="sendbutton" value="post1" class="btn btn-primary">
+    		            Create
+    		        </button>
+					</form>
+
+<style>
+ul.show_type_read {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin-bottom: 12px;
+}
+li.type_to_read_li {
+    align-items: left;
+    float: left;
+    margin-left: 12px;
+    margin-bottom: 21px;
+    background-color: cornflowerblue;
+    padding: 6px;
+    padding-right: 12px;
+}
+</style>
+
+					<div class="load_content_questions">
+		
+
+
+<div class="attentions">Put some expresive questions about the contet!</div>
+<form method='POST' id="questions_answer">
+
+	</br>
+	<div class="form-group" >                   
+
+              
+                    
+                    <select class="form-control" name="selected_post">
+                    <option>Select a post</option>
+					{%for s in messages%}
+                    <option value="{{s[0]}}">{{s[3][:32] | safe}}</option>
+					{%endfor%}
+                    
+                    </select> 
+                
+					
+			<br/>
+	
+	<br/>
+	<input type='checkbox' id="ques_1" name='ques_1' value="1" style="display:none;" class='input_nr_answer1_' ></input>
+	<textarea  id="input_nr_ques_1" style='margin: 0px; height: 74px; width: 671px;' name='input_nr_ques_1' ></textarea>
+	<br/>
+	<input type='checkbox' id="ques_1" name='ques_1' value="1" class='input_nr_answer1_' ></input>
+	<input type='text'   id="input1"   name='input1'  />
+	<br/>
+	<input type='checkbox' id="ques_2" name='ques_2' value="2" class='input_nr_answer12_' />
+	<input type='text' id="input2"  name='input2' />
+	</br>
+	<input type='checkbox' id="ques_3" name='ques_3' value="3" class='input_nr_answer13_' />
+	<input type='text' id="input3" name='input3' />
+	</br>
+	<input type='checkbox' id="ques_4" name='ques_4' value="4" class='input_nr_answer14_' />
+	<input type='text' id="input4"  name='input4' />
+	<br/>
+
+	<button type="submit" name='action' id="sendbutton_Q" value="post1" class="btn btn-primary">Submit</button>
+	</div>
+</form>
+<script>
+
+	  
+$("#sendbutton_Q").click(function() {
+
+    var url = "http://localhost:5000/quest_post_for_user"; 
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#questions_answer").serialize(), 
+           success: function(data)
+           {
+		  
+               console.log(data); 
+           }
+         })
+
+    return false; 
+})
+
+
+</script>
+
+<style>
+.all_ques {
+    margin-left: 16px;
+    /* width: 100%; */
+}
+.attentions {
+    font-size: 20px;
+    margin-left: 17px;
+	    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+</style>
+		</div>
+		
+		<div class="modal-footer">
+			 <div class="form-group">
+			
+			 
+    	<script>	  
+/*$("#sendbutton").click(function() {
+
+    var url = "http://localhost:5000/postsubmit"; 
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#post12").serialize(), 
+           success: function(data)
+           {
+		  
+              // alert(data); 
+           }
+         });
+
+    return false; 
+});
+*/
+  $(".load_content_questions").hide();
+$(document).ready(function(){
+    $("#Q_EST").click(function(){
+        $(".load_content_questions").toggle();
+    })
+})
+
+</script>      <button class="btn btn-primary" id="Q_EST" aria-hidden="true" >Questions</button>
+    		       <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    		    </div>
+		</div>
+		
+	</div>
+  </div>
+</div>
+
+
+
+                        </div>
+					</nav>
+                    
+                </header><!--/#HEADER-->
+
+
+
+
+
+<style>
+.fr-element.fr-view {
+    height: 217px;
+}
+.carte {
+    height: 261px;
+    width: 183px;
+    float: left;
+    margin-bottom: 21px;
+    margin-top: -114px;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,.2);
+    background-color: white;
+	margin-left: 7px;
+}
+img.image_3 {
+    width: 100%;
+    height: 131px;
+}
+.book_name_album {
+    margin-top: 21px;
+    font-size: 18px;
+}
+button#sendbutton {
+    margin-left: 12px;
+    margin-top: -28px;
+    width: 97%;
+}
+</style>
+<div id="myProgress">
+  <div id="myBar"></div>
+</div>
+
+<!--
+<div class="album_carti">
+{% for every_book in carti%}
+<div class="carte">
+<img src="../static/magazin_pic/{{every_book[5]}}" class="image_3">
+<div class="book_name_album"><center><b>{{every_book[1]}}</b></center></div>
+</div>
+{%endfor%}
+</div>
+-->
+{%if comments_find!=0%}
+<div id="messages">
+
+<div class="container">
+    <div class="col-sm-12 col-md-12 col-lg-12 " >
+<div id="messages2">
+
+
+ 
+</div>
+   </div>
+</div>
+<style>
+
+.points_picture{
+    z-index: 1111;
+    position: absolute;
+    top: 21px;
+    left: 31px;
+    color: black;
+    font-stretch: semi-condensed;
+    font-weight: 1000;
+    font-size: 29px;
+    background-color: rgba(138, 105, 255, 1);
+    border-radius: 100%;
+    width: 61px;
+    height: 60px;
+    opacity: 0.6;
+	display:none;
+   
+}
+.number_points_show {
+    position: absolute;
+    left: 17px;
+    top: 11px;
+    /* font-size: 22px; */
+    transform: rotateY(-6deg);
+    font-variant: slashed-zero;
+    font-weight: 12;
+	display:none;
+}
+</style>
+
+{% for j in messages%}
+
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="container">
+    <div class="col-sm-12" id="POST_GREAT_DIV_{{j[0]}}">
+        <div class="panel panel-white post panel-shadow">
+            <div class="post-heading">
+			{% for l in profilepic%}
+			{% if l[6]!=''%}
+                <div class="pull-left image img_{{j[0]}}">
+                    <img src="static/{{l[5]}}" class="img-circle avatar img_{{j[0]}}" alt="user profile image">
+					<div class='points_picture point_{{j[0]}}'>
+					<div class="number_points_show point_2_{{j[0]}}">
+					<center><b>{{j[7]}}</b></center>
+					</div>
+					</div>
+                </div>
+				{%endif%}
+		   {%if l[6]==''%}
+               <div class="pull-left image">
+                    <img src="static/{{l[5]}}" class="img-circle avatar" alt="user profile image">
+                </div>
+           {%endif%}
+		   <script>
+		   $(".img_{{j[0]}}").hover(function(){
+				$(".point_{{j[0]}}").css("display", "inherit");
+				$(".point_2_{{j[0]}}").css("display", "inherit");
+			}, function(){
+				$(".point_{{j[0]}}").css("display", "none");
+				//$(".point_2_{{j[0]}}").css("display", "none");
+			})
+		  
+
+		   </script>
+		
+				{%endfor%}
+                <div class="pull-left meta">
+                    <div class="title h5">
+                      {% for k in row%}
+                        <a href="#" data-toggle="tooltip" title="Hooray! sdfdsdsfsdfssdfdssdfsf				sdfdss"><b>{{k[1]}}</b></a>
+                        made a post.
+                        {%endfor%}
+						
+						<script>
+						//$(document).ready(function(){
+						//	$('[data-toggle="tooltip"]').tooltip();   
+						//})
+
+						</script>
+					   <div class="btn-group">
+         
+            <span align="right" class="glyphicon glyphicon-cog  dropdown-toggle post_menu_top" id="menu123_{{j[0]}}" data-toggle="dropdown"></span>
+			<span class="glyphicon glyphicon glyphicon-edit post_menu_top" data-toggle="modal" data-target="#modal-for-edit_{{j[0]}}" ></span>
+			<span class="glyphicon glyphicon-volume-up post_menu_top" onclick="play_this_{{j[0]}}('{{j[3] | safe}}')"></span>
+			<span class="glyphicon glyphicon-book post_menu_top" data-toggle="modal" data-target="#modal-for-edit_{{j[0]}}" onclick="read_{{j[0]}}()"></span>
+         
+		  
+		  
+		  	<div id="modal-for-edit_{{j[0]}}"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Read</h3>
+      </div>
+      <div class="modal-body">
+			{{j[3] | safe}}
+
+      </div>
+      <div class="modal-footer">
+
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+		  <script>
+		  function play_this_{{j[0]}}(play_this){
+      var url = "http://localhost:5000/listen_voice"; 
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: {"play_this":play_this}, 
+           success: function(data)
+           {
+			console.log(data+"OK");
+             
+           }
+         })
+}
+				 
+		 // function read_{{j[0]}}(){
+		  
+		  
+		//  }
+		  </script>
+		  
+		  <style>
+		 .post_menu_top{
+		  color:cornflowerblue;
+		  
+		  }
+		  .post_menu_top:hover{
+		  color:blue;
+		  
+		  }
+		  </style>
+          <ul class="dropdown-menu settings" role="menu_{{j[0]}}" aria-labelledby="menu123_{{j[0]}}">
+		  
+          
+		   <form class="form-post" id="post_{{j[0]}}" method="POST" action="">
+		   <button class="btn btn-default but-style" id="{{j[0]}}">Delete</button></form>
+		    	<script>	  
+$("#{{j[0]}}").click(function() {
+///delete_post?id={{session[id]}}&connect=connect&post={{j[0]}}
+    var url = "http://localhost:5000/delete_post?id={{session[id]}}&connect=connect&post={{j[0]}}"; 
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#post_{{j[0]}}").serialize(), 
+           success: function(data)
+           {
+		  $("#POST_GREAT_DIV_{{j[0]}}").remove();
+             
+           }
+         })
+
+    return false; 
+})
+</script>   
+            
+				<!-- <form class="form-post" method="POST" action="/edit_post?id={{session[id]}}&connect=connect&post={{j[0]}}">-->
+			
+			<a class="btn btn-default but-style"  data-toggle="modal" data-target="#modal-for-edit"  >Edit</a>
+		<!--	</form>-->
+           <a class="btn btn-default but-style"  onclick="play_{{j[0]}}()" >Listen</a>
+		   <form id="translate_{{j[0]}}" method="POST">
+		     <button class="btn btn-default but-style" class="play_translate_{{j[0]}}"  >Translate</button>
+			 </form>
+<script>
+function play_{{j[0]}}(){
+       var audio = document.getElementById("audio_{{j[0]}}");
+       audio.play();
+                 }
+				 
+			 
+</script>
+  	<script>	  
+$(".play_translate_{{j[0]}}").click(function() {
+///delete_post?id={{session[id]}}&connect=connect&post={{j[0]}}
+    var url = "http://localhost:5000/translate?id={{session[id]}}&connect=connect&select={{j[3]}}"; 
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#translate_{{j[0]}}").serialize(), 
+           success: function(data)
+           {
+			console.log(data+"OK");
+             
+           }
+         })
+
+    return false; 
+})
+
+</script>   
+         
+<audio id="audio_{{j[0]}}" src="{{j[6]}}" ></audio>
+<style>
+#audio{
+display:none;
+}
+</style>
+
+            
+			
+			<hr class="hr-form"/>
+			
+            <form class=" form-post-final"   method="POST" action="/report_post?id={{session[id]}}&connect=connect&post={{j[0]}}">
+			<button class="btn btn-default but-style" >Report</button></form>
+          </ul>
+		  
+		  
+		  
+		  
+        </div>
+		
+		
+		
+		<div id="modal-for-edit"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Edit post</h3>
+      </div>
+      <div class="modal-body">
+ 		<script>
+$(document).ready(function(){
+
+
+
+ $('form#edit-form').submit(function(event) {
+ var text=$('#emit_data2').val();
+ var n = text.length; 
+       if(n<=0){
+	   $('.req-fields2').css("display", "initial");
+	   return false;
+	   }
+        
+    })
+
+})
+</script>
+			
+			
+ <div class="form-group">
+				<form method="POST" id="edit-form{{j[0]}}" action="">
+    		        <label for="description"></label>
+    		        <textarea rows="5" class="form-control" id="emit_data2_{{j[0]}}"   name="description3" >{{j[3]}}</textarea>
+    		     <h3><p> <span class="emoji0" id="emoji1">😀</span>
+				 <span class="emoji0" id="emoji2 ">😃</span> 
+				 <span class="emoji0" id="emoji3">😄</span>
+				 <span class="emoji0" id="emoji4">😁 </span>
+				 <span class="emoji0" id="emoji5">😆 </span>
+				 <span class="emoji0" id="emoji6"> 😅</span>
+				<span class="emoji0" id="emoji7"> 😂</span>
+				<span class="emoji0" id="emoji8"> ☺️ </span>
+				 <span class="emoji0" id="emoji9">😊 </span>
+				 <span class="emoji0" id="emoji10">😇 </span>
+				 <span class="emoji0" id="emoji11">😉 </span>
+				 <span class="emoji0" id="emoji12">😌 </span>
+				 <span class="emoji0" id="emoji13">😍 </span>
+				<span class="emoji0" id="emoji14"> 😘 </span>
+				<span class="emoji0" id="emoji15"> 😗 </span>
+				<span class="emoji0" id="emoji16"> 😙 </span>
+				 <span class="emoji0" id="emoji17">😚 </span>
+				 <span class="emoji0" id="emoji18">😡 </span>
+				 <span class="emoji0" id="emoji19">😯 </span>
+				 <span class="emoji0" id="emoji20">😦 </span></p></h3>
+				 <h3><p> 
+				 <span class="emoji0" id="emoji21">😋 </span>
+				<span class="emoji0" id="emoji22"> 😜 </span>
+				 <span class="emoji0" id="emoji23">😝 </span>
+				 <span class="emoji0" id="emoji24">😛 </span>
+				 <span class="emoji0" id="emoji25">😎 </span>
+				 <span class="emoji0" id="emoji26">😏 </span>
+				<span class="emoji0" id="emoji27"> 😒 </span>
+				 <span class="emoji0" id="emoji28">😞 </span>
+				 <span class="emoji0" id="emoji29">😔 </span>
+				 <span class="emoji0" id="emoji30">😟 </span>
+				 <span class="emoji0" id="emoji31">😕 </span>
+				<span class="emoji0" id="emoji32"> ☹️ </span>
+				<span class="emoji0" id="emoji33"> 😣 </span>
+				<span class="emoji0" id="emoji34"> 😖 </span>
+				<span class="emoji0" id="emoji35"> 😫 </span>
+				<span class="emoji0" id="emoji36"> 😩 </span>
+				<span class="emoji0" id="emoji37"> 😤 </span>
+				<span class="emoji0" id="emoji38"> 😠 </span>
+				 <span class="emoji0" id="emoji39">😧 </span>
+				 <span class="emoji0" id="emoji40">😮</span></p></h3>
+				  
+		
+					
+    		    </div>
+				<style>
+				.req-fields2{
+				display:none;
+				}
+				</style>
+                <div class="form-group req-fields2">
+    		        <p><span class="require">*</span> - required fields</p>
+    		    </div>
+      </div>
+      <div class="modal-footer">
+	  <button type="submit" name='action' id="sendbutton{{j[0]}}" value="post1"  class="btn btn-primary">
+    		            Edit
+    		        </button>
+					</form>
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+		
+	    	<script>	  ///edit_post?id={{session[id]}}&connect=connect&edit_post={{j[0]}}
+$("#sendbutton{{j[0]}}").click(function() {
+///delete_post?id={{session[id]}}&connect=connect&post={{j[0]}}
+    var url = "http://localhost:5000/edit_post?id={{session[id]}}&connect=connect&edit_post={{j[0]}}"; 
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#edit-form{{j[0]}}").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+		  var replace_post= document.getElementById("emit_data2_{{j[0]}}").value;
+		  $("#edit_post_{{j[0]}}").replaceWith(replace_post);
+              replace_post="";
+           }
+         })
+    return false; 
+})
+
+</script> 
+		
+                    </div>
+                    <h6 class="text-muted time">1 minute ago</h6>
+                </div>
+            </div> 
+            <div class="post-description"> 
+                <p id="edit_post_{{j[0]}}">
+				
+				
+				
+				</p>
+				<script>
+				var descrie1="{{j[3] | safe}}";
+				
+				var descriere_post=descrie1.substr(1,300);
+				$("#edit_post_{{j[0]}}").replaceWith(descriere_post);
+				</script>
+			
+                <div class="stats">
+                    <button  id="{{j[0]}}" class="btn btn-default stat-item">
+                        <i class="fa fa-thumbs-up icon" id="{{j[0]}}1"></i><span id="number"></span>
+					
+                    </button>
+					
+
+
+						<script>
+$(document).ready(function(){
+
+
+	var l=1;
+	
+		$("#{{j[0]}}").click(function(){
+		if (l==1){
+			$('#{{j[0]}}1').css("color", "red");
+		   l=0;
+			}else if (l==0){   
+			$('#{{j[0]}}1').css("color", "black");
+				l=1;
+	       } 
+		})
+		
+
+	
+	return false;
+
+})
+
+
+	
+						
+</script>
+						
+						
+						
+                    <a href="#myModal" role="button" data-toggle="modal" class="btn btn-default stat-item">
+					
+                        <i class="fa fa-share icon"></i>12
+                    </a>
+					<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Commets</h3>
+      </div>
+      <div class="modal-body">
+<!--
+                 {% for k in row2%}
+				 {{k[1]}}{{j[0]}}
+				 {%if k[1]==j[0]%}
+                <ul class="comments-list">
+                    <li class="comment">
+                        <a class="pull-left" href="#">
+						{% for l in profilepic%}
+						{%if l[0]==k[3] %}
+                            <img class="avatar" src="static/{{l[5]}}" alt="avatar">
+                       {%endif%}
+					   {%endfor%}
+					   </a>
+                        <div class="comment-body">
+                            <div class="comment-heading">
+                              
+                                <h4 class="user">{{k[0]}} </h4>
+                                <h5 class="time">5 minutes ago</h5>
+                            </div>
+                            <p>{{k[0]}}</p>
+                        </div>
+                        
+                    </li>
+                </ul>
+				{%endif%}
+                {%endfor%}
+				-->
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+                </div>
+				
+            </div>
+            <div class="post-footer" id="postiong_foot_{{j[0]}}">
+                <div class="input-group"> 
+
+                  <form method="post" id="second_comment_submit_{{j[0]}}" action="">
+                    <input class="form-control second_input_form" name="{{j[0]}}" id="id_post_{{j[0]}}" placeholder="Add a comment" type="text"/>
+                    <button type="submit" id="but_com_{{j[0]}}" name="action"  class="csd input-group-addon fa fa-edit" value="{{j[0]}}" value=search>
+                    </form>
+					  
+<script>
+$("#but_com_{{j[0]}}").click(function() {
+///delete_post?id={{session[id]}}&connect=connect&post={{j[0]}}
+    var url = "http://localhost:5000/second_comments?id={{id_general_user}}&connect=connect&second_comment={{j[0]}}"; 
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#second_comment_submit_{{j[0]}}").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+		   var obj233 = data.vb;
+		  console.log(obj233);
+		  // alert(obj233);
+		   var post_comment=document.getElementById("id_post_{{j[0]}}").value;
+		    $("#postiong_foot_{{j[0]}}").append("  <ul class='comments-list' id='comment12_{{j[0]}}'>  <li class='comment add_comment'><a class='pull-left' href='#'><img class='avatar' src='../static/"+data.vb[0][5]+"' alt='avatar'></a><div class='comment-body'><div class='comment-heading'><h4 class='user'> "+data.vb[0][1]+"</h4><h5 class='time'>5 minutes ago</h5> </div> <p id='com_{{j[0]}}'>"+post_comment+"</p></div></li></ul>");
+           }
+         })
+
+    return false; 
+})
+
+</script> 
+
+                    
+                </div>
+
+
+              {% for k in row2%}
+				 {%if k[1]==j[0]%}
+				 <div id="compp{{j[0]}}">
+                <ul class="comments-list" id="comment12_{{j[0]}}">
+                    <li class="comment">
+                        <a class="pull-left" href="#">
+					
+                            <img class="avatar" src="static/{{k[3]}}" alt="avatar">
+                      
+					   </a>
+                        <div class="comment-body">
+                            <div class="comment-heading">
+                              
+                                <h4 class="user">{{k[2]}} </h4>
+                                <h5 class="time">5 minutes ago</h5>
+                            </div>
+                            <p id="com_{{j[0]}}">{{k[0] | safe}}</p>
+                        </div>
+                        
+                    </li>
+                </ul>
+				</div>
+				{%endif%}
+                {%endfor%}
+				
+            </div>
+        </div>
+    </div>
+</div>
+{%endfor%}
+</div>
+
+{%endif%}
+</div>
+</body>
+
+
+<style>
+.avatar{
+border-radius:100%;
+
+}
+.navbar.navbar-default.navbar-fixed-top {
+    z-index: 10;
+}
+.input-group {
+z-index:1;
+    width: 1068px;
+}
+.second_input_form {
+
+    width: 236px;
+}
+.emoji0{
+cursor:pointer;
+}
+.require {
+    color: #666;
+}
+label small {
+    color: #999;
+    font-weight: normal;
+}
+.post-footer {
+    max-height: 356;
+    overflow-y: scroll;
+}
+.csd{
+	display: none;
+}
+.input-group-addon.fa.fa-edit {
+    position: relative;
+    left: 210;
+    top: -34px;
+}
+.com1 {
+    position: relative;
+    left: 232;
+    top: -35px;
+    height: 36;
+    }
+.panel-shadow {
+    box-shadow: 0 1px 2px rgba(0,0,0,.1)
+}
+.panel-white {
+  border: 1px solid #dddddd;
+}
+.panel-white  .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.panel-white  .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+.post .post-heading .meta .title a {
+  color: black;
+}
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+.post .post-heading .meta .time {
+  margin-top: 8px;
+  color: #999;
+}
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+.post .post-description {
+  padding: 15px;
+}
+.post .post-description p {
+  font-size: 14px;
+}
+.post .post-description .stats {
+  margin-top: 20px;
+}
+.post .post-description .stats .stat-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+.post .post-description .stats .stat-item .icon {
+  margin-right: 8px;
+}
+.post .post-footer {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+}
+.post .post-footer .input-group-addon a {
+  color: #454545;
+}
+.post .post-footer .comments-list {
+  padding: 0;
+  margin-top: 20px;
+  list-style-type: none;
+}
+.post .post-footer .comments-list .comment {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+.post .post-footer .comments-list .comment .avatar {
+  width: 35px;
+  height: 35px;
+}
+.post .post-footer .comments-list .comment .comment-heading {
+  display: block;
+  width: 100%;
+}
+.post .post-footer .comments-list .comment .comment-heading .user {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  margin-top: 0;
+  margin-right: 10px;
+}
+.post .post-footer .comments-list .comment .comment-heading .time {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 0;
+  display: inline;
+}
+.post .post-footer .comments-list .comment .comment-body {
+  margin-left: 50px;
+}
+.post .post-footer .comments-list .comment > .comments-list {
+  margin-left: 50px;
+}
+.panel.panel-white.post.panel-shadow {
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+body{
+background-size: cover;
+}
+.modal-dialog {
+    width: 76%;
+}
+button#sendbutton {
+    margin-left: 12px;
+    margin-top: -9px;
+    width: 97%;
+    margin-bottom: 16px;
+}
+</style>
+
+ 
+
+
+
+<script>
+$(function() {
+  $('textarea#emit_data').froalaEditor()
+  $('textarea#emit_data_books').froalaEditor()
+  $('textarea#emit_data_news').froalaEditor()
+})
+var overlay = document.getElementById("overlay");
+
+window.addEventListener('load', function() {
+ // $("body").css("overflow-y","hidden");
+  overlay.style.display = 'none';
+  $("body").css("overflow-y","scroll")
+})
+</script>
+
+
+			
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0//js/froala_editor.pkgd.min.js"></script>		
+				
+				
+
+
+
+<div class="fd">
+
+</div>
+
+<div id="lateral_menu_to_show">
+
+
+</div>
+<script>
+$(".fd").load("/second_chat_bot")
+$(".load_news").load("/news_to_show");
+$("#lateral_menu_to_show").load("/lateral_menu");
+
+</script>
+<style>
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+}
+</style>
+{%endblock%}

@@ -1,0 +1,1482 @@
+{%for z in profilepic%}
+<!-- <link rel="icon" type="image/jpg" href="static/{{z[5]}}"/> -->
+<title>{{z[2]}}</title>
+{%endfor%}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+
+
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  .hr-form{
+  
+    margin-top: 20px;
+    margin-bottom: 0px;
+    border: 0;
+    border-top: 1px solid #eee;
+  }
+  .form-post-final{
+  height:21px;
+  }
+  .form-post{
+  height: 22;
+  }
+  .settings{
+  
+  z-index:2;
+  }
+  .menu{
+  z-index:100;
+  }
+  .profile-photo {
+    position: relative;
+    top: -147;
+	cursor:pointer;
+	border: white solid;
+}
+.back-photo{
+cursor:pointer;
+} 
+p{
+color:red;}
+.df{
+display:none;
+}
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.btn{
+margin-top:10px;}
+.menu
+{
+background-color: #00547E;
+border-bottom: 4px solid #04A3ED;
+width:100%;
+height: auto;
+padding: 0 10px;
+position: fixed;
+margin: 0px;
+    top: 0;
+    z-index: 4;
+    opacity: 1;
+}
+
+.menu  .navbar-nav > .active > a
+{
+background-color : #04A3ED;
+color: white;
+font-weight: bold;
+}
+
+.menu  .navbar-nav >  li >  a
+{
+font-size: 13px;
+color: white;
+padding: 10px 35px;
+
+}
+.menu  .navbar-nav >  li >  a:hover
+{
+background-color: #04A3ED;
+}
+
+.navbar-header > a
+{
+font-family: 'Ubuntu Condensed', sans-serif;
+padding: 0px;
+margin: 0px;
+text-decoration: none;
+color: white;
+font-size: 25px;
+padding: 5px 30px;
+}
+.navbar-header > a:hover
+{
+text-decoration: none;
+color: #04A3ED;
+}
+.cont{
+
+top:123px;}
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+a {
+text-decoration:none;
+color:white;
+}
+
+.ul1 > .li1{
+display:inline;
+
+padding:10px;
+}
+a:hover,.li1:hover{
+	background-color:#0D456F;
+    color:#337ab7;
+    text-decoration:none; 
+}
+
+.ul1{
+	position:relative;
+	float:right;
+	margin-top:35px;
+}
+.navbar-header {
+	width:100%;
+}
+.li1:hover a {
+	color:#337ab7;
+	
+}
+.li1:hover {
+	cursor: pointer;
+}
+a {
+ text-decoration: none;
+}
+</style>
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,400,700);
+
+body{
+    background:#e9eaed;
+	}
+    
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Open Sans Condensed', sans-serif, sans-serif;
+}
+	
+.container{
+	}
+
+.wrapper{
+	}
+
+#header{
+	border:1px solid #ddd;
+	margin-bottom:20px;
+	}
+	
+.navbar.navbar-default {
+    height: 11px;
+}
+
+	
+.navbar{
+	border-radius:0;
+	margin-bottom:0;
+	border:none;
+        font-family: 'Open Sans Condensed', sans-serif, sans-serif;
+
+	}
+    
+.navbar > li >a{
+    
+    }
+	
+
+	
+.navbar-header{
+	}
+	
+.navbar-brand{
+width:160px;
+height:160px;
+float:left;
+padding:0;
+margin-top:-130px;
+overflow:hidden;
+border:3px solid #eee;
+margin-left:15px;
+background:#333;
+text-align:center;
+line-height:160px;
+color:#fff !important;
+font-size:2em;
+    
+  		position: relative;
+    top: -109px;
+
+	}
+
+
+
+	.upload:hover {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+    width: 14%;
+    height: 80;
+    opacity: 0.8;
+    z-index: -223;
+}
+
+
+
+
+.site-name{
+	color:#fff;
+	font-size:2.4em;
+	float:left;
+	margin-top:-65px !important;
+	margin-left: 217;
+        font-family: 'Open Sans Condensed', sans-serif, sans-serif;
+
+	}	
+.site-description{
+	color:#fff;
+	font-size:1.3em;
+	float:left;
+	margin-top:-30px !important;
+	margin-left:15px;
+	}
+	
+.main-menu{
+    position: absolute;
+    left: 211px;
+}
+	
+.slider, .carousel{
+	max-height:360px;
+	overflow:hidden;
+	}
+	
+.carousel-control .fa-angle-left,
+.carousel-control .fa-angle-right {
+position: absolute;
+top: 50%;
+font-size:2em;
+z-index: 5;
+display: inline-block;
+}
+
+.carousel-control{
+	background-color:transparent;
+	background-image:none !important;
+	}
+	
+.carousel-control:hover,
+.carousel-control:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color:transparent !important;
+  background-image:none !important;
+  outline: 0;
+}
+
+
+	
+
+	
+	
+@media (max-width: 768px) {
+.navbar-brand{
+    max-width: 100px;
+	max-height:100px;
+	float:left;
+	margin-top:-65px;
+	margin-left:15px;
+	
+  
+  }
+  
+
+  
+
+
+.navbar{
+	border-radius:0;
+	margin-bottom:0;
+	border:none;
+	}
+	
+.main-menu{
+	left:0;
+	position:relative;
+	}
+
+
+}
+
+@media (max-width: 490px) {
+	.site-name{
+	color:#fff;
+	font-size:1.5em;
+	float:left;
+	line-height:20px;
+	margin-top:-100px !important;
+	margin-left: 217;
+	}	
+.site-description{
+	color:#fff;
+	font-size:1.3em;
+	float:left;
+	margin-top:-80px !important;
+	margin-left:125px;
+	}
+	}
+
+	
+	
+	
+	
+	
+    .scrooller{
+      background-color: white;
+      box-shadow: 0 1px 2px rgba(0,0,0,.5);
+      padding: 5px
+    }
+	
+    #header {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.btn-bs-file{
+    position:relative;
+}
+.btn-bs-file input[type="file"]{
+    position: absolute;
+    top: -9999999;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    width:0;
+    height:0;
+    outline: none;
+    cursor: inherit;
+}
+
+.but-style{
+border:solid white 0px;
+width:100%;
+}
+.but-style:hover{
+background-color: #e6e6e6;
+width:100%;
+
+}
+.greater-div-1 {
+    margin-top: 126px;
+	}
+</style>
+<body id="first_body">
+<div class="page-header" id="page-header-id">
+<div class="menu" id="menu_id">
+
+    <div class="container-fluid">
+		<div class="navbar-header">
+			<a href="/">Bloggstil</a>
+
+
+		    <ul class="ul1">
+			 <li class="li1"><a href="{{url_for('index',medic=0,id=session['id'],connect=session['connect'])}}">Home</a></li>
+        <li class="li1"><a href="{{url_for('user_profile',medic=0,id=session['id'],connect=session['connect'])}}">Profil</a></li>
+		    <li class="li1"><a href="{{url_for('magazin')}}">Abonari</a></li>
+		    <li class="li1"><a href="{{url_for('login')}}">Bratara</a></li>
+		  <li class="li1"><a href="{{url_for('register')}}">Logout</a></li>
+		 </ul>
+
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+
+<div class="wrapper">
+        <div class="container">
+        	<div class="row">
+                <div class="col-md-12">
+                <header id="header">
+
+  <div class="slider">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+  {%for z in profilepic%}
+  {% if z[6]==''%}
+    <div class="item active">
+      <img data-toggle="modal" class="back-photo" data-target="#squarespaceModal3" src="http://placehold.it/1200x400/F34336/F34336&text=WORDPRESS THEME DEVELOPER">
+    </div>
+	{%endif%}
+	 {% if z[6]!=''%}
+    <div class="item active">
+      <img  data-toggle="modal" class="back-photo" data-target="#squarespaceModal3"  width="1200px" src="static/{{z[6]}}">
+    </div>
+	{%endif%}
+    
+	{%endfor%}
+  </div>
+  <div id="squarespaceModal3"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Background image</h3>
+      </div>
+      <div class="modal-body">
+ 
+<form action="/back_upload2?id={{session[id]}}&connect=connect" method="POST" enctype="multipart/form-data" multiple="multiple">
+   <br/>
+<img id="blah1" src="#" alt="your image" />
+ <style>
+#blah1 {
+    width: 567px;
+}
+</style>
+
+      </div>
+      <div class="modal-footer">
+	  <label class="btn-bs-file btn  btn-primary" >  
+  Browse <input type="file" name="file" id="imgInp1">
+   </label>
+	      <input class="btn btn-primary" type="submit">
+</form>
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    function readURL2(input2) {
+        if (input2.files && input2.files[0]) {
+            var reader2 = new FileReader();
+            
+            reader2.onload = function (e) {
+                $('#blah1').attr('src', e.target.result);
+            }
+            
+            reader2.readAsDataURL(input2.files[0]);
+        }
+    }
+    
+    $("#imgInp1").change(function(){
+        readURL2(this);
+    });
+</script>
+  <!-- Controls -->
+ 
+</div>
+                	</div><!--slider-->
+                	<nav class="navbar navbar-default" id="profile-get">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+
+                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                          {% for i in row%}
+						  {%if i[5]==''%}
+                          <a class="navbar-brand back-photo"  data-toggle="modal" data-target="#squarespaceModal2" ></a>
+						  {%endif%}
+						    {%if i[5]!=''%}
+                          <img src="static/{{i[5]}}"  class="profile-photo"  width="198px" height="198px" data-toggle="modal" data-target="#squarespaceModal2" >
+						  
+						  {%endif%}
+						  
+						  
+<div id="squarespaceModal2"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Profile image</h3>
+      </div>
+      <div class="modal-body">
+ 
+<form action="/upload2?id={{session[id]}}&connect=connect" method="POST" enctype="multipart/form-data" multiple="multiple">
+
+ <br/>
+<img id="blah" src="#" alt="your image" />
+      </div>
+      <div class="modal-footer">
+	   <label class="btn-bs-file btn  btn-primary">  
+ Browse <input type="file" name="file" id="imgInp" >
+ 
+	</label>
+	     <input class="btn btn-primary" type="submit">
+</form>
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+#blah {
+    width: 567px;
+}
+</style>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#imgInp").change(function(){
+        readURL(this);
+    });
+</script>
+
+ <span class="site-name"><b>{{i[1]}}</b> </span>
+                          {%endfor%}
+<!-- <span class="site-description" style="display:'none';">worpress theme developer</span> -->
+                          <div class="upload"></div>
+                         
+                         
+                        </div>
+  <style>
+button.btn.btn-primary.center-block.first-button-menu {
+    position: relative;
+ 
+    top: 8px;
+    margin: 2px;
+   
+}
+button.btn.btn-primary.center-block.second-button-menu {
+    margin-left: -4px;
+    margin-top: 12;
+}
+</style>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+						 <form method="POST" action="" id="idForm"> 
+                        <div class="collapse navbar-collapse" id="mainNav" >
+                          <ul class="nav main-menu navbar-nav">
+                          <li><button class="btn btn-primary center-block first-button-menu Subscriptions-1" > Subscriptions</button></li>
+						  
+                         <!--   <li><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-primary center-block second-button-menu">Post</button></li>-->
+
+                            <li><button class="btn btn-primary center-block first-button-menu Likes-2" > Likes</button></li>
+							  <li><button class="btn btn-primary center-block first-button-menu Favorites-3" > Favorites</button></li>
+							    <li><button class="btn btn-primary center-block first-button-menu Settings-3" data-target="#modal-for-edit2" role="button" data-toggle="modal" > Settings</button></li>
+                          </ul>
+                          </form>
+<div id="modal-for-edit2"  class="modal fade " tabindex="-1" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-special">
+    <div class="modal-content  modal-lg">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        
+      </div>
+      <div class="modal-body">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 col-md-12 col-sm-8 col-xs-9 bhoechie-tab-container">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bhoechie-tab-menu">
+              <ul class="list-group">
+                <a href="#" class="list-group-item active">
+                  <i class="glyphicon glyphicon-home"></i> Colors</a>
+                <a href="#" class="list-group-item ">
+                  <i class="glyphicon glyphicon-road"></i> Designs
+                </a>
+                <a href="#" class="list-group-item">
+                  <h4 class="glyphicon glyphicon-home"></h4><br/>Peoaple Colors
+                </a>
+                <a href="#" class="list-group-item">
+                  <h4 class="glyphicon glyphicon-cutlery"></h4><br/>Moves
+                </a>
+                <a href="#" class="list-group-item">
+                  <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Favorites
+                </a>
+              </ul>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+                <!-- flight section -->
+                <div class="bhoechie-tab-content active">
+         <style>
+.ul-1{
+
+list-style-type:none;
+}
+#color23{
+
+width:42px;
+}
+input.btn.btn-primary.button-submit {
+    position: relative;
+    top: -21px;
+    margin-left: 45px;
+}
+</style>		 
+<script>
+function processData(c1,c2) {
+	var cv1 = document.getElementById(c1).value;
+	var cv2 = document.getElementById(c2).value;
+	
+	// Use Ajax-PHP to send the values to server storage
+	// Ajax-PHP Video Tutorial - www.developphp.com/view.php?tid=1185
+}
+</script>
+
+<h2>Color Picker</h2>
+<form method="POST" id="color-picker">
+<ul class="ul-1">
+  <li>  Header: <input type="color" name="color1" id="color1" value="#ff0000"><br /><br /></li>
+<li>Background: <input type="color" name="color2" id="color2" value="#ff0000"><br /><br /></li>
+ <li>  Content: <input type="color" name="color3" id="color3" value="#ff0000"><br /><br /></li>
+<li>Font-size:  <input type="number" width="12px" name="color4" id="color4"><br /><br /></li>   
+<li>Font-color: <input type="color" name="color5" id="color5" value="#ff0000"><br /><br /> </li>  
+<li>Profile: <input type="color" name="color6" id="color6" value="#ff0000"><br /><br /> </li>  
+</ul>
+<script>
+//$(document).ready(function(){
+ //   $("button").click(function(){
+  //      alert("Background color = " + $("p").css("background-color"));
+ //   });
+//});
+</script>
+<input type="button" class="btn btn-primary button-submit" id="submit_color_picker" onClick="processData('color1','color2')" value="Submit" />
+</form>
+<script>
+
+$("#submit_color_picker").click(function() {
+
+    var url = "http://localhost:5000/colors_design"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#color-picker").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+		   $("#chat").val("");
+		   $("#name").val("");
+       
+        $("#myProgress").show();
+   
+  setTimeout( move(), 5000);
+function move() {//color3
+    var header2= document.getElementById("color1").value; 
+	var color2= document.getElementById("color2").value;
+	var color3= document.getElementById("color3").value; 
+	var color4= document.getElementById("color4").value; 
+	var color5= document.getElementById("color5").value;
+	var color6= document.getElementById("color6").value; 
+
+//	console.log(header1);
+  var elem = document.getElementById("myBar");   
+  var header1=document.getElementById("menu_id");
+  var content1=document.getElementById("greater-div-2");
+  var background=document.getElementById("first_body");
+  var page_header_id=document.getElementById("page-header-id");
+  var profile_get=document.getElementById("profile-get");  
+  
+  
+  
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+	width = 1;
+	elem.style.width = width + '%'; 
+	
+	
+	
+	//
+	
+	header1.style.background=header2;
+	content1.style.background=color3;
+	background.style.background=color2;
+	page_header_id.style.background=color2;
+	page_header_id.style.border="1px solid"+color2;
+	profile_get.style.border="1px solid"+color6;
+	profile_get.style.background=color6;
+	background.style.font_size=color4;
+	background.style.color=color5;
+//	header1.style.background=header2;
+
+	
+	
+      clearInterval(id);
+	  
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+
+    }
+  }
+}
+
+
+
+
+//
+           }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+});
+$(document).ready(function(){
+    $("#submit_color_picker").click(function(){
+          $("#myProgress").show();
+    });
+	$("#myProgress").hide();
+ 
+});
+</script>
+<div id="myProgress">
+  <div id="myBar"></div>
+</div>
+
+{%for n in select_color%}
+<style>
+
+
+</style>
+{%endfor%}
+<style>
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #00547e;
+}
+</style>
+
+
+                </div>
+                <!-- train section -->
+                <div class="bhoechie-tab-content">
+                    <center>
+                      <h1 class="glyphicon glyphicon-pencil" style="font-size:12em;color:#55518a"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                      <h3 style="margin-top: 0;color:#55518a">Train Reservation</h3>
+                    </center>
+                </div>
+    
+                <!-- hotel search -->
+                <div class="bhoechie-tab-content">
+                    <center>
+                      <h1 class="glyphicon glyphicon-home" style="font-size:12em;color:#55518a"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                      <h3 style="margin-top: 0;color:#55518a">Hotel Directory</h3>
+                    </center>
+                </div>
+                <div class="bhoechie-tab-content">
+                    <center>
+                      <h1 class="glyphicon glyphicon-cutlery" style="font-size:12em;color:#55518a"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                      <h3 style="margin-top: 0;color:#55518a">Restaurant Diirectory</h3>
+                    </center>
+                </div>
+                <div class="bhoechie-tab-content">
+                    <center>
+                      <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#55518a"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                      <h3 style="margin-top: 0;color:#55518a">Credit Card</h3>
+                    </center>
+                </div>
+            </div>
+        </div>
+  </div>
+</div>
+
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+.modal-special{
+
+width:64%;
+height:80%;
+}
+
+/*  bhoechie tab */
+
+div.bhoechie-tab-menu{
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+div.bhoechie-tab-menu ul.list-group{
+  margin-bottom: 0;
+  list-style:none;
+}
+div.bhoechie-tab-menu ul.list-group>a{
+  margin-bottom: 0;
+  text-align:left;
+}
+div.bhoechie-tab-menu ul.list-group>a .glyphicon,
+div.bhoechie-tab-menu ul.list-group>a .fa {
+  color: #5A55A3;
+}
+div.bhoechie-tab-menu ul.list-group>a:first-child{
+  border-top-right-radius: 0;
+  -moz-border-top-right-radius: 0;
+}
+div.bhoechie-tab-menu ul.list-group>a:last-child{
+  border-bottom-right-radius: 0;
+  -moz-border-bottom-right-radius: 0;
+}
+div.bhoechie-tab-menu ul.list-group>a.active,
+div.bhoechie-tab-menu ul.list-group>a.active .glyphicon,
+div.bhoechie-tab-menu ul.list-group>a.active .fa{
+  background-color:#286090;
+  background-image: #5A55A3;
+  color: #ffffff;
+}
+div.bhoechie-tab-menu ul.list-group>a.active:after{
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -13px;
+  border-left: 0;
+  border-bottom: 13px solid transparent;
+  border-top: 13px solid transparent;
+  border-left: 10px solid #5A55A3;
+}
+
+div.bhoechie-tab-content{
+  background-color: #ffffff;
+  /* border: 1px solid #eeeeee; */
+  padding-left: 82px;
+  padding-top: 10px;
+}
+
+div.bhoechie-tab div.bhoechie-tab-content:not(.active){
+  display: none;
+}
+div.bhoechie-tab-menu ul.list-group>a {
+    margin-bottom: 0;
+    text-align: left;
+}
+div.bhoechie-tab-container {
+    z-index: 10;
+    background-color: #ffffff;
+    padding: 0 !important;
+    border-radius: 4px;
+    width: 70%;
+    -moz-border-radius: 4px;
+    
+    /* margin-top: 20px; */
+    /* margin-left: 50px; */
+    /* margin-right: -44px; */
+    /* -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175); */
+    /* box-shadow: 0 6px 12px rgba(0,0,0,.175); */
+    -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    background-clip: padding-box;
+    opacity: 0.97;
+    filter: alpha(opacity=97);
+}
+.greater-div-1 {
+    height: 350px;
+    background-color: #e9eaed;
+    /* box-shadow: 0 1px 2px rgba(0,0,0,.5); */
+}
+</style>
+						  <script>
+						  
+ $(document).ready(function(){
+  $(".greater-div-1").load("/subscription");
+    $(".Subscriptions-1").click(function(event1){
+        $(".greater-div-1").load("/subscription");
+		event1.preventDefault();
+    });
+	
+	 $(".Likes-2").click(function(event2){
+        $(".greater-div-1").load("/like_page1");
+		event2.preventDefault();
+    });
+	
+	
+	 $(".Favorites-3").click(function(event3){
+        $(".greater-div-1").load("/favorite");
+		event3.preventDefault();
+    });
+	 
+         $(".Settings-3").click(function(event3){
+       
+		event3.preventDefault();
+    });
+    });
+	
+	$(document).ready(function() {
+    $("div.bhoechie-tab-menu>ul.list-group>a").click(function(e) {
+        e.preventDefault();
+        $(this).siblings('a.active').removeClass("active");
+        $(this).addClass("active");
+        var index = $(this).index();
+        $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+        $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+    });
+});
+
+						  </script>
+<script>
+
+$("#for_button_abonati").click(function() {
+
+    var url = "http://localhost:5000/abonare"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#idForm").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+		   $("#chat").val("");
+		   $("#name").val("");
+           alert(data); // show response from the php script.
+           }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+});
+</script>
+
+
+<div id="#log"></div>
+
+<!-- line modal -->
+
+                        </div>
+					</nav>
+                    
+                </header><!--/#HEADER-->
+
+
+
+
+
+<div class="greater-div-1" id="greater-div-2">
+
+
+
+</div>
+
+<style>
+.greater-div-1 {
+    //height: 350px;
+    //background-color: white;
+	//box-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+</style>
+{%if comments_find!=0%}
+<div id="messages">
+
+{% for j in messages%}
+ 
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="container">
+    <div class="col-sm-12">
+        <div class="panel panel-white post panel-shadow">
+            <div class="post-heading">
+			{% for l in profilepic%}
+			{% if l[6]!=''%}
+                <div class="pull-left image">
+                    <img src="static/{{l[5]}}" class="img-circle avatar" alt="user profile image">
+                </div>
+				{%endif%}
+		   {%if l[6]==''%}
+               <div class="pull-left image">
+                    <img src="static/{{l[5]}}" class="img-circle avatar" alt="user profile image">
+                </div>
+           {%endif%}
+		   
+				{%endfor%}
+                <div class="pull-left meta">
+                    <div class="title h5">
+                      {% for k in row%}
+                        <a href="#"><b>{{k[1]}}</b></a>
+                        made a post.
+                        {%endfor%}
+						
+						
+				
+		<div id="modal-for-edit"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Edit post</h3>
+      </div>
+      <div class="modal-body">
+ 		<script>
+$(document).ready(function(){
+
+
+
+ $('form#edit-form').submit(function(event) {
+ var text=$('#emit_data2').val();
+ var n = text.length; 
+       if(n<=0){
+	   $('.req-fields2').css("display", "initial");
+	   return false;
+	   }
+        
+    });
+
+});
+			</script>
+ <div class="form-group">
+				<form method="POST" id="edit-form" action="/edit_post2?id={{session[id]}}&connect=connect&edit_post={{j[0]}}">
+    		        <label for="description">Description</label>
+    		        <textarea rows="5" class="form-control" id="emit_data2"   name="description3" >{{j[3]}}</textarea>
+    		     <h3><p> <span class="emoji0" id="emoji1">😀</span>
+				 <span class="emoji0" id="emoji2 ">😃</span> 
+				 <span class="emoji0" id="emoji3">😄</span>
+				 <span class="emoji0" id="emoji4">😁 </span>
+				 <span class="emoji0" id="emoji5">😆 </span>
+				 <span class="emoji0" id="emoji6"> 😅</span>
+				<span class="emoji0" id="emoji7"> 😂</span>
+				<span class="emoji0" id="emoji8"> ☺️ </span>
+				 <span class="emoji0" id="emoji9">😊 </span>
+				 <span class="emoji0" id="emoji10">😇 </span>
+				 <span class="emoji0" id="emoji11">😉 </span>
+				 <span class="emoji0" id="emoji12">😌 </span>
+				 <span class="emoji0" id="emoji13">😍 </span>
+				<span class="emoji0" id="emoji14"> 😘 </span>
+				<span class="emoji0" id="emoji15"> 😗 </span>
+				<span class="emoji0" id="emoji16"> 😙 </span>
+				 <span class="emoji0" id="emoji17">😚 </span>
+				 <span class="emoji0" id="emoji18">😡 </span>
+				 <span class="emoji0" id="emoji19">😯 </span>
+				 <span class="emoji0" id="emoji20">😦 </span></p></h3>
+				 <h3><p> 
+				 <span class="emoji0" id="emoji21">😋 </span>
+				<span class="emoji0" id="emoji22"> 😜 </span>
+				 <span class="emoji0" id="emoji23">😝 </span>
+				 <span class="emoji0" id="emoji24">😛 </span>
+				 <span class="emoji0" id="emoji25">😎 </span>
+				 <span class="emoji0" id="emoji26">😏 </span>
+				<span class="emoji0" id="emoji27"> 😒 </span>
+				 <span class="emoji0" id="emoji28">😞 </span>
+				 <span class="emoji0" id="emoji29">😔 </span>
+				 <span class="emoji0" id="emoji30">😟 </span>
+				 <span class="emoji0" id="emoji31">😕 </span>
+				<span class="emoji0" id="emoji32"> ☹️ </span>
+				<span class="emoji0" id="emoji33"> 😣 </span>
+				<span class="emoji0" id="emoji34"> 😖 </span>
+				<span class="emoji0" id="emoji35"> 😫 </span>
+				<span class="emoji0" id="emoji36"> 😩 </span>
+				<span class="emoji0" id="emoji37"> 😤 </span>
+				<span class="emoji0" id="emoji38"> 😠 </span>
+				 <span class="emoji0" id="emoji39">😧 </span>
+				 <span class="emoji0" id="emoji40">😮</span></p></h3>
+				  
+		
+					
+    		    </div>
+				<style>
+				.req-fields2{
+				display:none;
+				}
+				</style>
+                <div class="form-group req-fields2">
+    		        <p><span class="require">*</span> - required fields</p>
+    		    </div>
+      </div>
+      <div class="modal-footer">
+	  <button type="submit" name='action' id="sendbutton" value="post1" class="btn btn-primary">
+    		            Edit
+    		        </button>
+					</form>
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+		
+	
+		
+                    </div>
+                    <h6 class="text-muted time">1 minute ago</h6>
+                </div>
+            </div> 
+            <div class="post-description"> 
+                <p>{{j[3]}}</p>
+			
+                <div class="stats">
+				
+				<form method="POST"  id="idForm234">
+				
+                    <button  id="{{j[0]}}" class="btn btn-default stat-item" >
+                        <i class="fa fa-thumbs-up icon colicon" id="{{j[0]}}1"></i><span id="number"></span>
+					
+                    </button>
+				</form>	
+<script>
+var color{{j[0]}}=1;
+
+
+$("#{{j[0]}}").click(function() {
+if(color{{j[0]}}==1){
+color{{j[0]}}=0;
+//$("#{{j[0]}}").click(function() {
+//id="for_button_like"
+    var url = "http://localhost:5000/likes?com_id={{j[0]}}"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#idForm234").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+		
+		  
+           }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+//});
+}
+ if (color{{j[0]}}==0){
+
+color{{j[0]}}=1;
+//$("#{{j[0]}}").click(function() {
+//id="for_button_like"
+    var url = "http://localhost:5000/dislikes?com_id={{j[0]}}"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#idForm234").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+		 
+           }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+
+//});
+}
+});
+</script>
+
+					 
+				
+						<script>
+$(document).ready(function(){
+
+
+	var l=1;
+	
+		$("#{{j[0]}}").click(function(){
+		
+		if (l==1){
+
+			$('#{{j[0]}}1').css("color", "red");
+		   l=0;
+		   
+			}else if (l==0){   
+			$('#{{j[0]}}1').css("color", "black");
+				l=1;
+	       } 
+		});
+		
+
+	
+	return false;
+
+});
+
+
+	
+						
+						</script>
+							 
+					
+					<style>
+					
+					
+					</style>
+                    <a href="#myModal" role="button" data-toggle="modal" class="btn btn-default stat-item">
+					
+                        <i class="fa fa-share icon"></i>12
+                    </a>
+					<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">We'd Love to Hear From You</h3>
+      </div>
+      <div class="modal-body">
+      {% for k in row2%}
+                <ul class="comments-list">
+                    <li class="comment">
+                        <a class="pull-left" href="#">
+                            <img class="avatar" src="http://bootdey.com/img/Content/user_1.jpg" alt="avatar">
+                        </a>
+                        <div class="comment-body">
+                            <div class="comment-heading">
+                              
+                                <h4 class="user">{{k[4]}} </h4>
+                                <h5 class="time">5 minutes ago</h5>
+                            </div>
+                            <p>{{k[2]}}</p>
+                        </div>
+                        
+                    </li>
+                </ul>
+                {%endfor%}
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+                </div>
+				
+            </div>
+            <div class="post-footer">
+                <div class="input-group"> 
+                  {% for k in row2%}
+                  <form method="post" action="/second_comments2?id={{k[6]}}&connect=connect&second_comment={{j[0]}}">
+                    <input class="form-control" name="{{j[0]}}" placeholder="Add a comment" type="text">
+                    <button type="submit" name="action"  class="csd input-group-addon fa fa-edit" value="{{j[0]}}" value=search>
+                    </form>
+                   {%endfor%} 
+                </div>
+
+
+
+              {% for k in row2%}
+				 {%if k[1]==j[0]%}
+                <ul class="comments-list">
+                    <li class="comment">
+                        <a class="pull-left" href="#">
+						{% for l in profilepic%}
+						{%if l[0]==k[3] %}
+                            <img class="avatar" src="static/{{l[5]}}" alt="avatar">
+                       {%endif%}
+					   {%endfor%}
+					   </a>
+                        <div class="comment-body">
+                            <div class="comment-heading">
+                              
+                                <h4 class="user">{{k[2]}} </h4>
+                                <h5 class="time">5 minutes ago</h5>
+                            </div>
+                            <p>{{k[0]}}</p>
+                        </div>
+                        
+                    </li>
+                </ul>
+				{%endif%}
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endfor%}
+</div>
+
+{%endif%}
+</div>
+<style>
+.emoji0{
+cursor:pointer;
+}
+.require {
+    color: #666;
+}
+label small {
+    color: #999;
+    font-weight: normal;
+}
+.post-footer {
+    max-height: 356;
+    overflow-y: scroll;
+}
+.csd{
+	display: none;
+}
+.input-group-addon.fa.fa-edit {
+    position: relative;
+    left: 210;
+    top: -34px;
+}
+.com1 {
+    position: relative;
+    left: 232;
+    top: -35px;
+    height: 36;
+    }
+.panel-shadow {
+    box-shadow: 0 1px 2px rgba(0,0,0,.1)
+}
+.panel-white {
+  border: 1px solid #dddddd;
+}
+.panel-white  .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.panel-white  .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+.post .post-heading .meta .title a {
+  color: black;
+}
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+.post .post-heading .meta .time {
+  margin-top: 8px;
+  color: #999;
+}
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+.post .post-description {
+  padding: 15px;
+}
+.post .post-description p {
+  font-size: 14px;
+}
+.post .post-description .stats {
+  margin-top: 20px;
+}
+.post .post-description .stats .stat-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+.post .post-description .stats .stat-item .icon {
+  margin-right: 8px;
+}
+.post .post-footer {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+}
+.post .post-footer .input-group-addon a {
+  color: #454545;
+}
+.post .post-footer .comments-list {
+  padding: 0;
+  margin-top: 20px;
+  list-style-type: none;
+}
+.post .post-footer .comments-list .comment {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+.post .post-footer .comments-list .comment .avatar {
+  width: 35px;
+  height: 35px;
+}
+.post .post-footer .comments-list .comment .comment-heading {
+  display: block;
+  width: 100%;
+}
+.post .post-footer .comments-list .comment .comment-heading .user {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  margin-top: 0;
+  margin-right: 10px;
+}
+.post .post-footer .comments-list .comment .comment-heading .time {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 0;
+  display: inline;
+}
+.post .post-footer .comments-list .comment .comment-body {
+  margin-left: 50px;
+}
+.post .post-footer .comments-list .comment > .comments-list {
+  margin-left: 50px;
+}
+.panel.panel-white.post.panel-shadow {
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.site-name {
+    color: #fff;
+    font-size: 2.4em;
+    float: left;
+    margin-top: -65px !important;
+    
+    font-family: 'Open Sans Condensed', sans-serif, sans-serif;
+}
+</style>
+
+
+</body>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ACE in Action</title>
+<style type="text/css" media="screen">
+    #editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+		    top: 40px;
+		    z-index: 1;
+    }
+	.menu_fixed_top {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    position: fixed;
+       z-index: 123;
+    margin-left: -11px;
+    margin-top: -9px;
+	box-shadow: -9px 10px 20px #713d3d;
+}
+</style>
+</head>
+<body>
+
+<div id="editor">
+
+
+</div>
+    
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/python");
+	{%for i in get_url%}
+	
+var customPosition = {
+    row: 0,
+    column: 0
+};
+
+data1="twtwetw"
+editor.setValue("the new text here")
+
+$.get({
+  url: "{{i[2]}}", 
+  cache: false
+}).then(function(data){
+ // console.log(data);
+   editor.setValue(data)
+});
+   
+
+	{%endfor%}
+
+</script>
+</body>
+</html>

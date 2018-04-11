@@ -1,0 +1,74 @@
+
+
+
+<div class="attentions">Put some expresive questions about the contet!</div>
+<form method='POST' id="questions_answer">
+	<div class="form-group" >                   
+
+                <div class="input-group"> 
+                    <span class="input-group-addon">Post</span>
+                    <select class="form-control">
+                    <option>Select a post</option>
+					{%for s in messages%}
+                    <option>{{s[0]}}</option>
+					{%endfor%}
+                    <option>2</option>
+                    </select> 
+                </div>
+            </div>
+	<textarea type='text' id="input_nr_ques_1" style='margin: 0px; height: 74px; width: 671px;' name='input_nr_ques_1' ></textarea>
+	</br>
+	
+	<input type='checkbox' id="ques_1" name='ques_1' value="1" class='input_nr_answer1_' />
+	<input type='text'   id="input1"   name='input1'  />
+	<br/>
+	<input type='checkbox' id="ques_2" name='ques_2' value="2" class='input_nr_answer12_' />
+	<input type='text' id="input2"  name='input2' />
+	</br>
+	<input type='checkbox' id="ques_3" name='ques_3' value="3" class='input_nr_answer13_' />
+	<input type='text' id="input3" name='input3' />
+	</br>
+	<input type='checkbox' id="ques_4" name='ques_4' value="4" class='input_nr_answer14_' />
+	<input type='text' id="input4"  name='input4' />
+	<br/>
+
+	<button type="submit" name='action' id="sendbutton_Q" value="post1" class="btn btn-primary">Submit</button>
+</form>
+<script>
+
+	  
+$("#sendbutton_Q").click(function() {
+
+    var url = "http://localhost:5000/quest_post_for_user"; 
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#questions_answer").serialize(), 
+           success: function(data)
+           {
+		  
+               console.log(data); 
+           }
+         });
+
+    return false; 
+});
+
+
+</script>
+
+<style>
+.all_ques {
+    margin-left: 16px;
+    /* width: 100%; */
+}
+.attentions {
+    font-size: 20px;
+    margin-left: 17px;
+	    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+</style>

@@ -1,0 +1,395 @@
+{% extends "header.html"%}
+{% block body%}
+
+<html>
+
+<head>
+
+<title>ohoug</title>
+<style>
+p{
+color:red;}
+.df{
+display:none;
+}
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.btn{
+margin-top:10px;}
+.menu
+{
+background-color: #00547E;
+border-bottom: 4px solid #04A3ED;
+width:100%;
+height: auto;
+padding: 0 10px;
+position: fixed;
+margin: 0px;
+    top: 0;
+    z-index: 4;
+    opacity: 1;
+}
+
+.menu  .navbar-nav > .active > a
+{
+background-color : #04A3ED;
+color: white;
+font-weight: bold;
+}
+
+.menu  .navbar-nav >  li >  a
+{
+font-size: 13px;
+color: white;
+padding: 10px 35px;
+
+}
+.menu  .navbar-nav >  li >  a:hover
+{
+background-color: #04A3ED;
+}
+
+.navbar-header > a
+{
+font-family: 'Ubuntu Condensed', sans-serif;
+padding: 0px;
+margin: 0px;
+text-decoration: none;
+color: white;
+font-size: 25px;
+padding: 5px 30px;
+}
+.navbar-header > a:hover
+{
+text-decoration: none;
+color: #04A3ED;
+}
+.cont{
+
+top:123px;}
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+a,a:hover{
+text-decoration:none;
+}
+</style>
+</head>
+<body>
+<div class="page-header">
+<div class="menu">
+    <div class="container-fluid">
+		<div class="navbar-header">
+			<a href="/">Bloggstil</a>
+		
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+      <form method="POST" class="form-signin">
+        <h2 class="form-signin-heading">Please Register or <br/><a href="/login">Login</a></h2>
+        <label for="inputEmail" class="sr-only">User</label>
+        <input type="text" id="inputEmail" name="user" class="form-control" placeholder="Username" required autofocus>
+         <label for="inputEmail" class="sr-only">Email</label>
+        <input type="text" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
+         <label for="inputEmail" class="sr-only">Confirm Email</label>
+        <input type="text" id="inputEmail" name="cemail" class="form-control" placeholder="Confirm Email" required autofocus>
+         <label for="inputEmail" class="sr-only">Code(optional)</label>
+        <input type="text" id="inputEmail" name="code" class="form-control" placeholder="Code(optional)" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword"  name="pass1" class="form-control" placeholder="Password" required>
+           <label for="inputPassword" class="sr-only"> Confirm Password</label>  
+			<input type="password" id="inputPassword"  name="pass2" class="form-control" placeholder="Confirm Password" required>
+
+        <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Sign in</button>
+      </form>
+
+
+
+{% if error == "none" %}
+ <div class="df"> {{ error}} </div>
+{% endif %}
+
+</body>
+
+<video autoplay loop poster class="bg" src="http://static.videezy.com/system/resources/previews/000/000/328/original/bokeh2.mp4">
+</video>
+<div id="particles-js"></div> 
+<video autoplay loop poster class="bg" src="http://static.videezy.com/system/resources/previews/000/000/328/original/bokeh2.mp4">
+
+</video>
+<style>
+body{
+overflow-x: hidden;
+    overflow-y: hidden;
+
+}
+canvas{ 
+display: block; vertical-align: bottom; 
+} /* ---- particles.js container ---- */
+ /* ---- stats.js ---- */ 
+ .count-particles{ background: #000022;
+ position: absolute; 
+ top: 48px; 
+ left: 0; 
+ width: 80px; 
+ color: #13E8E9;
+ font-size: .8em;
+ text-align: left; 
+ text-indent: 4px; 
+ line-height: 14px; 
+ padding-bottom: 2px; 
+ font-family: Helvetica, Arial, sans-serif;
+ font-weight: bold;
+ } 
+ .js-count-particles{
+ font-size: 1.1em;
+ } 
+ #stats, .count-particles{ 
+ -webkit-user-select: none; 
+ margin-top: 5px;
+ margin-left: 5px;
+ } 
+ #stats{ 
+ border-radius: 3px 3px 0 0; 
+ overflow: hidden;
+ }
+ .count-particles{
+ border-radius: 0 0 3px 3px; 
+ }
+ #particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background-color: #323840; */
+    background-image: url(login);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 100%;
+    top: 1;
+	left:1;
+	    z-index: -1;
+}
+.bg{
+
+filter: grayscale(100);
+}
+</style>
+
+
+ <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> 
+
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 120,
+      "density": {
+        "enable": true,
+        "value_area": 700
+      }
+    },
+    "color": {
+      "value": ["#aa73ff"]
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 15
+      }
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 1.5,
+        "opacity_min": 0.15,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 8,
+      "random": false,
+      "anim": {
+        "enable": true,
+        "speed": 2,
+        "size_min": 0.15,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 110,
+      "color": "#337ab7",
+      "opacity": 1,
+      "width": 4
+    },
+    "move": {
+      "enable": true,
+      "speed": 1.6,
+      "direction": "none",
+      "random": false,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+});
+var count_particles, stats, update;
+stats = new Stats;
+stats.setMode(0);
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '0px';
+stats.domElement.style.top = '0px';
+document.body.appendChild(stats.domElement);
+count_particles = document.querySelector('.js-count-particles');
+update = function() {
+  stats.begin();
+  stats.end();
+  if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+    count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+  }
+  requestAnimationFrame(update);
+};
+requestAnimationFrame(update);;
+</script>
+<div class="bg-filter">
+</div>
+
+<div class="intro-text">
+  
+</div>
+
+<style>
+.page-header {
+    padding-bottom: 9px;
+    margin: 0 0 0; 
+    border-bottom: 1px solid #eee;
+}
+.bg, .bg-filter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+.bg-filter {
+  z-index: -99;
+  opacity: 0.2;
+  background: -webkit-linear-gradient(rgba(49, 224, 247, 1) 0%, rgba(90, 77, 184, 1) 100%);
+  background: -moz-linear-gradient(rgba(49, 224, 247, 1) 0%, rgba(90, 77, 184, 1) 100%);
+  background: -o-linear-gradient(rgba(49, 224, 247, 1) 0%, rgba(90, 77, 184, 1) 100%);
+  background: linear-gradient(rgba(49, 224, 247, 1) 0%, rgba(90, 77, 184, 1) 100%);
+}
+.intro-text {
+  font-family: "Open Sans";
+  widht: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  font-size: 56px;
+  text-transform: uppercase;
+  color: white;
+}
+
+</style>
+</html>
+{%endblock%}

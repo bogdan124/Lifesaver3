@@ -1,0 +1,33 @@
+<html>
+
+<head>
+<title>ohoug</title>
+<style>
+p{
+color:red;}
+</style>
+</head>
+<body>
+
+
+<form method="POST" action="">
+
+<input type="text" name="search"/>
+<input type="submit" name="submit"/>
+</form>
+
+<form method="POST">
+
+<input type="text" name="insert" x-webkit-speech/>
+<input type="submit" name="submit"/>
+</form>
+
+{% for each in row %}
+
+    {{ each[1] }}<br>
+
+{% endfor %}
+
+</body>
+
+</html>

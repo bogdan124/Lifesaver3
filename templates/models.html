@@ -1,0 +1,393 @@
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+ 
+ <form method="POST" class="models_show ">
+  <div class="input-group">
+    	   <div class="speech">
+	  <input type="text" class="search-query mac-style search_special" id="search_id" onkeyup="getState3(this.value)" name="q" ng-model="firstName" placeholder="Search" autocomplete="off"  >
+	    <img onclick="startDictation()" class="icon_vocal" src="//i.imgur.com/cHidSVu.gif" />
+		
+		</div>
+    <div class="input-group-btn">
+      <button class="btn btn-default search_but" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</form>
+
+ <style>
+ form.models_show {
+    margin-top: 84px;
+}
+ </style>
+    
+  <div id="solutii"></div>
+
+<script type="text/javascript">
+document.getElementById("solutii").innerHTML = "";
+function getState3(value){
+
+	var input=document.getElementById("search_id").value;
+	if (input.length==0){
+			document.getElementById("solutii").innerHTML = "" ;
+
+	}else{
+		$.post("/search_index_anatomy?medic={{session['medic']}}&id={{session['id']}}&connect=connect",{searching:value},function(data2){
+		var obj = JSON.parse(data2);
+		var objlenght=Object.keys(obj.result).lenght;
+		console.log(obj);
+		$("#solutii").empty();
+		for (i=0;i<=1000000;i++){
+		 
+		$("#solutii").append( "<a class='for-links' href='#'>"+obj.result[i][1]+"</a><br/>" );
+	    
+		 }
+	});
+	
+	}
+}
+
+//setInterval(getState3,1000);
+</script>
+<script>
+  function startDictation() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = document.getElementById("ddlViewBy");
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('search_id').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+       // document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+  
+</script>
+	 
+ 
+ <style>
+ img.imagemodel {
+    width: 48px;
+    position: absolute;
+    margin-left: 229px;
+    top: 1;
+}}
+ </style>
+ 
+ 
+
+	
+	
+	
+	
+   <br />
+   <div id="load_data"></div>
+   <div id="load_data_message"></div>
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+  
+
+	
+	
+	
+	
+	
+<script>
+
+
+//show-comments
+$(document).ready(function(){
+ 
+ var limit = 3;
+ var start = 0;
+ var action = 'inactive';
+ function load_models_data(limit, start)
+ {
+  $.ajax({
+   url:"/select_models_from_db",
+   method:"GET",
+   data:{limit:limit, start:start},
+   cache:false,
+   dataType: 'json',
+   success:function(data)
+   {
+   
+  
+   var obj2 = data;
+	console.log(data)
+   
+   var template=
+   "<div class='col-xs-12 col-sm-6 col-lg-8'>"+
+    	    "<div class='panel panel-default'>"+
+    		   " <div class='panel-body'>"+
+    			"	<div class='col-md-12'>"+
+    				"	<div class='show_user_icon_post'>"+
+					"	<p>"+
+    					"	 <img src='static/profile_pic/download.jpg' class='img-circle avatar' alt='user profile image'>"+
+						"	<div class='title h5'><a href='#'><b>bogdan12</b></a> made a post.</div>"+
+				"<a href='/augument_reality?model=DATA0'>"+
+              "<img src='static/icon3d.png' class='imagemodel' /></a>"+
+            " </p>"+
+							
+							
+							
+    					"</div>"+
+						"<br/>"+
+    					"<div class='icerik-bilgi'>"+
+    					"	<h2>DATA_GET_NAME</h2>"+
+    						"<p>"+
+							
+							"<div class='responsive-object'>"+
+							
+							"<iframe width='640' height='480' src='DATA_TO_GET_2'  frameborder='0' allowvr allowfullscreen mozallowfullscreen='true' webkitallowfullscreen='true'></iframe>"+
+							"</div>"+
+							
+							
+							
+							
+							
+							"</p>"+
+
+    						"<a href='#'>"+
+    						" <button type='button' class='btn btn-primary' data-target='#myModal_DATA02' data-toggle='modal'>"+
+    						"	<span class='btn btn-google'>Read More <i class='fa fa-chevron-right'></i></span>"+
+    						" </button>"+
+    						" </a>"+
+    					"</div>"+
+    				"</div>"+
+    			"</div>"+
+    		"</div>"+
+        "</div>"+
+ "<div id='myModal_DATA0'  class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+
+  "<div class='modal-dialog modal-lg'>"+
+  "  <div class='modal-content'>"+
+      "<div class='modal-header'>"+
+      " <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>"+
+       " <h3 id='myModalLabel'><center>Read</center></h3>"+
+      "</div>"+
+      "<div class='modal-body'>"+
+      " <div class='row'>"+
+         "info infoinfoinfoinfoinfoinfoinfoinfo"+
+		
+             "   </div>"+
+
+      "</div>"+
+
+     "</div>"+
+    "</div>"+
+  "</div>"+
+  " <style>"+
+	  ".iframe_DATA06{"+
+	 " display:none;"+
+	 " }"+
+	  "</style>"+
+	  "<style>"+
+	".iframe1 {"+
+	"display:none;"+
+    "width: 100%;"+
+    "height: 50%;"+
+"}"+
+"</style>"+
+
+"<div id='myModal2_DATA03'  class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+
+  "<div class='modal-dialog modal-lg'>"+
+   " <div class='modal-content'>"+
+      "<div class='modal-header'>"+
+       " <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>"+
+        "<h3 id='myModalLabel'><center>Augument Reality</center></h3>"+
+      "</div>"+
+      "<div class='modal-body'>"+
+      
+	  "<div class='ar_DATA04'>"+
+	  "<a href='/augument_reality?model=DATA05'>ar</a>"+
+	 
+	  "</div>"+
+	  
+	  
+	 
+	  
+      "</div>"+
+
+      "</div>"+
+    "</div>"+
+  "</div>"
+
+
+	
+for(i=0;i<=obj2.length-1;i++){
+var str_1=obj2[i][0];
+var str;
+	if (obj2[i][5]==1){
+   str = template.replace('DATA0',obj2[i][0] ).replace('DATA_TO_GET_2',obj2[i][2] ).replace('DATA02',obj2[i][0]).replace('DATA03',obj2[i][0]).replace('DATA04',obj2[i][0]).replace('DATA05',obj2[i][0]).replace('DATA06',obj2[i][0]).replace('DATA_GET_NAME',obj2[i][1]);
+  }else{
+  
+    str = template.replace('DATA0',obj2[i][0] ).replace('DATA_TO_GET_2','/model_load?model_to_show='+obj2[i][0] ).replace('DATA02',obj2[i][0]).replace('DATA03',obj2[i][0]).replace('DATA04',obj2[i][0]).replace('DATA05',obj2[i][0]).replace('DATA06',obj2[i][0]).replace('DATA_GET_NAME',obj2[i][1]);
+
+  }
+  
+    
+  $('#load_data').append(str);
+  
+}
+
+
+   
+   
+    if(data == '' || data==0 || data=='[]' || obj2==0)
+    {
+     $('#load_data_message').html("<div class='no_data_found2'><center><div class='no_data_found'>No Data Found </div></center></div>");
+     action = 'active';
+    }
+    else
+    {
+     $('#load_data_message').html("<div class='loadingC'><div class='loadingCcerc'</div></div>");
+     action = "inactive";
+    }
+   }
+  });
+ }
+
+ 
+ if(action == 'inactive')
+ {
+  action = 'active';
+  load_models_data(limit, start);
+ }
+
+ $(window).scroll(function(){
+  if($(window).scrollTop() + $(window).height()+400 > $("#load_data").height() && action == 'inactive')
+  {
+   action = 'active';
+   start = start + limit;
+   
+   setTimeout(function(){
+    load_models_data(limit, start);
+	
+   }, 800);
+   
+  }
+ })
+ 
+});
+
+
+
+                
+</script>
+    
+	
+<style>
+div#load_data_message {
+    width: 100%;
+    height: 0px;
+}
+.load_data_message{
+
+display:none;
+
+}
+.loadingC {
+display:none;
+	height:100%;
+	width:100%;
+}
+.loadingCcerc {
+	border-radius:50%;
+	width:50px;
+	height:50px;
+	border: 7px solid lightblue;
+	border-top: 7px solid #00547e;
+	
+	top:40%;
+	left:50%;
+	position:relative;
+	animation: loadingC 4s linear infinite;
+}
+@keyframes loadingC{
+	0%{-webkit-transform: rotateX(0deg); 
+    transform: rotateX(0deg); 
+	}
+	100%{-webkit-transform: rotatez(360deg); 
+    transform: rotatez(360deg); 
+	}
+}
+.no_data_found2{
+
+display:none;
+}
+.responsive-object iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.responsive-object {
+  position: relative;
+  padding-bottom: 67.5%;
+  height: 0;
+  margin: 10px 0;
+  overflow: hidden;
+}
+img.img-circle.avatar {
+    width: 66px;
+    height: 57px;
+	}
+
+
+.content_primary {
+    margin-top: 41px;
+   /* box-shadow: 0 1px 2px rgba(0,0,0,.5);*/
+   /* background-color: white;*/
+    padding: 10px;
+}
+.show_user_icon_post a {
+    color: black;
+}
+.title.h5 {
+    margin-left: 79px;
+    margin-top: -44px;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,708 @@
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<div class="load_header_content"></div>
+<script>
+$(".load_header_content").load("/new_header_for_profiles");
+
+</script>
+{%block body%}
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+  
+
+<title>Bratara</title>
+ <style>
+p{
+color:red;}
+.df{
+display:none;
+}
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.btn{
+margin-top:10px;}
+.menu
+{
+background-color: #00547E;
+border-bottom: 4px solid #04A3ED;
+width:100%;
+height: auto;
+padding: 0 10px;
+position: fixed;
+margin: 0px;
+    top: 0;
+    z-index: 4;
+    opacity: 1;
+}
+
+
+
+
+
+
+.navbar-header > a
+{
+font-family: 'Ubuntu Condensed', sans-serif;
+padding: 0px;
+margin: 0px;
+text-decoration: none;
+color: white;
+font-size: 25px;
+padding: 5px 30px;
+}
+a {
+	text-decoration: none;
+}
+a:hover
+{
+text-decoration: none;
+color: #04A3ED;
+}
+a:focus	{
+	color:white;
+	text-decoration:none;
+}
+.cont{
+
+top:123px;}
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+a {
+text-decoration:none;
+color:white;
+}
+
+.li1{
+display:inline;
+
+padding:10px;
+}
+a:hover,.li1:hover{
+	background-color:#0D456F;
+    color:#337ab7;
+    text-decoration:none; 
+}
+
+.ul1{
+	position:relative;
+	float:right;
+	margin-top:35px;
+}
+.navbar-header {
+	width:100%;
+}
+
+.glyphiconcart ,.li1{
+cursor:pointer;
+    color: #337ab7;
+   
+}
+.number{
+    position: absolute;
+    margin-left: 15px;
+    z-index: 1234;
+    /* margin-bottom: -25px; */
+    top: -16px;
+    background-color: red;
+    left: 44px;
+    /* margin-top: 12; */
+    color: white;
+    border-radius: 200%;
+    width: 17px;
+}
+.nr{
+
+    margin-left: 3px;
+}
+.second_container{
+background-color:white;
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+
+}
+.jumbotron{
+background-color:white;
+}
+.sett_button:hover{
+color:#337ab7;;
+
+
+}
+.pulse_comper {
+    /* float: left; */
+    position: relative;
+    margin-top: -38px;
+    margin-left: 54px;
+}
+.old_header{
+display:none;
+
+}
+.page-header {
+    display: none;
+	}
+	h5#exampleModalLabel {
+    font-size: 20px;
+    position: relative;
+    top: 20px;
+    margin-top: -23px;
+}
+.show_data_disease {
+    margin-left: 286px;
+    font-size: 30px;
+}
+</style>
+<div class="load_news">
+
+</div>
+
+
+
+<div id="container" class="container second_container">
+	<div class="jumbotron">
+	 {% if table_number==1%}
+    <h1>Your pulse:{%for k in pulseavg%}
+	{{k[0]}}
+	{%endfor%}
+	</h1>	<embed type="image/svg+xml" src={{graph_data|safe}} style='max-width:1000px'/>
+<!--{{t}}-->
+	{% for l in data_user%}
+	<p id="years_div">Your years:{%if l[9]==0%}<form method="POST" id="years_number"><input type="number" name="years" min="1" max="130"/><input type="submit" id="submit132" name="submit222"/></form>{%endif%}
+	{%if l[9]>0%}{{l[9]}}<span class="glyphicon glyphicon-cog sett_button" data-toggle="modal" data-target="#Modal2324"></span>{%endif%}
+	</p>
+	
+	<script>
+
+$("#submit132").click(function() {
+
+    var url = "http://localhost:5000/years_user_number"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#years_number").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+             setTimeout(function(){ 
+               var ll =document.getElementById['years_div'].value;
+			  $(ll).html();
+			 }, 1000);
+
+          // alert(data); // show response from the php script.
+           }
+         });
+
+    return false; // avoid to execute the actual submit of the form.
+});
+</script>
+
+	<p>High value/date:{{fecth_data[1]}}<span class="glyphicon glyphicon-cog sett_button" data-toggle="modal" data-target="#Modal2"></span></p>
+	<p>Note:
+	{%endfor%}
+	 
+	{%for k in pulseavg%}
+	
+	{%if k[0]>=40 and k[0] <= 50 %}
+	<div class="pulse_comper">athlete pulse(rest) </div>
+	{%endif%}
+	{%if k[0]>=50 and k[0] <= 78 %}
+	<div class="pulse_comper">normal pulse(rest) </div>
+	{%endif%}
+	{%if k[0]>=78 %}
+	<div class="pulse_comper">not normal(rest) </div>
+	{%endif%}
+	{%endfor%}
+	{%endif%}
+	
+	</p>
+	<p>Ranges:60-40 <span class="glyphicon glyphicon-cog sett_button" data-toggle="modal" data-target="#Modal1"></span></p>
+	<p><a  class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Modal1_learn" role="button">Predict Heart Disease »</a></p>
+	<p><a  class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Modal1_learn" role="button">Predict Lung Disease »</a></p>
+</div>
+
+
+<div class="modal fade" id="Modal1_learn"  role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Predict disease</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="container">
+	<div class="row">
+	<div class="show_data_disease"></div> <br/>
+   diagnosis of heart disease (angiographic disease status) <br/>
+   Value 0: < 50% diameter narrowing  <br/>
+   Value 1: > 50% diameter narrowing  <br/>
+   (in any major vessel: attributes 59 through 68 are vessels)  <br/>
+		<form method="POST" id="disease_prediction">
+		<div class="mat-input">
+                <div class="mat-input-outer">
+                    <input type="number" class="age" name="age" placeholder="age" autocomplete="off"/>
+                    <label class=""></label>
+                    <div class="border"></div>
+                </div>            
+            </div>
+			
+     		<div class="mat-input">
+                <div class="mat-input-outer">
+                    <input type="number" class="sex" name="sex" placeholder="sex" autocomplete="off"/>
+                    <label class=""></label>
+                    <div class="border"></div>
+                </div>            
+            </div>
+		<div class="mat-input">
+                <div class="mat-input-outer">
+                    <input type="number" class="bloodpresure" name="bloodpresure" placeholder="bloodpresure" autocomplete="off"/>
+                    <label class=""></label>
+                    <div class="border"></div>
+                </div>            
+            </div>
+		<div class="mat-input">
+                <div class="mat-input-outer">
+                    <input type="number" class="cholesterol" name="cholesterol" placeholder="cholesterol" autocomplete="off"/>
+                    <label class=""></label>
+                    <div class="border"></div>
+                </div>            
+            </div>
+		<div class="mat-input">
+                <div class="mat-input-outer">
+                    <input type="number" class="blood_sugure" name="blood_sugure" placeholder="blood sugure" autocomplete="off"/>
+                    <label class=""></label>
+                    <div class="border"></div>
+                </div>            
+            </div>		
+								<div class="mat-input">
+                <div class="mat-input-outer">
+                    <input type="number" class="heart_reate" name="heart_reate" placeholder="maximum heart reate" autocomplete="off"/>
+                    <label class=""></label>
+                    <div class="border"></div>
+                </div>            
+            </div>		
+								<div class="mat-input">
+                <div class="mat-input-outer">
+                    <input type="number" class="disease" name="disease" placeholder="disease" autocomplete="off"/>
+                    <label class=""></label>
+                    <div class="border"></div>
+                </div>            
+            </div>		
+			
+<div id="predict_disease">
+</div>
+
+			
+					
+			<a href="#" id="submit3" class="btn btn-block btn-primary btn-success btn_for_submition"><span class="glyphicon glyphicon-user"></span> Submit</a>
+</form>		
+<script>
+
+$("#submit3").click(function() {
+
+    var url1 = "http://localhost:5000/disease_prediction2"; 
+console.log( $("#disease_prediction").serialize())
+
+
+
+
+
+
+var age=$(".age").val();
+var sex=$(".sex").val();
+var bloodpresure=$(".bloodpresure").val();
+var cholesterol=$(".cholesterol").val();
+var blood_sugure=$(".blood_sugure").val();
+var heart_reate=$(".heart_reate").val();
+var disease=$(".disease").val();
+
+
+var data_show={
+"age":age,
+"sex":sex,
+"bloodpresure":bloodpresure,
+"cholesterol":cholesterol,
+"blood_sugure":blood_sugure,
+"heart_reate":heart_reate,
+"disease":disease
+}
+console.log(data_show,age);
+    $.ajax({
+           type: "POST",
+           url: url1,
+           data: data_show, 
+		   dataType:'json',
+           success: function(data_succes)
+           {
+		   //console.log(JSON.stringify(data_succes));
+          //  data1=parseInt(data_succes);
+		  console.log(data_succes);
+			
+			$("#predict_disease").load("/animation_disease?data_succes="+data_succes[0]+"")
+			$(".show_data_disease").html(data_succes[1]);
+          
+           },
+		   error:function(data_error){
+				console.log(data_error);
+		   }
+		   
+         });
+
+    return false; 
+});
+</script>
+	
+	</div>
+</div>  
+	<style>
+	embed {
+    margin-top: 22px;
+}
+	div#predict_disease {
+    margin-right: 613px;
+}
+	.btn_for_submition{
+	background-color:#3c3c8f;
+	    width: 290px;
+	}
+/*MATERIAL INPUT*/
+h2{
+    font-family:calibri;
+    color:purple;
+    text-align:center;
+}
+.mat-input{
+    z-index: 9999999999999999999;
+    margin: 2% auto;
+    width: 50%;  
+    margin-left: 0;	
+}
+.mat-input-outer{
+    display: table;
+    width: 50%;
+    position: relative;
+	
+}
+.mat-input-outer input{
+    height: 50px;
+    border-radius: 0;
+    border: none;
+    width: 100%;    
+    padding: 0 15px;
+    font-family: calibri;
+    font-size: 20px;
+    font-style: italic;
+}
+.mat-input-outer label{
+    font-family: calibri;
+    font-size: 20px;
+    left: 15px;
+    position: absolute;
+    top: 18px;
+    font-style: italic;
+    transition: .2s;
+    color: #000;
+    cursor: text;
+    font-weight: normal;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+.mat-input-outer .border{
+    height: 1px;
+    background: #000;
+    transition: .3s;
+    -webkit-transition: .3s;
+    -ms-transition: .3s;
+}
+.mat-input-outer .border::before{
+    content: " ";
+    display: table;
+    height: 3px;
+    width: 0%;
+    background: transparent;
+    transition: .3s;
+    -webkit-transition: .3s;
+    -ms-transition: .3s;
+    margin: 0 auto;
+}
+.mat-input-outer input:focus ~ .border{
+    background: transparent;
+}
+.mat-input-outer input:focus ~ .border::before{
+    width: 100%;
+    background: purple;
+}
+.mat-input-outer input + label.active{
+    left: 5px;
+    top: -25px;
+    color: purple;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+.mat-input {
+    width: 98%;
+    
+}
+a.btn.btn-block.btn-primary.btn-success.btn_for_submition {
+    margin-left: 127px;
+}
+</style>	
+<style>
+
+</style>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="Modal2324"  role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reset years</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form method="POST" id="years_number1">
+	  <input type="number" name="years" min="1" max="130"/>
+	  <input type="submit" id="submit13" name="submit222"/>
+	  </form>
+      </div>
+      <div class="modal-footer">
+       
+        <button type="button" class="btn btn-primary">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+	<script>
+
+$("#submit13").click(function() {
+
+    var url = "http://localhost:5000/years_user_number2";
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#years_number1").serialize(), 
+           success: function(data)
+           {
+             setTimeout(function(){ 
+               var ll =document.getElementById['years_div'];
+			  $(ll).html();
+			 }, 1000);
+
+          
+           }
+         });
+
+    return false; 
+});
+</script>
+
+<div class="modal fade" id="Modal2"  role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Time this mounth</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  {% if table_number==1%}
+       {%for i in fecth_data%}
+	{{i[3]}}<br/>
+	{%endfor%}
+	{%endif%}
+      </div>
+      <div class="modal-footer">
+       
+        <button type="button" class="btn btn-primary">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="Modal1"  role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Numbers to call</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	
+
+<div class="container">
+
+	
+
+	<form class="form-horizontal" id="send_form_sms" method="POST" style="max-width:450px;">
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Name</label>
+			 
+
+        <div class="input-group show_data">       
+          <select type="text" name="chose" class="form-control">
+              <option>In case of..</option>
+              <option>Pulse is getting to high</option>
+              <option>Alarm from person</option>
+			  
+          </select>
+        </div><!-- /input-group -->
+    
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Phone</label>
+			<div class="col-sm-10">
+			
+				<div class="phone-list">
+				
+					<div class="input-group phone-input">
+						
+						<input type="hidden" name="phone[1][type]" class="type-input" value="" />
+						<input type="text" name="phone1" class="form-control" placeholder="+1 (999) 999 9999" />
+						<input type="hidden" name="phone[1][type]" class="type-input" value="" />
+						<input type="text" name="phone2" class="form-control" placeholder="+1 (999) 999 9999" />
+					    <input type="hidden" name="phone[1][type]" class="type-input" value="" />
+						<input type="text" name="phone3" class="form-control" placeholder="+1 (999) 999 9999" />
+					</div>
+					
+				</div>
+				
+				
+				
+			</div>
+			
+		</div>
+		
+	<div class="show_input"></div>
+	
+	
+    
+</div>
+<style>
+
+.input-group.show_data {
+    width: 77%;
+    margin-left: -20px;
+    left: 15px;
+    height: -57px;
+}
+input.form-control {
+    margin-top: 9px;
+}
+.show_input {
+    color: green;
+    margin-left: 92%;
+}
+</style>
+      </div>
+      <div class="modal-footer">
+  <button type="button" class="btn btn-success btn-sm btn-add-phone" id="submit_sms"> Submit</button>
+        <button type="button" class="btn btn-primary">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+			<script>
+
+$("#submit_sms").click(function() {
+
+    var url = "http://localhost:5000/send_user_msg_data";
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#send_form_sms").serialize(), 
+           success: function(data)
+           {
+            $(".show_input").html(data)
+
+          
+           }
+         });
+
+    return false; 
+});
+</script>
+		
+<style>
+form#years_number {
+    position: relative;
+    left: 121;
+    top: -43px;
+	
+	}
+	.main {
+    position: absolute;
+    bottom: 1px;
+	right: 112px;
+}
+</style>
+</div>
+<div class="fd"></div>
+<div id="lateral_menu_to_show">
+
+
+</div>
+<script>
+$(".fd").load("/second_chat_bot")
+$(".load_news").load("/news_to_show");
+$("#lateral_menu_to_show").load("/lateral_menu");
+
+</script>
+{%endblock%}

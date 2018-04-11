@@ -1,0 +1,437 @@
+
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<!--
+ <style>
+p{
+color:red;}
+.df{
+display:none;
+}
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.btn{
+margin-top:10px;}
+.menu
+{
+background-color: #00547E;
+border-bottom: 4px solid #04A3ED;
+width:100%;
+height: auto;
+padding: 0 10px;
+position: fixed;
+margin: 0px;
+    top: 0;
+    z-index: 4;
+    opacity: 1;
+}
+
+
+
+
+
+
+.navbar-header > a
+{
+font-family: 'Ubuntu Condensed', sans-serif;
+padding: 0px;
+margin: 0px;
+text-decoration: none;
+color: white;
+font-size: 25px;
+padding: 5px 30px;
+}
+a {
+	text-decoration: none;
+}
+a:hover
+{
+text-decoration: none;
+color: #04A3ED;
+}
+a:focus	{
+	color:white;
+	text-decoration:none;
+}
+.cont{
+
+top:123px;}
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+a {
+text-decoration:none;
+color:white;
+}
+
+.li1{
+display:inline;
+
+padding:10px;
+}
+a:hover,.li1:hover{
+	background-color:#0D456F;
+    color:#337ab7;
+    text-decoration:none; 
+}
+
+.ul1{
+	position:relative;
+	float:right;
+	margin-top:35px;
+}
+.navbar-header {
+	width:100%;
+}
+
+.glyphiconcart ,.li1{
+cursor:pointer;
+    color: #337ab7;
+   
+}
+.number{
+    position: absolute;
+    margin-left: 15px;
+    z-index: 1234;
+    /* margin-bottom: -25px; */
+    top: -16px;
+    background-color: red;
+    left: 44px;
+    /* margin-top: 12; */
+    color: white;
+    border-radius: 200%;
+    width: 17px;
+}
+.nr{
+
+    margin-left: 3px;
+}
+</style>
+<div class="page-header">
+<div class="menu">
+    <div class="container-fluid">
+		<div class="navbar-header">
+			<a href="/">Bloggstil</a>
+		    <ul class="ul1">
+			<li class="li1"><div class="number"><div class="nr">1</div></div><i class="glyphicon glyphiconcart  glyphicon-shopping-cart" aria-hidden="true">cart</i></li>
+		    <a href="{{url_for('magazin')}}"><li class="li1">Home</li></a>
+		   <a href="{{url_for('site_info')}}"><li class="li1">Magazin</li></a>
+		  <a href="{{url_for('login')}}"><li class="li1">Login</li></a>
+		  <a href="{{url_for('register')}}"><li class="li1">Register</li></a>
+		 </ul>
+
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+-->
+ <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow"> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link media="all" type="text/css" rel="stylesheet" href="https://bootsnipp.com/css/fullscreen.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<style>
+body {
+    font-family: "Open Sans",sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 22px;
+    white-space: normal;
+}
+#header-site {
+    background: #262727 none repeat scroll 0 0;
+    border-bottom: 2px solid #cf4137;
+    float: left;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.logo-site {
+    float: left;
+    height: 50px;
+    margin: 5px 0 0px 10px;
+    width: 140px;
+}
+.logo-site h1 {
+    margin: 0;
+}
+.logo-site h1 a {
+    float: left;
+    height: 40px;
+    width: 131px;
+    text-indent:-999px;
+    background-image:url('https://upload.wikimedia.org/wikipedia/en/7/79/Veeco_company_logo.png');
+    background-repeat:no-repeat;
+    background-position:0px; 
+    background-size:100px;
+}
+
+/*Notification Bell dropdown*/
+.top-nav {
+    padding: 0 5px;
+}
+.top-nav > li {
+    display: inline-block;
+    float: left;
+}
+.top-nav > li > a {
+    color: #fff;
+    font-size: 13px;
+    line-height: 20px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+}
+.top-nav > li span.badge {
+    background: #ca3f02 none repeat scroll 0 0;
+    border: 3px solid #262727;
+    font-family: "Open Sans",sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    padding: 2px 5px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+.dropdown-notification .dropdown-menu{width:275px;   max-width: 275px;
+    min-width: 160px;}
+.dropdown-notification > a {
+    font-size: 18px !important;
+    line-height: 29px !important;
+}
+.top-nav .dropdown-menu .dropdown-menu-list {
+    list-style: outside none none;
+    padding-left: 0;
+    padding-right: 0 !important;
+}
+.top-nav > li.dropdown-notification .dropdown-menu > li.external {
+    border-radius: 4px 4px 0 0;
+    display: block;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+    padding: 15px;
+}
+.top-nav > li.dropdown-notification .dropdown-menu > li.external > h3 {
+    display: inline-block;
+    float: left;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+.top-nav > li.dropdown-notification .dropdown-menu > li.external > a {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 0 none;
+    color: #888;
+    clear: inherit;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 300;
+    margin-top: -1px;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+}
+.top-nav > li.dropdown-notification .dropdown-menu > li.external {
+    background: #eaedf2 none repeat scroll 0 0;
+}
+.top-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list {
+    list-style: outside none none;
+}
+.top-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li > a {
+    clear: both;
+    display: block;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 20px;
+    padding: 16px 15px 18px;
+    text-shadow: none;
+    white-space: normal;
+    border-bottom: 1px solid #eff2f6 !important;
+
+}
+.top-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .time {
+    float: right;
+    font-size: 11px;
+    font-weight: 400;
+    max-width: 75px;
+    opacity: 0.7;
+    padding: 1px 5px;
+    text-align: right;
+    background: #f1f1f1 none repeat scroll 0 0;
+}
+.top-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details {
+    font-size:13px;
+}
+.top-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li a .details .label-icon {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.top-nav > li > a:hover, .top-nav > li > a:focus, .top-nav > .open > a, .top-nav > .open > a:hover, .top-nav > .open > a:focus {
+    background-color: #171717;
+    color: #999999;
+}
+.top-nav > li.dropdown-notification .dropdown-menu .dropdown-menu-list > li > a:hover {
+    background: #f8f9fa none repeat scroll 0 0;
+}
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    background-color: transparent;
+    color: #ca3f02;
+}
+
+/*Toggle Navigation design*/
+.navbar-default .navbar-toggle{ border:none;}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background: none;
+}
+
+@media(max-width:768px){
+.navbar-collapse{ clear:both;}
+    
+}
+#header-site{
+background-color:#166992;
+border-bottom: 2px solid #04A3ED;
+}
+.li_design{
+
+
+}
+li.li_design:hover {
+    background-color: #286090;
+    /* color: black; */
+}
+img.logo_png {
+    width: 43px;
+    margin-left: 32px;
+}
+</style>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<div class="container-fluid">
+	<div class="row">
+		<div class="navbar navbar-default navbar-fixed-top">
+			<header id="header-site">
+			
+				<div class="logo-site">
+					<img class="logo_png" src="../static/logo.png"/>
+				</div>
+				
+				
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+				</button>
+				
+				<!--
+				
+				<ul class="nav navbar-right pull-right top-nav">
+					<li class="dropdown dropdown-notification"> <a class="dropdown-toggle" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true"> <i class="fa fa-bell-o"></i> <span class="badge badge-default"> 3 </span> </a>
+						<ul class="dropdown-menu">
+							<li class="external">
+								<h3> <span class="bold">12 pending</span> notifications</h3>
+								<a href="page_user_profile_1.html">view all</a> 
+							</li>
+							<li>
+								<ul class="dropdown-menu-list">
+									<li> <a href="javascript:;"> <span class="time">just now</span> <span class="details"> <span class="label label-sm label-icon label-success"> <i class="fa fa-plus"></i> </span> New user registered. </span> </a> </li>
+									<li> <a href="javascript:;"> <span class="time">3 mins</span> <span class="details"> <span class="label label-sm label-icon label-danger"> <i class="fa fa-bolt"></i> </span> Server #12 overloaded. </span> </a> </li>
+									<li> <a href="javascript:;"> <span class="time">10 mins</span> <span class="details"> <span class="label label-sm label-icon label-warning"> <i class="fa fa-bell-o"></i> </span> Server #2 not responding. </span> </a> </li>
+									<li> <a href="javascript:;"> <span class="time">14 hrs</span> <span class="details"> <span class="label label-sm label-icon label-info"> <i class="fa fa-bullhorn"></i> </span> Application error. </span> </a> </li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown"> 
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+							<img alt="" class="img-circle" src="https://static1.squarespace.com/static/55198f1ce4b00c2cab3e5e30/t/5526d500e4b009f3ec94b422/1428608282728/600x600%26text%3Dprofile+img.gif?format=300w" width="30"> 
+							<span class="hidden-xs">Admin User</span> 
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+							<li><a href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
+							<li class="divider"></li>
+							<li><a href="#"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			-->
+
+				
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-left">
+					<li class="li_design"> <a  href="{{url_for('magazin')}}">Home</a></li>
+					<li class="li_design"><a href="{{url_for('site_info')}}">Magazin</a></li>
+		           <li class="li_design"> <a href="{{url_for('login')}}">Login</a></li>
+		           <li class="li_design"> <a href="{{url_for('register')}}">Register</a></li>
+						
+					</ul>
+				</div>
+			
+				
+			</header>
+		</div>
+	</div>
+</div>
+<style>
+.navbar-default .navbar-nav>li>a {
+    color: white !important;
+}
+</style>
+{% block body%}
+{%endblock%}

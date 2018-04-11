@@ -1,0 +1,136 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+
+<script src="http://www.turnjs.com/lib/turn.min.js">
+
+</script>
+<style>
+body{
+    overflow:hidden;
+}
+
+#flipbook{
+    width:400px;
+    height:300px;
+	        margin-left: 161px;
+    margin-top: 32px;
+}
+
+#flipbook .page{
+    width:400px;
+    height:300px;
+    background-color:white;
+   
+    
+ 
+}
+
+#flipbook .page-wrapper{
+    -webkit-perspective:2000px;
+    -moz-perspective:2000px;
+    -ms-perspective:2000px;
+    -o-perspective:2000px;
+    perspective:2000px;
+}
+
+#flipbook .hard{
+    background:#ccc !important;
+    color:#333;
+    -webkit-box-shadow:inset 0 0 5px #666;
+    -moz-box-shadow:inset 0 0 5px #666;
+    -o-box-shadow:inset 0 0 5px #666;
+    -ms-box-shadow:inset 0 0 5px #666;
+    box-shadow:inset 0 0 5px #666;
+    font-weight:bold;
+}
+
+#flipbook .odd{
+    background:-webkit-gradient(linear, right top, left top, color-stop(0.95, #FFF), color-stop(1, #DADADA));
+    background-image:-webkit-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+    background-image:-moz-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+    background-image:-ms-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+    background-image:-o-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+    background-image:linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+    -webkit-box-shadow:inset 0 0 5px #666;
+    -moz-box-shadow:inset 0 0 5px #666;
+    -o-box-shadow:inset 0 0 5px #666;
+    -ms-box-shadow:inset 0 0 5px #666;
+    box-shadow:inset 0 0 5px #666;
+    
+}
+
+#flipbook .even{
+    background:-webkit-gradient(linear, left top, right top, color-stop(0.95, #fff), color-stop(1, #dadada));
+    background-image:-webkit-linear-gradient(left, #fff 95%, #dadada 100%);
+    background-image:-moz-linear-gradient(left, #fff 95%, #dadada 100%);
+    background-image:-ms-linear-gradient(left, #fff 95%, #dadada 100%);
+    background-image:-o-linear-gradient(left, #fff 95%, #dadada 100%);
+    background-image:linear-gradient(left, #fff 95%, #dadada 100%);
+    -webkit-box-shadow:inset 0 0 5px #666;
+    -moz-box-shadow:inset 0 0 5px #666;
+    -o-box-shadow:inset 0 0 5px #666;
+    -ms-box-shadow:inset 0 0 5px #666;
+    box-shadow:inset 0 0 5px #666;
+}
+.content_to_show {
+    margin-left: 15px;
+	    margin-top: 32px;
+}
+.page_number {
+    position: absolute;
+    bottom: 25px;
+    left: 207px;
+    top: bo;
+}
+body {
+    background: #fefcfc;
+}
+</style>
+<div id="flipbook">
+    <div class="hard"> <img src=" https://i.pinimg.com/236x/bf/c0/60/bfc06052afe49e7775059400ea567467.jpg" width="100%" height="100%" />  </div> 
+    <div class="hard"></div>
+    
+	{%for i in select_books1%}
+	 
+	 
+  
+		<div class="load_page"> 
+	
+	<div class="content_to_show"><p> {{i[2] | safe}}</p>
+		 
+			<div class="page_number"><center>1</center></div>
+						</div>
+	</div>
+	
+	{%endfor%}
+    
+   
+	
+    
+    
+    <div class="hard"></div>
+</div>
+<style>
+.load_page{
+    font-size: 5px;
+    font: -webkit-control;
+	font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-size: 13.3333px;
+    line-height: normal;
+    font-family: Arial;
+	
+}
+</style>
+
+<script>
+$("#flipbook").turn({
+    width: 800,
+    height: 700
+});
+</script>

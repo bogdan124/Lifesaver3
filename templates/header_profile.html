@@ -1,0 +1,1922 @@
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<div class="load_header_content"></div>
+<script>
+$(document).ready(function(){
+$(".load_header_content").load("/new_header_for_profiles");
+
+
+})
+//{% extends "new_header_for_profiles.html" %}
+</script>
+
+
+
+
+
+
+{% block body%}
+<div class="">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+
+
+  $(document).ready( function() {
+    $('#myCarousel').carousel({
+		interval:   3000
+	});
+	
+	var clickEvent = false;
+	$('#myCarousel').on('click', '.nav a', function() {
+			clickEvent = true;
+			$('.nav li').removeClass('active');
+			$(this).parent().addClass('active');		
+	}).on('slid.bs.carousel', function(e) {
+		if(!clickEvent) {
+			var count = $('.nav').children().length -1;
+			var current = $('.nav li.active');
+			current.removeClass('active').next().addClass('active');
+			var id = parseInt(current.data('slide-to'));
+			if(count == id) {
+				$('.nav li').first().addClass('active');	
+			}
+		}
+		clickEvent = false;
+	});
+});
+</script>
+  <style>
+
+.midd{
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.first-midd,.second-midd{
+  background-color: #eee;
+}
+.pic1{
+  padding: 5px;
+  width: 101%;
+height: 222px;
+}
+.pret{
+  position: relative;
+  right: -58%;
+}
+.info{
+  position: relative;
+
+}
+.but{
+  margin-bottom:10px;
+}
+.pull-righ{
+  position: relative;
+}
+    h4{
+      font-weight: 600;
+  }
+  p{
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .price{
+    font-size: 30px;
+      margin: 0 auto;
+      color: #333;
+  }
+  .right{
+    float:right;
+    
+  }
+  .thumbnail{
+
+    box-shadow: 0 1px 2px rgba(0,0,0,.5);
+    -webkit-transition: all 0.5s; 
+    transition: all 0.5s;
+  }
+  .thumbnail:hover{
+    
+    
+  }
+  .line{
+    margin-bottom: 5px;
+  }
+  @media screen and (max-width: 770px) {
+    .right{
+      float:left;
+      width: 100%;
+    }
+  }
+  .col-md-3.col-sm-6 {
+    height: 128;
+    margin-top: 288;
+}
+.modal-picture1{
+  vertical-align: middle;
+position: relative;
+left: 36;
+}
+.p-products{
+
+    height: 48;
+
+}
+</style>
+
+  
+  <style>
+p{
+color:red;}
+.df{
+display:none;
+}
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.btn{
+margin-top:10px;}
+.menu
+{
+background-color: #00547E;
+border-bottom: 4px solid #04A3ED;
+width:100%;
+height: auto;
+padding: 0 10px;
+position: fixed;
+margin: 0px;
+    top: 0;
+    z-index: 4;
+	display: none;
+    opacity: 1;
+}
+
+.menu  .navbar-nav > .active > a
+{
+background-color : #04A3ED;
+color: white;
+font-weight: bold;
+}
+
+.menu  .navbar-nav >  li >  a
+{
+font-size: 13px;
+color: white;
+padding: 10px 35px;
+
+}
+.menu  .navbar-nav >  li >  a:hover
+{
+background-color: #04A3ED;
+}
+
+.navbar-header > a
+{
+font-family: 'Ubuntu Condensed', sans-serif;
+padding: 0px;
+margin: 0px;
+text-decoration: none;
+color: white;
+font-size: 25px;
+padding: 5px 30px;
+}
+.navbar-header > a:hover
+{
+text-decoration: none;
+color: #04A3ED;
+}
+.cont{
+
+top:123px;}
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+a {
+text-decoration:none;
+color:white;
+}
+
+.ul1 > .li1{
+display:inline;
+
+padding:10px;
+}
+a:hover,.li1:hover{
+//	background-color:#0D456F;
+  //  color:#337ab7;
+    text-decoration:none; 
+}
+
+.ul1{
+	position:relative;
+	float:right;
+	
+}
+.navbar-header {
+	width:100%;
+}
+.li1:hover a {
+	color:#337ab7;
+	
+}
+.li1:hover {
+	cursor: pointer;
+}
+a {
+ text-decoration: none;
+}
+
+</style>
+
+<style>
+
+    .scrooller{
+      background-color: white;
+      box-shadow: 0 1px 2px rgba(0,0,0,.5);
+      padding: 5px
+    }
+</style>
+<div class="page-header">
+<div class="menu">
+
+<style>
+.modal-dialog.modal-lg-12 {
+    width: 100%;
+}
+    #custom-search-form {
+        margin:0;
+        margin-top: 5px;
+        padding: 0;
+    }
+ 
+    #custom-search-form .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-transition: width  0.2s ease-in-out;
+    -moz-transition:width  0.2s ease-in-out;
+    -o-transition: width  0.2s ease-in-out;
+    transition: width  0.2s ease-in-out;
+    }
+ 
+    #custom-search-form button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+    .search-query:focus + button {
+        z-index: 3;   
+    }   
+    .search-query:focus{
+        width: 260px;
+    }   
+.span12 {
+   
+position: relative;
+
+
+}
+.menu
+{
+background-color: #00547E;
+border-bottom: 4px solid #04A3ED;
+width:100%;
+height: 78px;
+padding: 0 10px;
+position: fixed;
+margin: 0px;
+z-index: 1;
+opacity: 0.9;
+}
+input#search_id {
+    width: 567px;
+    margin-left: 0px;
+    margin-top: -1px;
+}
+.menu  .navbar-nav > .active > a
+{
+background-color : #04A3ED;
+color: white;
+font-weight: bold;
+}
+
+.menu  .navbar-nav >  li >  a
+{
+font-size: 13px;
+color: white;
+padding: 10px 35px;
+
+}
+.menu  .navbar-nav >  li >  a:hover
+{
+background-color: #04A3ED;
+}
+
+.navbar-header > a
+{
+font-family: 'Ubuntu Condensed', sans-serif;
+padding: 0px;
+margin: 0px;
+text-decoration: none;
+color: white;
+font-size: 25px;
+padding: 5px 30px;
+}
+.navbar-header > a:hover
+{
+text-decoration: none;
+color: #04A3ED;
+}
+.finder-search{
+width:100%
+background-color:white;
+
+}
+.search_class{
+margin-left:123px;
+}
+
+.firstName{
+
+background-color:white;
+
+color:black;
+}
+#solutii{
+background-color:white;
+width:100%;
+color:black;
+}
+.for-links:hover,.for-links{
+color:black;
+
+}
+
+</style>
+
+  <style>
+	
+.panel-shadow {
+    box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+}
+.panel-white {
+  border: 1px solid #dddddd;
+}
+.panel-white  .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.panel-white  .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+.post .post-heading .meta .title a {
+  color: black;
+}
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+.post .post-heading .meta .time {
+  margin-top: 8px;
+  color: #999;
+}
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+.post .post-description {
+  padding: 15px;
+}
+.post .post-description p {
+  font-size: 14px;
+}
+.post .post-description .stats {
+  margin-top: 20px;
+}
+.post .post-description .stats .stat-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+.post .post-description .stats .stat-item .icon {
+  margin-right: 8px;
+}
+.post .post-footer {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+  overflow-y: scroll;
+    max-height: 500px;
+}
+.post .post-footer .input-group-addon a {
+  color: #454545;
+}
+.input-group .form-control {
+	width:30%;
+	
+}
+.post .post-footer .comments-list {
+  padding: 0;
+  margin-top: 20px;
+  list-style-type: none;
+}
+.post .post-footer .comments-list .comment {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+.post .post-footer .comments-list .comment .avatar {
+  width: 35px;
+  height: 35px;
+}
+.post .post-footer .comments-list .comment .comment-heading {
+  display: block;
+  width: 100%;
+}
+.post .post-footer .comments-list .comment .comment-heading .user {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  margin-top: 0;
+  margin-right: 10px;
+}
+.post .post-footer .comments-list .comment .comment-heading .time {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 0;
+  display: inline;
+}
+.post .post-footer .comments-list .comment .comment-body {
+  margin-left: 50px;
+}
+.post .post-footer .comments-list .comment > .comments-list {
+  margin-left: 50px;
+}
+i.glyphicon {
+    position: relative;
+    top: 33px;
+    font-size: 22px;
+    /* left: 116%; */
+    left: -122;
+    /* margin-left: -261px; */
+}
+.icon_bell:hover,.icon_friends_abonates:hover {
+    /* background-color: red; */
+    color: white;
+}
+.noti_number {
+    z-index: +1233;
+    position: absolute;
+    top: -17px;
+    left: 13px;
+    background-color: red;
+    border-radius: 100%;
+    padding: 2px;
+    margin-top: 4px;
+    font-size: 17px;
+	color: black;
+}
+.noti_number:hover {
+    color: black;
+    background-color: red;
+}
+.window_notification {
+	background-color: white;
+    width: 318px;
+    height: 364px;
+    padding: 12;
+    position: absolute;
+    z-index: 1234;
+    left: 87px;
+    top: 42px;
+    display: none;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    border: 1px solid rgba(100, 100, 100, .4);
+    border-radius: 0 0 2px 2px;
+	overflow: hidden;
+}
+.ul_style_type{
+    list-style-type: none;
+	
+}
+h3.header_noti {
+    margin-bottom: -18px;
+	
+}
+.beeperNub {
+    background-image: url(/rsrc.php/v3/yF/r/SQOv3rZIvq1.png);
+    background-repeat: no-repeat;
+    background-size: 28px 284px;
+    background-position: 0 -262px;
+    height: 11px;
+    position: absolute;
+    top: -11px;
+    width: 20px;
+}
+.heder_div_noti {
+    font-family: inherit;
+    background-clip: padding-box;
+    background-color: #fff;
+    border-bottom: solid 1px #dddfe2;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    /* padding: 8px 12px 6px; */
+    border-bottom: 1px solid #aaa;
+    position: relative;
+    width: 316px;
+    margin-left: -12px;
+	padding-left: 8px;
+    padding-bottom: 2px;
+}
+img.img_notifi {
+    width: 58px;
+	margin-right: 11;
+}
+.message {
+    
+    margin-top: -12px;
+}
+.noti_title {
+    margin-top: -43px;
+    margin-left: 67px;
+    margin-bottom: 12;
+}
+
+.noti_content {
+    width: 102%;
+}
+
+
+.notif_sf {
+    /* overflow: scroll; */
+    overflow-x: hidden;
+    position: relative;
+    overflow-y: scroll;
+    height: 100%;
+    /* z-index: 1121313; */
+}
+
+
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+    display: block;
+    height: 10px;
+}
+
+::-webkit-scrollbar-button:vertical:increment {
+    background-color: #fff;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #eee;
+    -webkit-border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background-color: #ccc;
+    -webkit-border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 50px;
+    background-color: #ccc;
+    -webkit-border-radius: 3px;
+}
+.settings_new {
+    position: absolute;
+    left: 50px;
+    top: 1;
+}
+li.header_content {
+    font-size: 18px;
+    margin-bottom: 12;
+    margin-top: 12;
+}
+input.settings_files {
+    /* width: 10%; */
+    margin: left;
+    /* float: right; */
+    margin-left: 64px;
+    margin-top: -18px;
+}
+input#qty {
+    top: 10px;
+    height: 28px;
+    width: unset;
+}
+.col-xs-10.color_in {
+    float: left;
+    margin-left: 1;
+}
+</style>
+<div class="chat_down_2_3">
+<div class="main">
+ <button class="btn btn-info btn-lg people">
+          <span class="glyphicon glyphicon-user people"></span> User 
+        </button>
+</div>
+
+</div>
+
+<style>
+.chat_down_2_3{
+
+width:291px;
+height:50px;
+position:fixed;
+bottom:0px;
+right:0px;
+
+
+}
+.chat_down_2_3 {
+    border-radius: 100%;
+}
+a.btn.btn-info.btn-lg.people{
+    width: 100%;
+    height: 100%;
+}
+img.logo_png {
+    width: 67px;
+    z-index: -34;
+    position: absolute;
+}
+i.glyphicon {
+    position: relative;
+    top: 47px;
+    font-size: 22px;
+    /* left: 116%; */
+    left: 0px;
+    z-index: 2;
+    /* margin-left: -261px; */
+}
+.settings_new {
+    position: absolute;
+    left: 52px;
+    top: -1px;
+}
+.window_notification {
+    background-color: white;
+    width: 318px;
+    height: 364px;
+    padding: 12;
+    position: absolute;
+    z-index: 1234;
+    left: 109px;
+    top: 64px;
+    display: none;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    border: 1px solid rgba(100, 100, 100, .4);
+    border-radius: 0 0 2px 2px;
+    overflow: hidden;
+}
+i.glyphicon{
+left:70px;
+}
+ul.ul1.nav.navbar-nav.navbar-right {
+    margin-top: 6px;
+}
+
+
+
+
+.News_show {
+    background: white !important;
+    width: 260px !important;
+    height: 276px !important;
+    position: fixed !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,.5) !important;
+    left: 13px !important; 
+	top:79px !important;
+	border: 1px solid #dddddd !important;
+}
+.news_title {
+    position: relative;
+    /* left: 13px; */
+    /* top: 8px; */
+    background: cornflowerblue !important;
+    color: white !important;
+}
+img.news_img {
+    width: 60px !important;
+    margin-left: 6px !important;
+    margin-top: 8px !important;
+    border-radius: 50% !important;
+    border-color: #907be0 !important;
+    border-width: 3px !important;
+    border-style: solid !important;
+}
+.news_text_all {
+    margin-left: 72px !important;
+    margin-top: -56px !important;
+}
+.news_body {
+    color: darkslateblue !important;
+    font-stretch: expanded !important;
+    font-weight: bold !important;
+}
+.new_times {
+    margin-top: -11px !important;
+    font-stretch: extra-condensed !important;
+    opacity: 0.5 !important;
+}
+li.li_news {
+    margin-top: 14px !important;
+	    cursor: pointer;
+}
+
+.ul_news{
+list-style-type:none !important;
+}
+
+.button_down_news {
+    position: absolute;
+    background-color: cornflowerblue;
+    width: 100%;
+    top: 96%;
+}
+.modal_news_show > .modal-content {
+    width: 928px;
+    margin-left: -177px;
+}
+.modal_special_content {
+    width: 1000px;
+    margin-left: -162px;
+}
+ul.ul_news {
+    height: 216px;
+    /* height: 100%; */
+    overflow-y: scroll;
+    /* height: 100%; */
+}
+
+
+</style>
+<div id="overlay"><span></span><span></span><span></span></div>
+<body>
+		
+
+		
+	
+		
+
+
+</div>
+
+<div class="load_news">
+<div class='News_show'>
+<div class='news_title'>News</div><br/>
+<input class="search_news" placeholder="Search..." type="text">
+<ul class='ul_news'>
+
+
+</ul>
+<button class="button_down_news"><center><span class="glyphicon glyphicon-chevron-down"></span></center> </button>
+</div>
+</div>
+<div  class="modal_to_show">
+</div>
+
+<style>
+
+input.search_news {
+    margin-left: 11px;
+    width: 89%;
+    box-shadow: 1;
+}
+</style>
+<script>
+
+var template=
+			
+
+"<li class='li_news' data-toggle='modal' data-target='#news_MODAL_ID'><img src='../static/IMAGE_SHOW' class='news_img' alt='user profile image'>"+
+"<div class='news_text_all'>"+
+"<div class='news_body'>BODY_CONTENT</div>"+
+"<br/><div class='new_times'> TIME </div>"+
+"</div>"+
+"</li>"
+
+var template_2_special=
+"<div class='modal fade' id='news_MODAL_ID' class='modal_news_show' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>"+
+ " <div class='modal-dialog' role='document'>"+
+    "<div class='modal-content modal_special_content'>"+
+      "<div class='modal-header'>"+
+        "<h5 class='modal-title' id='exampleModalLabel'>NEWS_NAME_TO_SHOW</h5>"+
+        "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>"+
+          "<span aria-hidden='true'>&times;</span>"+
+        "</button>"+
+      "</div>"+
+        ""+
+      "<div class='modal-body'>"+
+	  "GET_TO_SHOW_DATA"+
+      "</div>"+
+      "<div class='modal-footer'>"+
+       " <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>"+
+       
+      "</div>"+
+    "</div>"+
+  "</div>"+
+"</div>"
+
+
+var data_to_send1={
+	  "start_news":0,
+	  "finish":3
+	}
+
+   $.ajax({
+   url: "/select_news?start_news=0&finish=3",
+   method:"GET",
+   cache:false,
+   success: function(result){
+       console.log(result[0][4])
+	   //result=JSON.parse(result)
+	    
+	   for(i=0;i<=result.length-1;i++){
+	   var str=result[i][3];
+		var res = str.substring(4, 16);
+		var template_2=template.replace('MODAL_ID',result[i][0]).replace('MODAL_ID_2',result[i][0]).replace('IMAGE_SHOW',result[i][5]).replace('BODY_CONTENT',result[i][2]).replace('TIME',res);
+		var template_3=template_2_special.replace("GET_TO_SHOW_DATA",result[i][6]).replace('MODAL_ID',result[i][0]).replace('MODAL_ID_2',result[i][0]).replace('IMAGE_SHOW',result[i][5]).replace('NEWS_NAME_TO_SHOW',result[i][2]).replace('BODY_CONTENT',result[i][2]).replace('TIME',res);
+		
+		
+		
+		$(".ul_news").append(template_2);
+		$(".modal_to_show").append(template_3);
+		}
+		
+    }
+	});
+	var start_news=0;
+	var finish=3;
+$(".button_down_news").click(function() {
+	start_news+=3;
+	finish+=3
+	console.log(start_news)
+	console.log()
+    var url = "http://localhost:5000/select_news?start_news="+start_news+"&finish="+finish; 
+    var data_to_send={
+	  "start_news":start_news,
+	  "finish":finish
+	}
+	
+    $.ajax({
+           type: "GET",
+           url: url,
+		   cache:false,
+           data: data_to_send,
+           success: function(data_news)
+           {
+		   data_news=JSON.parse(data_news);
+		   
+		   
+		   
+		   
+		   	   for(i=0;i<=data_news.length-1;i++){
+			   
+	   var  str=data_news[i][3];
+		var res = str.substring(4, 16);
+		var template_2=template.replace('MODAL_ID',data_news[i][0]).replace('MODAL_ID_2',data_news[i][0]).replace('IMAGE_SHOW',data_news[i][5]).replace('BODY_CONTENT',data_news[i][2]).replace('TIME',res);
+		var template_3=template_2_special.replace("GET_TO_SHOW_DATA",data_news[i][6]).replace('MODAL_ID',data_news[i][0]).replace('MODAL_ID_2',data_news[i][0]).replace('IMAGE_SHOW',data_news[i][5]).replace('NEWS_NAME_TO_SHOW',data_news[i][2]).replace('BODY_CONTENT',data_news[i][2]).replace('TIME',res);
+		
+		
+		
+		$(".ul_news").append(template_2);
+		$(".modal_to_show").append(template_3);
+		}
+			}
+         })
+
+    return false;
+})
+	
+</script>
+<style>
+input#search_id {
+    height: 33px;
+}
+  .speech img {
+    float: right;
+    width: 40px;
+    top: -1px;
+    position: absolute;
+    margin-left: 89%;
+}
+.questions_to_show {
+    font-size: 26px;
+}
+.clikc{
+
+font-size:14px;
+}
+</style>
+	
+
+<div id="myModal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel"><center>Search</center></h3>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+               <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+       <form id="custom-search-form" method="POST" class="form-search form-horizontal pull-right" action="">
+	   <div class="speech">
+	  <input type="text" class="search-query mac-style" id="search_id" onkeyup="getState3(this.value)" name="q" ng-model="firstName" placeholder="Search" autocomplete="off"  >
+	    <img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif" />
+		<select id="ddlViewBy">  
+		<option value="af-ZA">Afrikaans</option>
+        <option value="id-ID">Bahasa Indonesia</option>
+        <option value="ms-MY">Bahasa Melayu</option>
+        <option value="ca-ES">CatalÃ </option>
+        <option value="cs-CZ">ÄŒeÅ¡tina</option>
+        <option value="da-DK">Dansk</option>
+        <option value="de-DE">Deutsch</option>
+        <optgroup label="English">
+          <option value="en-AU">Australia</option>
+          <option value="en-CA">Canada</option>
+          <option value="en-IN">India</option>
+          <option value="en-NZ">New Zealand</option>
+          <option value="en-ZA">South Africa</option>
+          <option value="en-GB">United Kingdom</option>
+          <option value="en-US" selected="">United States</option>
+        </optgroup>
+        <optgroup label="EspaÃ±ol">
+          <option value="es-AR">Argentina</option>
+          <option value="es-BO">Bolivia</option>
+          <option value="es-CL">Chile</option>
+          <option value="es-CO">Colombia</option>
+          <option value="es-CR">Costa Rica</option>
+          <option value="es-EC">Ecuador</option>
+          <option value="es-SV">El Salvador</option>
+          <option value="es-ES">EspaÃ±a</option>
+          <option value="es-US">Estados Unidos</option>
+          <option value="es-GT">Guatemala</option>
+          <option value="es-HN">Honduras</option>
+          <option value="es-MX">MÃ©xico</option>
+          <option value="es-NI">Nicaragua</option>
+          <option value="es-PA">PanamÃ¡</option>
+          <option value="es-PY">Paraguay</option>
+          <option value="es-PE">PerÃº</option>
+          <option value="es-PR">Puerto Rico</option>
+          <option value="es-DO">RepÃºblica Dominicana</option>
+          <option value="es-UY">Uruguay</option>
+          <option value="es-VE">Venezuela</option>
+        </optgroup>
+        <option value="eu-ES">Euskara</option>
+        <option value="fil-PH">Filipino</option>
+        <option value="fr-FR">FranÃ§ais</option>
+        <option value="gl-ES">Galego</option>
+        <option value="hi-IN">à¤¹à¤¿à¤¨à¥à¤¦à¥€</option>
+        <option value="hr_HR">Hrvatski</option>
+        <option value="zu-ZA">IsiZulu</option>
+        <option value="is-IS">Ãslenska</option>
+        <optgroup label="Italiano">
+          <option value="it-IT">Italia</option>
+          <option value="it-CH">Svizzera</option>
+        </optgroup>
+        <option value="lt-LT">LietuviÅ³</option>
+        <option value="hu-HU">Magyar</option>
+        <option value="nl-NL">Nederlands</option>
+        <option value="nb-NO">Norsk bokmÃ¥l</option>
+        <option value="pl-PL">Polski</option>
+        <optgroup label="PortuguÃªs">
+          <option value="pt-BR">Brasil</option>
+          <option value="pt-PT">Portugal</option>
+        </optgroup>
+        <option value="ro-RO">RomÃ¢nÄƒ</option>
+        <option value="sl-SI">SlovenÅ¡Äina</option>
+        <option value="sk-SK">SlovenÄina</option>
+        <option value="fi-FI">Suomi</option>
+        <option value="sv-SE">Svenska</option>
+        <option value="vi-VN">Tiáº¿ng Viá»‡t</option>
+        <option value="th-TH">à¸ à¸²à¸©à¸²à¹„à¸—à¸¢</option>
+        <option value="tr-TR">TÃ¼rkÃ§e</option>
+        <option value="el-GR">Î•Î»Î»Î·Î½Î¹ÎºÎ¬</option>
+        <option value="bg-BG">Ð±ÑŠÐ»Ð³Ð°Ñ€ÑÐºÐ¸</option>
+        <option value="ru-RU">PÑƒÑÑÐºÐ¸Ð¹</option>
+        <option value="sr-RS">Ð¡Ñ€Ð¿ÑÐºÐ¸</option>
+        <option value="uk-UA">Ð£ÐºÑ€Ð°Ñ—Ð½ÑÑŒÐºÐ°</option>
+        <option value="ko-KR">í•œêµ­ì–´</option>
+        <optgroup label="ä¸­æ–‡">
+          <option value="cmn-Hans-CN">æ™®é€šè¯ (ä¸­å›½å¤§é™†)</option>
+          <option value="cmn-Hans-HK">æ™®é€šè¯ (é¦™æ¸¯)</option>
+          <option value="cmn-Hant-TW">ä¸­æ–‡ (å°ç£)</option>
+          <option value="yue-Hant-HK">ç²µèªž (é¦™æ¸¯)</option>
+        </optgroup>
+        <option value="ja-JP">æ—¥æœ¬èªž</option>
+		</select>
+		</div>
+ </form>
+ <script>
+
+  function startDictation() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+      var recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.interimResults = false;
+
+      recognition.lang = document.getElementById("ddlViewBy");
+      recognition.start();
+
+      recognition.onresult = function(e) {
+        document.getElementById('search_id').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+       // document.getElementById('labnol').submit();
+      };
+
+      recognition.onerror = function(e) {
+        recognition.stop();
+      }
+
+    }
+  }
+  
+</script>
+	  <div id="solutii"></div>
+                </div>
+
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+body { padding-top: 20px; }
+#myCarousel .nav a small {
+    display:block;
+}
+#myCarousel .nav {
+    background:#eee;
+}
+#myCarousel .nav a {
+    border-radius:0px;
+}
+iframe {
+    /*width: 49%;*/
+    /*height: 66%;*/
+    /*background-color: rebeccapurple;*/
+    /*z-index: -27;*/
+    /*top: 168px;*/
+    /*position: absolute;*/
+}
+</style>
+<title>Profile</title>
+	<!--<iframe src="../static/turnjs4/samples/basic/index.html"></iframe>-->
+<div class="container  scrooller">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+      
+        <div class="item active">
+          <img src="static/images_scroller/books.jpg" class="books_scroller">
+           <div class="carousel-caption">
+            <h3>About </h3>
+            <p>
+			Our site is about life and the way we can change the life in a better way to live ,also you can find out a lot of informations about every thing
+			</p>
+          </div>
+        </div><!-- End Item -->
+ 
+         <div class="item">
+          <img src="static/images_scroller/books.jpg" class="books_scroller">
+           <div class="carousel-caption">
+            <h3>Top Questions </h3>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. <a href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank" class="label label-danger">Bootstrap 3 - Carousel Collection</a></p>
+          </div>
+        </div><!-- End Item -->
+        
+        <div class="item">
+         <img src="static/images_scroller/books.jpg" class="books_scroller">
+           <div class="carousel-caption">
+            <h3>Top Answear</h3>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. <a href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank" class="label label-danger">Bootstrap 3 - Carousel Collection</a></p>
+          </div>
+        </div><!-- End Item -->
+        
+        <div class="item">
+          <img src="static/images_scroller/books.jpg" class="books_scroller">
+           <div class="carousel-caption">
+            <h3 class="booking_now">Top Books</h3>
+            <ol class="books_show">
+			<li class="book_li_top">13fdgdfgd</li>
+			<li class="book_li_top">13fdgdfgd</li>
+			<li class="book_li_top">13fdgdfgd</li>
+			<li class="book_li_top">13fdgdfgd</li>
+			<li class="book_li_top">13fdgdfgd</li>
+			<li class="book_li_top">13fdgdfgd</li>
+			<li class="book_li_top">13fdgdfgd</li>
+			<li class="book_li_top">13fdgdfgd</li>
+			<li class="book_li_top">13fdgdfgd</li>
+			<li class="book_li_top">13fdgdfgd</li>
+			</ol>
+          </div>
+        </div><!-- End Item -->
+                
+      </div><!-- End Carousel Inner -->
+<style>
+.item{
+background-image:static/images_scroller/books.jpg;
+}
+.book_li_top{
+letter-spacing: 1px;
+margin-left:100%;
+
+}
+h3.booking_now {
+    top: -30px;
+    position: relative;
+    font-size: 90px;
+
+}
+.books_scroller{
+width:100%;
+filter: grayscale(100%) blur(2px);
+}
+ol.books_show {
+    position: relative;
+    top: 2px;
+    font-size: 20px;
+		float:left;
+}
+</style>
+
+        <ul class="nav nav-pills nav-justified">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"><a href="#">About<small>Lorem ipsum dolor sit</small></a></li>
+          <li data-target="#myCarousel" data-slide-to="1"><a href="#">Projects<small>Lorem ipsum dolor sit</small></a></li>
+          <li data-target="#myCarousel" data-slide-to="2"><a href="#">Portfolio<small>Lorem ipsum dolor sit</small></a></li>
+          <li data-target="#myCarousel" data-slide-to="3"><a href="#">Services<small>Lorem ipsum dolor sit</small></a></li>
+        </ul>
+
+
+    </div><!-- End Carousel -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+<script type="text/javascript">
+document.getElementById("solutii").innerHTML = "";
+function getState3(value){
+
+	var input=document.getElementById("search_id").value;
+	if (input.length==0){
+			document.getElementById("solutii").innerHTML = "" ;
+
+	}else{
+		$.post("/search_index?medic={{session['medic']}}&id={{session['id']}}&connect=connect",{searching:value},function(data2){
+		var obj = JSON.parse(data2);
+		var objlenght=Object.keys(obj.result).lenght;
+		console.log(obj);
+		$("#solutii").empty();
+		for (i=0;i<=10000000;i++){
+		 
+		$("#solutii").append( "<a class='for-links' href='/medic_profile?medic={{session['medic']}}&id={{session['id']}}&connect=connect&medic_id="+obj.result[i][0]+"'><img src='static/"+obj.result[i][5]+"' width='40px' height='40px'>"+obj.result[i][1]+"</a><br/>" );
+	    
+		 }
+	});
+	
+	}
+}
+
+//setInterval(getState3,1000);
+</script>
+<style>
+
+
+#solutii {
+ 
+
+}
+.for-links{
+font-size:15px;
+
+}
+</style>
+<style>
+*{
+margin:0px;
+padding:0px;
+}
+
+.loadingC {
+	height:100%;
+	width:100%;
+}
+.loadingCcerc {
+	border-radius:50%;
+	width:50px;
+	height:50px;
+	border: 7px solid lightblue;
+	border-top: 7px solid #00547e;
+	
+	top:40%;
+	left:50%;
+	position:relative;
+	animation: loadingC 4s linear infinite;
+}
+@keyframes loadingC{
+	0%{-webkit-transform: rotateX(0deg); 
+    transform: rotateX(0deg); 
+	}
+	100%{-webkit-transform: rotatez(360deg); 
+    transform: rotatez(360deg); 
+	}
+}
+</style>
+
+<!DOCTYPE html>
+
+
+
+
+ 
+  <div class="container">
+ 
+   <br />
+   <div id="load_data"></div>
+   <div id="load_data_message"></div>
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+   <br />
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <style>
+.user-post{
+box-shadow:  0 1px 2px rgba(0,0,0,.5);
+}	
+.panel-shadow {
+  
+}
+.panel-white {
+  border: 1px solid #dddddd;
+}
+.panel-white  .panel-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.panel-white  .panel-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+.post .post-heading .meta .title a {
+  color: black;
+}
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+.post .post-heading .meta .time {
+  margin-top: 8px;
+  color: #999;
+}
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+.post .post-description {
+  padding: 15px;
+}
+.post .post-description p {
+  font-size: 14px;
+}
+.post .post-description .stats {
+  margin-top: 20px;
+}
+.post .post-description .stats .stat-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+.post .post-description .stats .stat-item .icon {
+  margin-right: 8px;
+}
+.post .post-footer {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+  overflow-y: scroll;
+    max-height: 500px;
+}
+.post .post-footer .input-group-addon a {
+  color: #454545;
+}
+.input-group .form-control {
+	width:30%;
+	
+}
+.post .post-footer .comments-list {
+  padding: 0;
+  margin-top: 20px;
+  list-style-type: none;
+}
+.post .post-footer .comments-list .comment {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+.post .post-footer .comments-list .comment .avatar {
+  width: 35px;
+  height: 35px;
+}
+.post .post-footer .comments-list .comment .comment-heading {
+  display: block;
+  width: 100%;
+}
+.post .post-footer .comments-list .comment .comment-heading .user {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  margin-top: 0;
+  margin-right: 10px;
+}
+.post .post-footer .comments-list .comment .comment-heading .time {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 0;
+  display: inline;
+}
+.post .post-footer .comments-list .comment .comment-body {
+  margin-left: 50px;
+}
+.post .post-footer .comments-list .comment > .comments-list {
+  margin-left: 50px;
+}
+.post_options {
+    margin-left: 1px;
+}
+span.glyphicon.glyphicon-book.post_menu_top {
+    top: -44px;
+    left: 144px;
+	color: cornflowerblue;
+}
+.sTime {
+    background: cornflowerblue;
+    width: 51px;
+    height: 36px;
+    position: relative;
+    /* border-radius: 200%; */
+    /* top: 1px; */
+}
+button_down_news {
+    position: absolute;
+    background-color: cornflowerblue;
+    width: 102%;
+    top: 100%;
+    margin-left: -2px;
+}
+</style>
+
+
+
+
+<script>
+
+
+//show-comments
+$(document).ready(function(){
+ 
+ var limit = 7;
+ var start = 0;
+ var action = 'inactive';
+ function load_country_data(limit, start)
+ {
+  $.ajax({
+   url:"/select_index",
+   method:"POST",
+   data:{limit:limit, start:start},
+   cache:false,
+   success:function(data)
+   {
+   	var obj2 = JSON.parse(data);
+//console.log(data);
+//console.log(data2);
+	/*	var i=0;
+		var j=0;
+	
+	var string="<form>"+
+	"<div class='panel panel-white post panel-shadow user-post'>"+
+	"<div class='post-heading'>"+
+	"<div class='pull-left image'>"+
+	"<img src='static/"+obj2[i][8]+"' class='img-circle avatar' alt='user profile image'>"+
+	
+	"</div>"+
+	"<div class='pull-left meta'> "+
+	"<div class='title h5'>"+
+	"<a href='#'><b>"+obj2[i][1]+"</b></a> made a post."+
+	"</div>"+
+	"<h6 class='text-muted time'>1 minute ago</h6>"+
+	"</div>"+
+	"</div> <div class='post-description'> "+
+	"<p>"+obj2[i][0]+"</p>"+
+	"<div class='stats'>"+
+	"<a href='#' class='btn btn-default stat-item'> "+
+	"<i class='fa fa-thumbs-up icon'></i>2</a> "+
+	"<a href='#' class='btn btn-default stat-item' id='show-comments'>"+
+	"<i class='fa fa-share icon'></i>12</a>"+
+	"</div>"+
+	"</div><div class='post-footer'>"+
+	"<div class='input-group'> "+
+	"<input class='form-control' placeholder='Add a comment' type='text'>"+
+	"</div>		"+		
+	"</div>"+
+	"</div>"+
+	"</form>" 
+//SELECT * FROM comments,abonari WHERE comments.post_id=abonari.id_abonat GROUP BY comments.post
+	
+	//for(i in obj2){
+	for(i=1;i<=7;i++){//SELECT comments.post,comments.name,comments.post_id , register.id,register.profile_pic,comments.id,abonari.id_user,abonari.id_abonat ,( SELECT profile_pic FROM register WHERE abonari.id_abonat=register.id ) FROM comments,register,abonari WHERE abonari.id_abonat=comments.post_id AND register.id=abonari.id_user ORDER BY comments.id DESC LIMIT 1,30
+		
+  $('#load_data').append(string );
+  
+ //  }
+ }
+ */
+  //SELECT comments.post,comments.name,comments.post_id , register.id,register.profile_pic,comments.id,abonari.id_user,abonari.id_abonat FROM comments,register,abonari WHERE register.id=comments.post_id AND register.id=abonari.id_abonat ORDER BY comments.id DESC
+ 
+   // $('#load_data').append(data);
+   
+ 
+   
+
+				 
+
+
+
+   
+   var template=
+   "<form>"+
+    "<div class='panel panel-white post panel-shadow user-post'>"+
+    "<div class='post-heading'>"+
+    "<div class='pull-left image'>"+
+    "<img src='static/DATA8' class='img-circle avatar' alt='user profile image'>"+
+    "</div>"+
+    "<div class='pull-left meta'> "+
+    "<div class='title h5'>"+
+    "<a href='#'><b>DATA1</b></a> made a post."+
+    "</div>"+
+    "<h6 class='text-muted time'>1 minute ago</h6>"+
+	"<div class='post_options'>"+
+	"<span class='glyphicon glyphicon-volume-up post_menu_top' onclick='play(DATALISTEN)'>LISTEN</span>"+	
+	"<span class='glyphicon glyphicon-book post_menu_top ' data-toggle='modal' data-target='#modal-for-edit_DATALISTEN23' ></span>"+
+	"</div>"+
+    "</div>"+
+    "</div> <div class='post-description'> "+
+    "<p>DATA0</p>"+
+    "<div class='stats'>"+
+    "<a href='#' class='btn btn-default stat-item'> "+
+    "<i class='fa fa-thumbs-up icon'></i>2</a> "+
+    "<a href='#' class='btn btn-default stat-item' id='show-comments'>"+
+    "<i class='fa fa-share icon'></i>12</a>"+
+    "</div>"+
+    "</div><div class='post-footer'>"+
+    "<div class='input-group'> "+
+    "<input class='form-control' placeholder='Add a comment' type='text'>"+
+    "</div>     "+      
+    "</div>"+
+    "</div>"+
+    "</form>"+
+	"<div id='modal-for-edit_DATALISTEN2'  class='modal fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"+
+  "<div class='modal-dialog modal-lg-12'>"+
+    "<div class='modal-content'>"+
+      "<div class='modal-header'>"+
+        "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>"+
+        "<h3 id='myModalLabel'>Read</h3><div class='show_time_SECONDS sTime'>POINTS_TO_SHOW</div>"+
+      "</div>"+
+      "<div class='modal-body'>"+
+			"<p> SHOW_DATA </p>"+
+
+      "</div>"+
+      "<div class='modal-footer'>"+
+		"<div class='you_read nice_READE_IT_SHOW'></div><br/>"+
+		"<button class='btn btn-primary new_button_NEWBUTTONPOINTS' onclick='readIT(IDFORREAD,POINTSTOCARRY)' aria-hidden='true'>ReadIT</button>"+
+		""+
+       " <button class='btn btn-primary' data-dismiss='modal' aria-hidden='true'>Cancel</button>"+
+      "</div>"+
+    "</div>"+
+  "</div>"+
+"</div>"
+
+
+		 function play(nr){
+      var audio = document.getElementById("lis_"+nr+"");
+	  
+      audio.play();
+                }	 
+
+for(i=0;i<=obj2.length-1;i++){
+var str_1=obj2[i][0];
+var new_str;
+//if(str_1.lenght<=1000){
+new_str=str_1.substr(0, 1000);
+new_str=new_str+"...";
+//}
+//else{
+//new_str=str_1;
+//}
+  var str = template.replace('DATA0',new_str ).replace('READE_IT_SHOW',obj2[i][5]).replace('POINTSTOCARRY',obj2[i][10]).replace('NEWBUTTONPOINTS',obj2[i][5]).replace('IDFORREAD',obj2[i][5]).replace('POINTS_TO_SHOW',obj2[i][10]).replace('SECONDS',obj2[i][5]).replace('DATALISTEN23',obj2[i][5]).replace('SHOW_DATA',obj2[i][0]).replace('DATALISTEN2',obj2[i][5]).replace('DATA1', obj2[i][1]).replace('DATA8', obj2[i][8]).replace('DATALISTEN',obj2[i][5]).replace('LISTEN',"<audio id='lis_"+obj2[i][5]+"' src='"+obj2[i][9]+"' ></audio>");
+  
+    
+  $('#load_data').append(str);
+  
+}
+
+
+   
+   
+    if(data == '' || data==0 || data=='[]' || obj2==0)
+    {
+     $('#load_data_message').html("<center><div class='no_data_found'>No Data Found </div></center>");
+     action = 'active';
+    }
+    else
+    {
+     $('#load_data_message').html("<div class='loadingC'><div class='loadingCcerc'</div></div>");
+     action = "inactive";
+    }
+   }
+  });
+ }
+
+ 
+ if(action == 'inactive')
+ {
+  action = 'active';
+  load_country_data(limit, start);
+ }
+
+  $(window).scroll(function(){
+  if($(window).scrollTop() + $(window).height()+400 > $("#load_data").height() && action == 'inactive')
+  {
+   action = 'active';
+   start = start + limit;
+   
+   setTimeout(function(){
+    load_country_data(limit, start);
+	
+   }, 800);
+   
+  }
+ });
+ 
+});
+
+function readIT(i,j){
+console.log(i,j);
+//$("#new_button_"+i+"").click(function() {
+
+    var url = "http://localhost:5000/send_user_points?id="+i; 
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: {
+		   data2:j
+		   }, 
+           success: function(data)
+           {
+		//  $(".list_notification").prepend("<li class='li_style_type'><h3 class='header_noti'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz3V48SbtJARb-0sbfAAvUNmeU88x0olpJiRK7zAX4la0kJ-FW' class='img_notifi'><div class='noti_title'>Points</div></h3><br><div class='message new_message_for_noti'>You won "+j+" poins from reading! </div><hr></li>");
+
+              $(".nice_"+i).replaceWith(data);
+           }
+         })
+
+    //return false; 
+//})
+var unred=$(".new_unread").html();
+var unred2=parseInt(unred)+1;
+var f_unred=unred2.toString();
+$(".new_unread").html(f_unred);
+$(".list_notification").prepend("<li class='li_style_type'><h3 class='header_noti'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz3V48SbtJARb-0sbfAAvUNmeU88x0olpJiRK7zAX4la0kJ-FW' class='img_notifi'><div class='noti_title'>Points</div></h3><br><div class='message new_message_for_noti'>You won "+j+" poins from reading! </div><hr></li>");
+return false;
+}
+
+   function play(nr){
+      var audio = document.getElementById("lis_"+nr+"");
+      audio.play();
+                }
+</script>
+    
+
+<style>
+.new_message_for_noti{
+margin-left: 69px;
+
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.you_read{
+    color: #ed1111;
+    font-size: 21px;
+    margin-bottom: -23px;
+}
+.no_data_found {
+    background: #286090;
+    width: 101px;
+    padding: 5px;
+    border: solid 2px #34c0b8e8;
+    color: white;
+}
+span.glyphicon.glyphicon-volume-up.post_menu_top {
+    position: relative;
+    /* margin-left: -103px; */
+    top: -46px;
+    left: 141px;
+	color: cornflowerblue;
+}
+.input-group .form-control {
+    position: relative;
+    z-index: 0;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+	
+}
+</style>
+  <style>
+body{
+ overflow-x: hidden;
+overflow-y:hidden;
+}
+#overlay {
+  height:10px;
+  width: 20%;
+ z-index:14;
+  background-color:#37509f;
+  position:fixed;
+  top:0px;
+   
+}
+#overlay span {
+  display: block;
+  height: 20px;
+  width: 20px;
+  background: #ddd;
+  border-radius: 10%;
+  position: absolute;
+  top: 10%;
+  
+}
+#overlay span:nth-child(1) {
+  left: 47%;
+  -webkit-animation: bounce 1s ease-in-out infinite;
+          animation: bounce 1s ease-in-out infinite;
+}
+#overlay span:nth-child(2) {
+  -webkit-animation: bounce 1s ease-in-out 0.33s infinite;
+          animation: bounce 1s ease-in-out 0.33s infinite;
+    left:50%;
+}
+#overlay span:nth-child(3) {
+  left: 53%;
+  -webkit-animation: bounce 1s ease-in-out 0.66s infinite;
+          animation: bounce 1s ease-in-out 0.66s infinite;
+}
+
+@-webkit-keyframes bounce {
+  0%, 75%, 100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  25% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+}
+
+@keyframes bounce {
+  0%, 75%, 100% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  25% {
+    -webkit-transform: translateY(-30px);
+            transform: translateY(-30px);
+  }
+}
+div#load_data_message {
+    width: 100%;
+    height: 0px;
+}
+  body { padding-top: 20px; }
+#myCarousel .nav a small {
+    display:block;
+}
+#myCarousel .nav {
+	background:#eee;
+}
+#myCarousel .nav a {
+    border-radius:0px;
+}
+
+</style>
+</body>
+<script>
+var overlay = document.getElementById("overlay");
+
+window.addEventListener('load', function() {
+ // $("body").css("overflow-y","hidden");
+  overlay.style.display = 'none';
+  $("body").css("overflow-y","scroll");
+})
+</script>
+<script type="text/javascript">
+$(document).ready( function() {
+    $('#myCarousel').carousel({
+		interval:   4000
+	});
+	
+	var clickEvent = false;
+	$('#myCarousel').on('click', '.nav a', function() {
+			clickEvent = true;
+			$('.nav li').removeClass('active');
+			$(this).parent().addClass('active');		
+	}).on('slid.bs.carousel', function(e) {
+		if(!clickEvent) {
+			var count = $('.nav').children().length -1;
+			var current = $('.nav li.active');
+			current.removeClass('active').next().addClass('active');
+			var id = parseInt(current.data('slide-to'));
+			if(count == id) {
+				$('.nav li').first().addClass('active');	
+			}
+		}
+		clickEvent = false;
+	});
+});
+</script>
+
+
+  <style>
+ 
+
+
+
+</style>
+
+
+</div>
+<style>
+form#custom-search-form {
+    position: relative;
+    left: 61px;
+}
+</style>
+<div id="lateral_menu_to_show">
+
+
+</div>
+<script>
+
+$("#lateral_menu_to_show").load("/lateral_menu");
+
+</script>
+{%include "chat_bot.html"%}
+
+{%endblock%}
+

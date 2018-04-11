@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>Uploading and Downloading</title>
+	<meta  name = "viewport" content = "initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no">
+
+	<script src="http://cdn.webix.com/edge/webix.js?v=5.2.1" type="text/javascript"></script>
+	<script src="https://cdn.webix.com/site/filemanager/filemanager.js?v=5.2.1" type="text/javascript"></script>
+
+	<link rel="stylesheet" type="text/css" href="http://cdn.webix.com/edge/webix.css?v=5.2.1">
+	<link rel="stylesheet" type="text/css" href="https://cdn.webix.com/site/filemanager/filemanager.css?v=5.2.1">
+
+	<style>
+		.header{
+			background: #e5e5e5;
+		}
+		.header div{
+			padding: 0 10px;
+		}
+
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+	webix.ready(function(){
+		webix.ui({
+			rows:[
+				{ view: "label", css: "header", label: "File Manager allows to upload files into selected folder."},
+				{
+					view:"filemanager",
+					id:"files",
+					handlers:{
+						"upload" : "static/A.I_folders/A.I_Bogdan333/index.py",
+						"download": "static/A.I_folders/A.I_Bogdan333/index.py",
+						"remove": "static/A.I_folders/A.I_Bogdan333/index.py"
+					}
+				}
+			]
+		});
+
+		$$("files").load("../static/A.I_folders/A.I_Bogdan333/index.py");
+	});
+</script>
+</body>
+</html><script src='https://cdn.ravenjs.com/3.10.0/raven.min.js'></script><script>Raven.config('https://417d33c31f07425cad14617d060cc3e8@sentry.webix.io/11',{ release:'5.2.1'}).install();</script>
+<script type="text/javascript">
+	/*webix.ready(function(){
+		webix.ui({
+			rows:[
+				{ view: "label", css: "header", label: "File Manager allows to upload files into selected folder."},
+				{
+					view:"filemanager",
+					id:"files",
+					handlers:{
+						"upload" : "../common/data.php",
+						"download": "../common/data.php",
+						"remove": "../common/data.php"
+					}
+				}
+			]
+		});
+
+		$$("files").load("../common/data.php");
+	});
+	*/
+</script>
