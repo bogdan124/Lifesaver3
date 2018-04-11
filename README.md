@@ -3,7 +3,7 @@
 NOTE:pentru a rula aplicatia trebuie rulat scriptul python index.py si de asemenea conexiunea la o baza de date Mysql 
 Eu am folosit anaconda pentru instalarea librariilor
 
-
+Baza de date este savelives.sql
 
 Lifesaver este un site menit sa ii ajute pe cei care au probleme cardiace.
 
